@@ -1,0 +1,41 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.featureContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.featureContent h3 {
+  margin: 0;
+  color: var(--ifm-color-primary);
+}
+
+.featureContent p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.builtBy {
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 148, 136, 0.06),
+    rgba(8, 145, 178, 0.06)
+  );
+  border: 1px solid var(--ifm-toc-border-color);
+}
+
+.builtBy p {
+  margin: 0;
+  font-size: 0.97rem;
+}

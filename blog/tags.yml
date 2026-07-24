@@ -1,0 +1,39 @@
+lims:
+  label: LIMS
+  permalink: /lims
+  description: Laboratory Information Management System concepts and patterns.
+
+quality-control:
+  label: Quality Control
+  permalink: /quality-control
+  description: QC workflows, Westgard rules, Levey-Jennings charts.
+
+integration:
+  label: Integration
+  permalink: /integration
+  description: HL7 v2, FHIR R4, webhooks, EMR integration patterns.
+
+architecture:
+  label: Architecture
+  permalink: /architecture
+  description: LabFlow architecture, data model, multi-tenancy.
+
+healthcare:
+  label: Healthcare
+  permalink: /healthcare
+  description: Healthcare software, HIPAA, clinical workflows.
+
+primer:
+  label: Primer
+  permalink: /primer
+  description: Definitional introductions to concepts and terms.
+
+comparison:
+  label: Comparison
+  permalink: /comparison
+  description: Side-by-side comparisons of standards, tools, and patterns.
+
+release:
+  label: Release
+  permalink: /release
+  description: LabFlow product release notes.

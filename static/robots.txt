@@ -1,0 +1,102 @@
+# LabFlow Documentation — robots policy
+# Site: https://docs.labflow.aoneahsan.com
+# Maintained by Ahsan Mahmood (aoneahsan@gmail.com)
+#
+# Strategy: explicitly allow all major search-engine and AI-search crawlers.
+# Block scraper bots that don't bring traffic.
+# Reference: https://docs.labflow.aoneahsan.com/sitemap.xml
+
+# --- Search engines (allow) ---
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# --- AI search crawlers (allow — required for ChatGPT, Claude, Perplexity, Gemini citations) ---
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# --- Common Crawl (allow — feeds many AI training datasets) ---
+
+User-agent: CCBot
+Allow: /
+
+# --- Scraper bots (deny — they don't bring traffic) ---
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Mauibot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# --- Default ---
+
+User-agent: *
+Allow: /
+
+# --- Sitemap ---
+
+Sitemap: https://docs.labflow.aoneahsan.com/sitemap.xml

@@ -1,0 +1,141 @@
+/**
+ * LabFlow documentation theme.
+ *
+ * Brand colour: teal-cyan medical/lab. Honours `prefers-reduced-motion` for
+ * accent shimmer. Light + dark palettes derived from the LabFlow product
+ * brand (`#0d9488` primary, complementary `#0891b2` accent).
+ */
+
+:root {
+  --ifm-color-primary: #0d9488;
+  --ifm-color-primary-dark: #0c857a;
+  --ifm-color-primary-darker: #0b7d72;
+  --ifm-color-primary-darkest: #09675e;
+  --ifm-color-primary-light: #14b3a6;
+  --ifm-color-primary-lighter: #2bc4b8;
+  --ifm-color-primary-lightest: #5dd4cb;
+
+  --ifm-color-secondary: #0891b2;
+  --ifm-color-success: #16a34a;
+  --ifm-color-warning: #f59e0b;
+  --ifm-color-danger: #dc2626;
+
+  --ifm-code-font-size: 92%;
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --ifm-heading-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI',
+    Roboto, sans-serif;
+  --ifm-heading-font-weight: 700;
+  --ifm-h1-font-size: 2.4rem;
+  --ifm-h2-font-size: 1.85rem;
+  --ifm-h3-font-size: 1.45rem;
+
+  --ifm-navbar-shadow: 0 1px 3px rgba(13, 148, 136, 0.06);
+  --ifm-toc-border-color: #e2e8f0;
+  --ifm-table-stripe-background: #f8fafc;
+
+  --docusaurus-highlighted-code-line-bg: rgba(13, 148, 136, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #2dd4bf;
+  --ifm-color-primary-dark: #14b8a6;
+  --ifm-color-primary-darker: #0d9488;
+  --ifm-color-primary-darkest: #0f766e;
+  --ifm-color-primary-light: #5eead4;
+  --ifm-color-primary-lighter: #99f6e4;
+  --ifm-color-primary-lightest: #ccfbf1;
+
+  --ifm-background-color: #0b1220;
+  --ifm-background-surface-color: #111827;
+  --ifm-toc-border-color: #1f2937;
+  --ifm-table-stripe-background: #111827;
+
+  --docusaurus-highlighted-code-line-bg: rgba(45, 212, 191, 0.18);
+}
+
+/* Hero gradient on the homepage */
+.hero--primary {
+  background: linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #0e7490 100%);
+}
+
+/* Subtle accent line under H2 anchors so deep pages feel structured */
+.markdown h2 {
+  position: relative;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+/* Author / credit callouts */
+.labflow-author-callout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 148, 136, 0.08),
+    rgba(8, 145, 178, 0.08)
+  );
+  border: 1px solid rgba(13, 148, 136, 0.25);
+}
+
+[data-theme='dark'] .labflow-author-callout {
+  background: linear-gradient(
+    135deg,
+    rgba(45, 212, 191, 0.08),
+    rgba(34, 211, 238, 0.08)
+  );
+  border-color: rgba(45, 212, 191, 0.25);
+}
+
+/* Module catalog grid used on /docs/modules */
+.labflow-module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.labflow-module-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-toc-border-color);
+  background: var(--ifm-background-surface-color, #fff);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms
+      ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.labflow-module-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.12);
+  text-decoration: none;
+}
+
+.labflow-module-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: var(--ifm-color-primary);
+}
+
+.labflow-module-card p {
+  margin: 0;
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+/* Reduce motion respectful */
+@media (prefers-reduced-motion: reduce) {
+  .labflow-module-card,
+  .hero--primary,
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
