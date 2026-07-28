@@ -1,0 +1,85 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Deploy the LabFlow docs site to GitHub Pages.
+#
+# 🔴 This workflow is the ONLY sanctioned exception to the house decision that
+# GitHub Actions stay inert in every repo. A docs site deploys from Pages and
+# nowhere else — there is deliberately no Firebase target here.
+#
+# The custom domain comes from static/CNAME (labflow-docs.aoneahsan.com), which
+# Docusaurus copies verbatim into build/, so the artifact carries it and the
+# domain survives every deploy without being configured twice.
+#
+# Owner-only, once: Settings -> Pages -> custom domain + Enforce HTTPS.
+# The DNS record already resolves (probed 2026-07-28).
+# ─────────────────────────────────────────────────────────────────────────────
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Allows a manual re-deploy without an empty commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel a Pages deploy midway — a half-published site is worse than a
+# slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # showLastUpdateTime / showLastUpdateAuthor read git history, so a
+          # shallow clone makes every page claim it was updated today.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Build
+        # The build is also the link checker.
+        run: yarn build
+
+      - name: Verify the internal ops file did not publish
+        # 🔴 docs/ is both the published directory and the fixed home of
+        # MANUAL-TASKS.md. The plugin `exclude` handles it; this proves it,
+        # because the failure mode is silent and public.
+        run: |
+          if find build -iname '*MANUAL-TASKS*' | grep -q .; then
+            echo "::error::MANUAL-TASKS.md reached the build output — check the docs plugin exclude"
+            find build -iname '*MANUAL-TASKS*'
+            exit 1
+          fi
+          echo "clean — no internal ops file in build/"
+
+      - name: Verify the custom domain shipped
+        run: |
+          test -f build/CNAME || { echo "::error::build/CNAME missing"; exit 1; }
+          echo "CNAME -> $(cat build/CNAME)"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

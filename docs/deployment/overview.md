@@ -2,10 +2,10 @@
 sidebar_position: 1
 slug: /deployment/overview
 title: Deployment Overview
-description: How the LabFlow documentation site ships — Firebase Hosting target, GitHub-public source repo, search-engine submission cadence, Algolia DocSearch, and the deploy gate that holds the build clean.
+description: How the LabFlow documentation site ships — GitHub Pages target, public source repo, search-engine submission cadence, local Pagefind search, and the deploy gate that holds the build clean.
 keywords:
   - LabFlow docs deployment
-  - Docusaurus Firebase Hosting
+  - Docusaurus GitHub Pages
   - docs site GitHub
   - LabFlow docs deploy
   - documentation site deploy
@@ -24,12 +24,11 @@ This page is the entry point. It explains the deploy pipeline at a glance, point
 | Property | Value |
 |---|---|
 | Build target | Static HTML / CSS / JS (Docusaurus 3 production build) |
-| Host | Firebase Hosting |
-| Source repo | Public GitHub — `https://github.com/aoneahsan/labflow-docs` (planned; submission pending) |
-| Primary URL | `https://docs.labflow.aoneahsan.com` (planned subdomain) |
-| Fallback URL | `https://labflow.aoneahsan.com/docs` (the LabFlow homepage's docs route, if the subdomain is delayed) |
-| Build command | `yarn build` (in `docs-site/`) |
-| Deploy command | `firebase deploy --only hosting` (filtered to the docs-site target) |
+| Host | **GitHub Pages** (the only host — this site has no Firebase target) |
+| Source repo | Public GitHub — `https://github.com/aoneahsan/labflow-docs` |
+| Primary URL | `https://labflow-docs.aoneahsan.com` |
+| Build command | `yarn build` |
+| Deploy command | None run by hand — `.github/workflows/deploy-pages.yml` builds and publishes on every push to `main` |
 | CI / build gate | Typecheck + build + broken-link / broken-anchor checks |
 | Indexing rules | `robots.txt` allows GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, PerplexityBot, Google-Extended, CCBot, Applebot, Bingbot, Googlebot |
 | Search-engine submission cadence | Once per major release + IndexNow ping on every deploy |
@@ -63,8 +62,7 @@ Every PR runs the build and broken-link / broken-anchor check; a failing check b
 
 | Page | What it covers |
 |---|---|
-| [Firebase Hosting](/docs/deployment/firebase-hosting) | The `firebase.json` config, hosting target, custom domain, cache headers, preview channels, rollback |
-| [GitHub Publishing](/docs/deployment/github-publish) | Creating the public docs repo, the GitHub Actions workflow, branch protection, contributor on-boarding |
+| [GitHub Publishing](/docs/deployment/github-publish) | The public docs repo, the Pages deploy workflow, the custom domain via `static/CNAME`, branch protection, contributor on-boarding |
 | [Search-Engine Submission](/docs/deployment/search-engines) | Google Search Console, Bing Webmaster Tools, Yandex Webmaster, IndexNow, robots.txt, sitemap submission cadence |
 | [Algolia DocSearch](/docs/deployment/algolia-docsearch) | The DocSearch application, the crawl configuration, the in-site search box wiring, the per-page metadata that drives result quality |
 
@@ -108,11 +106,13 @@ A content-freshness pass:
 
 ---
 
-## Why static + Firebase Hosting (not Next.js + Vercel, not S3 + CloudFront)
+## Why static + GitHub Pages (not Next.js + Vercel, not S3 + CloudFront)
 
-Three reasons. First, Docusaurus is a static-site generator; the runtime advantage of a SSR framework like Next.js doesn't apply — every page is pre-rendered HTML, and adding SSR would only add latency. Second, Firebase Hosting is integrated with the rest of the LabFlow operational surface (the main web app is hosted on Firebase too, alongside Firestore + Auth). One vendor, one billing surface, one set of credentials. Third, the CDN performance of Firebase Hosting is competitive with the others — global edge presence, automatic HTTP/2 / HTTP/3, free TLS, low-cost per request. The Vercel-style automatic-preview-on-PR feature exists in Firebase Hosting too (preview channels) and is documented in the [Firebase Hosting page](/docs/deployment/firebase-hosting#preview-channels).
+Three reasons. First, Docusaurus is a static-site generator; the runtime advantage of an SSR framework like Next.js doesn't apply — every page is pre-rendered HTML, and adding SSR would only add latency. Second, the source of this site is already a public GitHub repository, so Pages needs no second vendor, no separate billing surface, and no deploy credential to store: the workflow authenticates with a short-lived OIDC token GitHub issues to itself. Third, Pages is free at this scale with global edge distribution and automatic TLS on the custom domain.
 
-The trade-off vs. a generic S3 + CloudFront stack is that some of the cost knobs (cache invalidation strategy, edge-location routing) are less granular in Firebase Hosting. For a docs site whose traffic is far from those limits, the trade-off is fine.
+**The LabFlow application is hosted on Firebase Hosting; this documentation site is not, and deliberately has no Firebase target.** Keeping the two apart means a docs deploy can never touch the app's hosting configuration, and the docs repo needs no access to the Firebase project at all.
+
+The trade-off vs. a generic S3 + CloudFront stack is that the cache knobs are not configurable — Pages sets its own cache headers and offers no invalidation control. For a docs site whose traffic is far from those limits, that is fine.
 
 ---
 
@@ -137,15 +137,15 @@ The author of the docs (and the credits this category surfaces) is documented at
 
 ### Where is the docs site live today?
 
-The build is currently published from the integrated build folder under the main LabFlow project, and the public subdomain at `https://docs.labflow.aoneahsan.com` is provisioned but pending DNS-cutover. Until the cutover lands, the canonical URL is `https://labflow.aoneahsan.com/docs`, which serves the same content. The [LabFlow homepage](https://labflow.aoneahsan.com) carries the live status banner during the transition.
+**Not yet — nothing has been published.** The DNS record for `labflow-docs.aoneahsan.com` resolves to GitHub Pages and returns a 404, which is the expected state before a first deploy. It goes live on the first push to `main` after Pages is switched on in the repository settings. There is no interim URL: the docs are not served from the application domain.
 
 ### How long does a deploy take?
 
-The build takes 15–30 seconds (Docusaurus is fast). The Firebase Hosting upload is bounded by the diff against the previous deploy — a typical small change uploads 1–5 MB and is live within 30 seconds of the upload starting. End-to-end from `git push` to live is typically 2 minutes including the CI build.
+The build takes 15–30 seconds. The Pages artifact upload and publish add roughly a minute, so end-to-end from `git push` to live is typically two to three minutes including the CI build.
 
 ### Can the docs site be rolled back?
 
-Yes — Firebase Hosting keeps a release history. A rollback is one click in the Firebase Console (Hosting → Release history → Rollback) or one command (`firebase hosting:clone source-site:source-channel target-site:live --version-id <previous>`). The rollback is a pointer change at the CDN edge and is effective within ~30 seconds.
+There is no host-level rollback — Pages publishes whatever the latest run produced. A rollback is therefore a **git** operation: revert the offending commit on `main` and let the workflow republish. That is slower than a pointer flip but it keeps the published site and the repository in agreement, which a host-level rollback does not.
 
 ### What's the contributor flow for an external PR?
 
@@ -153,11 +153,11 @@ A contributor forks the public docs repo, files a PR against `main`, and the PR-
 
 ### How do I deploy a preview of a draft PR before merging?
 
-The PR-build workflow creates a Firebase Hosting preview channel and posts the preview URL as a PR comment. The preview persists for 7 days (configurable) and is a working static deploy at a URL like `https://labflow-docs--pr-42-x1y2z3.web.app`. Reviewers click the link and read the rendered content, which catches a class of MDX-rendering defects that the build-time link checker doesn't see.
+**You cannot, and this is an honest limitation of the Pages setup.** A GitHub Pages environment publishes one site per repository, so there are no per-PR preview URLs. A PR build proves the site *compiles* and that no link or anchor is broken; to read the rendered content, check out the branch and run `yarn build && yarn serve` locally. If per-PR previews ever become necessary, they would need a second host, which is a deliberate decision not taken.
 
 ### Is there a CDN cache warmup step?
 
-Firebase Hosting's CDN warms automatically on the first request per edge location after a deploy. For a docs site whose traffic is steady, the warm-up is invisible. For a release that's expected to draw an unusual spike (e.g. a public launch), a small script can pre-warm by issuing parallel HEAD requests to the top 30 URLs from a few geographic locations — this is documented in the [Firebase Hosting page](/docs/deployment/firebase-hosting#cdn-warm-up).
+No. Pages manages its own edge caching and exposes no warm-up or invalidation control. For a docs site at this traffic level there is nothing to tune.
 
 ### How is the deploy gated against broken links and broken anchors?
 
@@ -165,8 +165,8 @@ The Docusaurus build flags both as warnings or errors based on the `onBrokenLink
 
 ### Who has permission to deploy to production?
 
-The Firebase project's `Editor` role on the hosting target. The default deployer list is the LabFlow engineering team; merging to `main` runs the deploy as the GitHub Actions service account, which holds a dedicated short-lived token issued from a Google service account and never the personal credentials of the engineer who merged. The audit log on the Firebase project tracks every deploy.
+Nobody deploys by hand, and there is no deploy credential to hold. Publishing is done by the `deploy-pages.yml` workflow using a short-lived OIDC token GitHub mints for the run itself — so the permission that matters is **who can merge to `main`**, which the branch ruleset governs. Every publish is therefore attributable to a merge commit, and the workflow run log is the audit trail.
 
 ---
 
-**Next:** [Firebase Hosting](/docs/deployment/firebase-hosting).
+**Next:** [GitHub Publishing](/docs/deployment/github-publish).

@@ -80,7 +80,6 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'deployment/overview',
-        'deployment/firebase-hosting',
         'deployment/github-publish',
         'deployment/search-engines',
         'deployment/algolia-docsearch',

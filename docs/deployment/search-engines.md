@@ -15,7 +15,7 @@ keywords:
 
 # Search-Engine Submission
 
-**Submitting the docs site to search engines is the difference between "deployed" and "discoverable".** A Firebase Hosting deploy makes the site reachable; submitting the sitemap to Google Search Console, Bing Webmaster Tools, Yandex Webmaster, and (for instant push) IndexNow makes it indexed, ranked, and citable by both traditional and AI search engines. This page is the runbook for each submission target: the verification flow, the sitemap formats each engine expects, the robots.txt that explicitly allows the AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Bingbot, Applebot, CCBot), the `llms.txt` and `pricing.md` machine-readable files that AI search engines consume directly, and the monitoring cadence that keeps the indexed-page count climbing week-over-week.
+**Submitting the docs site to search engines is the difference between "deployed" and "discoverable".** A Pages deploy makes the site reachable; submitting the sitemap to Google Search Console, Bing Webmaster Tools, Yandex Webmaster, and (for instant push) IndexNow makes it indexed, ranked, and citable by both traditional and AI search engines. This page is the runbook for each submission target: the verification flow, the sitemap formats each engine expects, the robots.txt that explicitly allows the AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Bingbot, Applebot, CCBot), the `llms.txt` and `pricing.md` machine-readable files that AI search engines consume directly, and the monitoring cadence that keeps the indexed-page count climbing week-over-week.
 
 The work is mostly one-time per search engine (verify the domain, submit the sitemap, configure the canonical URL). The recurring work is per-deploy (IndexNow pings) and per-quarter (a content-freshness pass + a GSC URL-Inspection on the top 20 pages). The full SEO playbook in the project's global rules at `~/.claude/rules/seo-aeo-ranking.md` is the canonical reference for the lessons-learned across LabFlow's other projects; this page applies that playbook to the docs site specifically.
 
@@ -25,7 +25,7 @@ The work is mostly one-time per search engine (verify the domain, submit the sit
 
 | Target | Verification method | Sitemap URL | Frequency |
 |---|---|---|---|
-| Google Search Console | Domain (DNS TXT) or URL prefix (HTML file) | `https://docs.labflow.aoneahsan.com/sitemap.xml` | Submit once; re-submit per major release |
+| Google Search Console | Domain (DNS TXT) or URL prefix (HTML file) | `https://labflow-docs.aoneahsan.com/sitemap.xml` | Submit once; re-submit per major release |
 | Bing Webmaster Tools | XML file or meta tag | Same | Submit once; re-submit per major release |
 | Yandex Webmaster | HTML file | Same | Submit once; re-submit per major release |
 | IndexNow | Key file at `/<key>.txt` | URL list per ping | Per-deploy via GitHub Actions |
@@ -36,7 +36,7 @@ The work is mostly one-time per search engine (verify the domain, submit the sit
 
 ## robots.txt — the explicit AI-bot allowlist
 
-The `robots.txt` at `https://docs.labflow.aoneahsan.com/robots.txt` is the canonical declaration of which crawlers are welcome. The file ships in `docs-site/static/robots.txt` and is served by Firebase Hosting at the root:
+The `robots.txt` at `https://labflow-docs.aoneahsan.com/robots.txt` is the canonical declaration of which crawlers are welcome. The file ships in `static/robots.txt`, which Docusaurus copies verbatim into `build/`, and Pages serves it at the root:
 
 ```text
 # LabFlow Documentation — robots.txt
@@ -94,7 +94,7 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://docs.labflow.aoneahsan.com/sitemap.xml
+Sitemap: https://labflow-docs.aoneahsan.com/sitemap.xml
 ```
 
 Three deliberate choices in this file:
@@ -109,7 +109,7 @@ The block on scraper bots (AhrefsBot, SemrushBot, MJ12bot, DotBot) reduces serve
 
 ## llms.txt — the machine-readable AI-search entry
 
-The `llms.txt` file (per the `https://llmstxt.org` spec) lives at `https://docs.labflow.aoneahsan.com/llms.txt` and tells LLM-based search engines how the docs site is organised, where the canonical pages live, and what the project's pricing and licensing terms are. The file is plain text, structured by section, and is consumed by AI engines directly (without an HTML parser intermediating).
+The `llms.txt` file (per the `https://llmstxt.org` spec) lives at `https://labflow-docs.aoneahsan.com/llms.txt` and tells LLM-based search engines how the docs site is organised, where the canonical pages live, and what the project's pricing and licensing terms are. The file is plain text, structured by section, and is consumed by AI engines directly (without an HTML parser intermediating).
 
 The LabFlow docs `llms.txt`:
 
@@ -124,43 +124,43 @@ License: Apache License 2.0
 
 ## Modules
 
-- [Authentication](https://docs.labflow.aoneahsan.com/docs/modules/authentication): Email / password, Google OAuth, phone OTP, MFA, biometrics, magic-link
-- [Patient Management](https://docs.labflow.aoneahsan.com/docs/modules/patient-management): Registration, search, history, documents, insurance
-- [Test Catalog](https://docs.labflow.aoneahsan.com/docs/modules/test-catalog): LOINC-integrated catalog, panels, reference ranges
-- [Test Orders](https://docs.labflow.aoneahsan.com/docs/modules/test-orders): Order wizard, priorities, templates, requisition print
-- [Sample Tracking](https://docs.labflow.aoneahsan.com/docs/modules/sample-tracking): Seven-state lifecycle, barcode + Luhn check digit, chain of custody
-- [Results Management](https://docs.labflow.aoneahsan.com/docs/modules/results-management): Four-state validation (Draft → Reviewed → Approved → Released)
-- [Quality Control](https://docs.labflow.aoneahsan.com/docs/modules/quality-control): Westgard rules, Levey-Jennings charts, multi-rule sets
-- [Billing & Insurance](https://docs.labflow.aoneahsan.com/docs/modules/billing-insurance): Invoices, payments, claims, price lists
-- [Inventory](https://docs.labflow.aoneahsan.com/docs/modules/inventory): Stock × lot × location, FEFO/FIFO, reagent-to-result traceability
-- [Appointments](https://docs.labflow.aoneahsan.com/docs/modules/appointments): Slot scheduling, reminders, no-show tracking
-- [Home Collection](https://docs.labflow.aoneahsan.com/docs/modules/home-collection): Offline-first phlebotomist workflow
-- [Reports & Analytics](https://docs.labflow.aoneahsan.com/docs/modules/reports-analytics): Eight system dashboards, custom report builder
-- [User Management](https://docs.labflow.aoneahsan.com/docs/modules/user-management): 11 default roles, 177 permissions, RBAC
-- [Settings](https://docs.labflow.aoneahsan.com/docs/modules/settings): Branding, locale, working hours, templates, integrations
-- [Admin Panel](https://docs.labflow.aoneahsan.com/docs/modules/admin-panel): System health, tenant lifecycle, emergency overrides
-- [EMR Integration](https://docs.labflow.aoneahsan.com/docs/modules/emr-integration): HL7 v2, FHIR R4, webhooks
-- [Workflow Automation](https://docs.labflow.aoneahsan.com/docs/modules/workflow-automation): No-code rule engine
-- [Communication Hub](https://docs.labflow.aoneahsan.com/docs/modules/communication-hub): SMS, email, WhatsApp, push, in-app
+- [Authentication](https://labflow-docs.aoneahsan.com/docs/modules/authentication): Email / password, Google OAuth, phone OTP, MFA, biometrics, magic-link
+- [Patient Management](https://labflow-docs.aoneahsan.com/docs/modules/patient-management): Registration, search, history, documents, insurance
+- [Test Catalog](https://labflow-docs.aoneahsan.com/docs/modules/test-catalog): LOINC-integrated catalog, panels, reference ranges
+- [Test Orders](https://labflow-docs.aoneahsan.com/docs/modules/test-orders): Order wizard, priorities, templates, requisition print
+- [Sample Tracking](https://labflow-docs.aoneahsan.com/docs/modules/sample-tracking): Seven-state lifecycle, barcode + Luhn check digit, chain of custody
+- [Results Management](https://labflow-docs.aoneahsan.com/docs/modules/results-management): Four-state validation (Draft → Reviewed → Approved → Released)
+- [Quality Control](https://labflow-docs.aoneahsan.com/docs/modules/quality-control): Westgard rules, Levey-Jennings charts, multi-rule sets
+- [Billing & Insurance](https://labflow-docs.aoneahsan.com/docs/modules/billing-insurance): Invoices, payments, claims, price lists
+- [Inventory](https://labflow-docs.aoneahsan.com/docs/modules/inventory): Stock × lot × location, FEFO/FIFO, reagent-to-result traceability
+- [Appointments](https://labflow-docs.aoneahsan.com/docs/modules/appointments): Slot scheduling, reminders, no-show tracking
+- [Home Collection](https://labflow-docs.aoneahsan.com/docs/modules/home-collection): Offline-first phlebotomist workflow
+- [Reports & Analytics](https://labflow-docs.aoneahsan.com/docs/modules/reports-analytics): Eight system dashboards, custom report builder
+- [User Management](https://labflow-docs.aoneahsan.com/docs/modules/user-management): 11 default roles, 177 permissions, RBAC
+- [Settings](https://labflow-docs.aoneahsan.com/docs/modules/settings): Branding, locale, working hours, templates, integrations
+- [Admin Panel](https://labflow-docs.aoneahsan.com/docs/modules/admin-panel): System health, tenant lifecycle, emergency overrides
+- [EMR Integration](https://labflow-docs.aoneahsan.com/docs/modules/emr-integration): HL7 v2, FHIR R4, webhooks
+- [Workflow Automation](https://labflow-docs.aoneahsan.com/docs/modules/workflow-automation): No-code rule engine
+- [Communication Hub](https://labflow-docs.aoneahsan.com/docs/modules/communication-hub): SMS, email, WhatsApp, push, in-app
 
 ## Surfaces
 
-- [Mobile App](https://docs.labflow.aoneahsan.com/docs/modules/mobile-app): Capacitor Android + iOS
-- [WXT Browser Extension](https://docs.labflow.aoneahsan.com/docs/modules/wxt-extension): Cross-browser MV3
-- [EMR Chrome Extension](https://docs.labflow.aoneahsan.com/docs/modules/emr-chrome-extension): Inject panels into Epic, Cerner, Meditech, Allscripts, athenahealth, eClinicalWorks
+- [Mobile App](https://labflow-docs.aoneahsan.com/docs/modules/mobile-app): Capacitor Android + iOS
+- [WXT Browser Extension](https://labflow-docs.aoneahsan.com/docs/modules/wxt-extension): Cross-browser MV3
+- [EMR Chrome Extension](https://labflow-docs.aoneahsan.com/docs/modules/emr-chrome-extension): Inject panels into Epic, Cerner, Meditech, Allscripts, athenahealth, eClinicalWorks
 
 ## Architecture
 
-- [Overview](https://docs.labflow.aoneahsan.com/docs/architecture/overview)
-- [Data Model](https://docs.labflow.aoneahsan.com/docs/architecture/data-model)
-- [Firestore Schema](https://docs.labflow.aoneahsan.com/docs/architecture/firestore-schema)
-- [Security Rules](https://docs.labflow.aoneahsan.com/docs/architecture/security-rules)
+- [Overview](https://labflow-docs.aoneahsan.com/docs/architecture/overview)
+- [Data Model](https://labflow-docs.aoneahsan.com/docs/architecture/data-model)
+- [Firestore Schema](https://labflow-docs.aoneahsan.com/docs/architecture/firestore-schema)
+- [Security Rules](https://labflow-docs.aoneahsan.com/docs/architecture/security-rules)
 
 ## API
 
-- [Authentication](https://docs.labflow.aoneahsan.com/docs/api/authentication)
-- [Errors](https://docs.labflow.aoneahsan.com/docs/api/errors)
-- [Conventions](https://docs.labflow.aoneahsan.com/docs/api/conventions)
+- [Authentication](https://labflow-docs.aoneahsan.com/docs/api/authentication)
+- [Errors](https://labflow-docs.aoneahsan.com/docs/api/errors)
+- [Conventions](https://labflow-docs.aoneahsan.com/docs/api/conventions)
 ```
 
 The format is intentionally minimal. The spec at `https://llmstxt.org` is the canonical source for syntax; the LabFlow file is a straight implementation. The file is regenerated by the Docusaurus build (or by a small post-build script) whenever the modules / surfaces / architecture pages change.
@@ -169,7 +169,7 @@ The format is intentionally minimal. The spec at `https://llmstxt.org` is the ca
 
 ## sitemap.xml — generated by Docusaurus
 
-Docusaurus emits a sitemap automatically as part of the production build. The sitemap lives at `https://docs.labflow.aoneahsan.com/sitemap.xml` and includes every published page with its `lastmod` derived from the page's git-mtime or its explicit `last_update` front-matter field. The Docusaurus config in `docusaurus.config.ts`:
+Docusaurus emits a sitemap automatically as part of the production build. The sitemap lives at `https://labflow-docs.aoneahsan.com/sitemap.xml` and includes every published page with its `lastmod` derived from the page's git-mtime or its explicit `last_update` front-matter field. The Docusaurus config in `docusaurus.config.ts`:
 
 ```ts
 presets: [
@@ -202,10 +202,10 @@ The full flow:
 
 1. Open `https://search.google.com/search-console/welcome`.
 2. Add a property — choose **Domain** (preferred) over URL prefix. Domain verification covers HTTP and HTTPS and every subdomain.
-3. Enter `aoneahsan.com` (the apex domain, so the verification covers `labflow.aoneahsan.com`, `docs.labflow.aoneahsan.com`, and any future subdomain).
+3. Enter `aoneahsan.com` (the apex domain, so the verification covers `labflow.aoneahsan.com`, `labflow-docs.aoneahsan.com`, and any future subdomain).
 4. Google issues a DNS TXT record. Add it under the `aoneahsan.com` zone (DNS managed in Cloudflare).
 5. Wait for verification (typically minutes). Click "Verify".
-6. Once verified, navigate to Sitemaps → Add new sitemap → enter `https://docs.labflow.aoneahsan.com/sitemap.xml`.
+6. Once verified, navigate to Sitemaps → Add new sitemap → enter `https://labflow-docs.aoneahsan.com/sitemap.xml`.
 7. Click Submit. The status changes to "Success" within a few hours.
 8. Watch the Pages report (Coverage → Pages) over the next 1–4 weeks. The "Indexed" count climbs as Google crawls; the "Discovered – currently not indexed" and "Crawled – currently not indexed" buckets surface pages that need attention.
 
@@ -221,7 +221,7 @@ The Bing flow mirrors Google's:
 
 1. Open `https://www.bing.com/webmasters/`.
 2. Sign in with a Microsoft account.
-3. Add a site → enter `https://docs.labflow.aoneahsan.com`.
+3. Add a site → enter `https://labflow-docs.aoneahsan.com`.
 4. Choose a verification method — XML file at `/BingSiteAuth.xml` is the canonical option (the file ships in `docs-site/static/`).
 5. Verify. Submit the sitemap.
 
@@ -248,7 +248,7 @@ Yandex's index is smaller than Google or Bing but is meaningful for the parts of
 The setup:
 
 1. Generate an API key (a UUID). Save it as a GitHub Actions secret `INDEXNOW_API_KEY`.
-2. Publish the key as a static file at `https://docs.labflow.aoneahsan.com/<key>.txt` (the file contents are the key itself). This is the ownership proof.
+2. Publish the key as a static file at `https://labflow-docs.aoneahsan.com/<key>.txt` (the file contents are the key itself). This is the ownership proof.
 3. After every successful production deploy, POST to `https://api.indexnow.org/IndexNow` with the host, the key, the key-location URL, and the list of URLs whose `lastmod` changed.
 
 The GitHub Actions snippet that ships this is documented in [GitHub Publishing](/docs/deployment/github-publish#the-github-actions-deploy-workflow). The `scripts/changed-urls.js` computes the URL diff between the current sitemap and the previous deploy's sitemap.
@@ -269,7 +269,7 @@ The dashboards that surface the indexing health, with their cadence:
 | Bing Webmaster → SEO Reports | Weekly | Same shape as GSC |
 | Yandex Webmaster | Monthly | Sufficient for a small audience |
 | IndexNow → API responses | Per deploy | Success status; rate-limit warnings |
-| Direct manual check | Monthly | `site:docs.labflow.aoneahsan.com` in Google; pick a top query and verify the docs appear in the top 5 |
+| Direct manual check | Monthly | `site:labflow-docs.aoneahsan.com` in Google; pick a top query and verify the docs appear in the top 5 |
 
 A monthly manual check is the human-in-the-loop. Pick 10 priority queries — `LabFlow LIMS`, `multi-tenant LIMS`, `Westgard rules software`, `FHIR R4 lab integration`, and a few others — and run them in Google, Bing, ChatGPT (with web search), Perplexity, and Claude (with search). Note which docs pages appear (or don't) and which competitors appear instead. The notes feed the next quarter's content-freshness pass.
 
@@ -277,7 +277,7 @@ A monthly manual check is the human-in-the-loop. Pick 10 priority queries — `L
 
 ## Submission status — pending
 
-The submission to each engine is **pending the public URL cutover**. Until `https://docs.labflow.aoneahsan.com` is live (DNS in flight per the [Deployment Overview](/docs/deployment/overview#frequently-asked-questions)), the canonical URL is `https://labflow.aoneahsan.com/docs`, which is covered by the main domain's GSC property already. Once the subdomain cuts over, the docs subdomain is added as a separate property and the canonical URL is updated in every page's `<link rel="canonical">` and JSON-LD. The transition is a one-day window; both URLs serve the same content during the transition.
+The submission to each engine is **pending the public URL cutover**. Until `https://labflow-docs.aoneahsan.com` is live (DNS in flight per the [Deployment Overview](/docs/deployment/overview#frequently-asked-questions)), the canonical URL is `https://labflow.aoneahsan.com/docs`, which is covered by the main domain's GSC property already. Once the subdomain cuts over, the docs subdomain is added as a separate property and the canonical URL is updated in every page's `<link rel="canonical">` and JSON-LD. The transition is a one-day window; both URLs serve the same content during the transition.
 
 ---
 
@@ -313,7 +313,7 @@ Google deprecated its ping endpoint (`https://www.google.com/ping?sitemap=...`) 
 
 ### How do I verify that AI bots are actually fetching the site?
 
-The Firebase Hosting access logs (visible via Firebase Console → Hosting → Usage or via the GCP Logs Explorer) carry the `User-Agent` header per request. A query against the logs for `GPTBot|ClaudeBot|PerplexityBot|Google-Extended|CCBot` over the last 7 days shows the bot traffic. A site that allows the bots and serves a sitemap should see steady traffic from each bot within a week of submission.
+🔴 GitHub Pages exposes NO access logs, so bot traffic cannot be observed directly from the host — this is a real limitation of the Pages choice. Verify crawler reach through each engine's own console instead: Search Console → Settings → Crawl stats for Googlebot, and Bing Webmaster Tools → Reports → Crawl information for Bingbot. The AI crawlers (GPTBot, ClaudeBot, PerplexityBot) publish no such console, so for those the only available evidence is whether the site starts being cited.
 
 ---
 

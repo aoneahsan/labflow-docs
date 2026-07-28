@@ -26,16 +26,16 @@ If a step is blocked or cannot ship on time, the canonical move is to skip it (m
 | 1 | All 12 build batches complete; tracker `lastFullCompletion.date` set | Engineering | `cat docs/tracking/docs-site-build-tracker.json` |
 | 2 | `yarn typecheck && yarn build` clean on `main` | Engineering | CI green on latest commit |
 | 3 | Manual spot-check of 10 random pages in the preview build | Engineering | Spot-check pass |
-| 4 | `robots.txt` carries the AI-bot allowlist + sitemap reference | Engineering | `curl https://docs.labflow.aoneahsan.com/robots.txt` |
+| 4 | `robots.txt` carries the AI-bot allowlist + sitemap reference | Engineering | `curl https://labflow-docs.aoneahsan.com/robots.txt` |
 | 5 | `sitemap.xml` includes every public page with valid `lastmod` | Engineering | `xmllint --noout sitemap.xml` |
-| 6 | `llms.txt` published at the site root | Engineering | `curl https://docs.labflow.aoneahsan.com/llms.txt` |
-| 7 | `IndexNow` API key file published at the site root | Engineering | `curl https://docs.labflow.aoneahsan.com/<key>.txt` |
+| 6 | `llms.txt` published at the site root | Engineering | `curl https://labflow-docs.aoneahsan.com/llms.txt` |
+| 7 | `IndexNow` API key file published at the site root | Engineering | `curl https://labflow-docs.aoneahsan.com/<key>.txt` |
 | 8 | Algolia DocSearch application approved; appId + apiKey wired in `docusaurus.config.ts` | Engineering | Search box renders in preview |
-| 9 | Firebase Hosting custom-domain DNS verified | Operations | Firebase Console → Hosting → Custom domains → Connected |
-| 10 | TLS certificate provisioned (Let's Encrypt via Firebase) | Operations | `https://docs.labflow.aoneahsan.com` shows valid cert |
+| 9 | DNS record for the docs subdomain points at GitHub Pages | Operations | `dig labflow-docs.aoneahsan.com` — already resolving as of 2026-07-28 |
+| 10 | Pages custom domain set + **Enforce HTTPS** ticked (owner-only) | Operations | GitHub → Settings → Pages; `https://labflow-docs.aoneahsan.com` shows a valid cert |
 | 11 | GitHub repo public; README + LICENSE + CONTRIBUTING + CODE_OF_CONDUCT + SECURITY committed | Engineering | Visit `https://github.com/aoneahsan/labflow-docs` |
 | 12 | Branch protection on `main` configured per the [GitHub Publishing](/docs/deployment/github-publish#branch-protection-on-main) rules | Engineering | GitHub Settings → Branches |
-| 13 | CI service account JSON key in GitHub Actions secrets | Engineering | Repo → Settings → Secrets → Actions |
+| 13 | Pages source set to **GitHub Actions** (not a branch) | Engineering | GitHub → Settings → Pages → Source. No deploy secret exists or is needed — the workflow uses an OIDC token |
 | 14 | The [LabFlow homepage](https://labflow.aoneahsan.com) carries a "Docs are live" banner draft | Marketing | Pre-launch staging URL |
 
 ---
@@ -44,13 +44,13 @@ If a step is blocked or cannot ship on time, the canonical move is to skip it (m
 
 | # | Step | Owner | Verification |
 |---|---|---|---|
-| 15 | Cut DNS over to the docs subdomain (`docs.labflow.aoneahsan.com`) | Operations | DNS propagation check via `dig docs.labflow.aoneahsan.com` |
-| 16 | Verify the canonical URL resolves with the right content | Operations | Visit `https://docs.labflow.aoneahsan.com/docs/intro` |
-| 17 | Remove the `/docs` rewrite from the main app's `firebase.json` (if still in place) | Engineering | `firebase deploy --only hosting:app` |
-| 18 | Update every internal link from `https://labflow.aoneahsan.com/docs/...` to `https://docs.labflow.aoneahsan.com/docs/...` (within the docs and within the LabFlow main app) | Engineering | grep across both repos; no remaining old-URL references |
+| 15 | Cut DNS over to the docs subdomain (`labflow-docs.aoneahsan.com`) | Operations | DNS propagation check via `dig labflow-docs.aoneahsan.com` |
+| 16 | Verify the canonical URL resolves with the right content | Operations | Visit `https://labflow-docs.aoneahsan.com/docs/intro` |
+| 17 | Confirm the main app has no `/docs` rewrite pointing at this content | Engineering | grep the app's `firebase.json`; the docs are served only from the Pages domain |
+| 18 | Update every internal link from `https://labflow.aoneahsan.com/docs/...` to `https://labflow-docs.aoneahsan.com/docs/...` (within the docs and within the LabFlow main app) | Engineering | grep across both repos; no remaining old-URL references |
 | 19 | Verify canonical `<link rel="canonical">` on a sample of pages points to the new URL | Engineering | View source on 5 random pages |
 | 20 | The [LabFlow homepage](https://labflow.aoneahsan.com) "Docs are live" banner goes live | Marketing | Visit homepage |
-| 21 | Re-emit `sitemap.xml` (the URLs in it should now use the new domain) | Engineering | `curl https://docs.labflow.aoneahsan.com/sitemap.xml` and verify host |
+| 21 | Re-emit `sitemap.xml` (the URLs in it should now use the new domain) | Engineering | `curl https://labflow-docs.aoneahsan.com/sitemap.xml` and verify host |
 | 22 | IndexNow ping with the full URL list (one-time post-launch ping is bigger than usual) | Engineering | Inspect the workflow run; expect a 200 response |
 
 ---
@@ -65,7 +65,7 @@ If a step is blocked or cannot ship on time, the canonical move is to skip it (m
 | 26 | URL-Inspect the top 10 priority pages in GSC; press "Request Indexing" on each | Engineering | GSC → URL Inspection × 10 |
 | 27 | Algolia: trigger an immediate crawl from the DocSearch dashboard | Engineering | Algolia dashboard → Application → Crawl now |
 | 28 | Algolia: verify the index populates within 30 minutes (search for a known term, get hits) | Engineering | Open the docs site, press `Cmd+K`, search for "Westgard" |
-| 29 | Verify the search-page route renders results (`https://docs.labflow.aoneahsan.com/search?q=westgard`) | Engineering | Direct URL test |
+| 29 | Verify the search-page route renders results (`https://labflow-docs.aoneahsan.com/search?q=westgard`) | Engineering | Direct URL test |
 
 ---
 
@@ -89,10 +89,10 @@ If a step is blocked or cannot ship on time, the canonical move is to skip it (m
 |---|---|---|---|
 | 37 | Check Google Search Console → Pages report — `Indexed` count > 0 | Engineering | GSC dashboard |
 | 38 | Check Bing Webmaster → Site Explorer — `Indexed` count > 0 | Engineering | Bing dashboard |
-| 39 | Check `site:docs.labflow.aoneahsan.com` in Google — expect at least 10 results | Engineering | Manual Google search |
+| 39 | Check `site:labflow-docs.aoneahsan.com` in Google — expect at least 10 results | Engineering | Manual Google search |
 | 40 | Run 10 priority queries in Google, Bing, ChatGPT (web search), Perplexity, Claude (web search) — note which docs pages appear | Engineering | Search-quality spreadsheet |
 | 41 | Check the Algolia DocSearch analytics — any no-result queries are content-gap signals | Engineering | Algolia dashboard → Analytics |
-| 42 | Review the Firebase Hosting access logs — any 404s indicate broken inbound links | Engineering | GCP Logs Explorer query |
+| 42 | Review GSC → Pages → *Not found (404)* for broken inbound links — 🔴 Pages exposes no access logs, so this is the only available signal | Engineering | GSC dashboard |
 
 ---
 
@@ -102,7 +102,7 @@ If a step is blocked or cannot ship on time, the canonical move is to skip it (m
 |---|---|---|---|
 | 43 | Re-run the 10 priority-query manual check; note month-over-month progress | Engineering | Search-quality spreadsheet (compare to Launch+7) |
 | 44 | Check GSC → Performance — top-queries report shows which docs pages are getting impressions | Engineering | GSC dashboard |
-| 45 | Check the inbound traffic source mix in Firebase Hosting analytics (organic vs direct vs referral) | Engineering | Analytics dashboard |
+| 45 | Check the inbound traffic mix (organic vs direct vs referral) | Engineering | GSC → Performance; Pages has no host-side analytics |
 | 46 | Address any GSC errors / warnings (mobile usability, Core Web Vitals, broken canonical) | Engineering | GSC → Experience + Coverage tabs |
 | 47 | Schedule the first quarterly content-freshness pass (per the [Deployment Overview](/docs/deployment/overview#per-quarter)) | Engineering | Calendar invite for T+90 |
 | 48 | File a retro note: what went well, what to do differently next launch | Engineering | Retro doc |
@@ -146,7 +146,7 @@ The Pages report typically shows "submitted" within hours of sitemap submission.
 
 ### What's the most common launch-day issue?
 
-The DNS cutover. The Firebase Hosting custom-domain wiring relies on DNS pointing to Firebase's load-balancer IPs. A misconfigured `A` record produces a "this site can't be reached" error until it's fixed. The verification step at launch-day item 16 is the early-warning system; have a runbook ready to roll back the DNS change if the new domain doesn't resolve cleanly.
+Forgetting to set the Pages custom domain in repository settings. `static/CNAME` puts the domain in the build output, which is necessary but not sufficient — Pages also has to be told, in Settings → Pages, or it serves the site at `aoneahsan.github.io/labflow-docs` and the custom domain 404s. The DNS itself already resolves, so a failure at launch is almost always this setting rather than DNS.
 
 ### How do I know when the Algolia index has caught up after a content push?
 
@@ -179,7 +179,8 @@ At the time of writing, the launch is **not yet complete**. The status of each m
 | Item | Status |
 |---|---|
 | Build batches 1-12 | Complete |
-| Firebase Hosting `docs` target + custom domain DNS | In flight |
+| GitHub Pages workflow + `static/CNAME` | Complete (2026-07-28) |
+| Pages custom domain + Enforce HTTPS in repo settings | Owner-only, pending |
 | GitHub repo public + Apache 2.0 license | In flight |
 | Algolia DocSearch application | Not yet submitted |
 | Google / Bing / Yandex Webmaster verification | Pending domain cutover |

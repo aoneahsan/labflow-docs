@@ -8,21 +8,21 @@ Honest framing: LabFlow is HIPAA-conscious in design but carries no FDA / CAP / 
 
 ## Documentation
 
-- [Introduction](https://docs.labflow.aoneahsan.com/docs/intro): What LabFlow does and what it explicitly does not do.
-- [Quick Start](https://docs.labflow.aoneahsan.com/docs/getting-started/quick-start): Register a patient, place an order, validate a result, release a report — end-to-end on the live web app in under ten minutes.
-- [Self-hosted Installation](https://docs.labflow.aoneahsan.com/docs/getting-started/installation): Local development setup and Firebase Hosting production deploy.
-- [Architecture Overview](https://docs.labflow.aoneahsan.com/docs/architecture/overview): Five surfaces, multi-tenant Firestore model, four-state result lifecycle, audit log invariants, offline-first mobile.
-- [Modules Catalogue](https://docs.labflow.aoneahsan.com/docs/modules): All 20+ modules, mapped to workflow stages and Firestore collections.
-- [User Guide](https://docs.labflow.aoneahsan.com/docs/user-guide/overview): Recipe-style how-tos indexed by role.
+- [Introduction](https://labflow-docs.aoneahsan.com/docs/intro): What LabFlow does and what it explicitly does not do.
+- [Quick Start](https://labflow-docs.aoneahsan.com/docs/getting-started/quick-start): Register a patient, place an order, validate a result, release a report — end-to-end on the live web app in under ten minutes.
+- [Self-hosted Installation](https://labflow-docs.aoneahsan.com/docs/getting-started/installation): Local development setup and Firebase Hosting production deploy.
+- [Architecture Overview](https://labflow-docs.aoneahsan.com/docs/architecture/overview): Five surfaces, multi-tenant Firestore model, four-state result lifecycle, audit log invariants, offline-first mobile.
+- [Modules Catalogue](https://labflow-docs.aoneahsan.com/docs/modules): All 20+ modules, mapped to workflow stages and Firestore collections.
+- [User Guide](https://labflow-docs.aoneahsan.com/docs/user-guide/overview): Recipe-style how-tos indexed by role.
 
 ## API
 
-- [API Reference Overview](https://docs.labflow.aoneahsan.com/docs/api/overview): Three integration surfaces — Firestore client SDK, Cloud Functions HTTPS, HL7 v2 / FHIR R4. Auth, multi-tenant scoping, rate limits, error envelope, webhooks.
+- [API Reference Overview](https://labflow-docs.aoneahsan.com/docs/api/overview): Three integration surfaces — Firestore client SDK, Cloud Functions HTTPS, HL7 v2 / FHIR R4. Auth, multi-tenant scoping, rate limits, error envelope, webhooks.
 
 ## Author & licensing
 
-- [About the Author](https://docs.labflow.aoneahsan.com/docs/author): Ahsan Mahmood — full-stack engineer specialising in React + Capacitor + Firebase. Contact, portfolio, GitHub, LinkedIn, NPM.
-- The LabFlow source — the application and this documentation site — lives in a single private repository. There is no public source repository; the documentation site itself is published openly at https://docs.labflow.aoneahsan.com.
+- [About the Author](https://labflow-docs.aoneahsan.com/docs/author): Ahsan Mahmood — full-stack engineer specialising in React + Capacitor + Firebase. Contact, portfolio, GitHub, LinkedIn, NPM.
+- The LabFlow source — the application and this documentation site — lives in a single private repository. There is no public source repository; the documentation site itself is published openly at https://labflow-docs.aoneahsan.com.
 
 ## Contact
 
@@ -32,6 +32,6 @@ Honest framing: LabFlow is HIPAA-conscious in design but carries no FDA / CAP / 
 - GitHub: https://github.com/aoneahsan
 - NPM: https://npmjs.com/~aoneahsan
 - Live app: https://labflow.aoneahsan.com
-- Documentation: https://docs.labflow.aoneahsan.com
-- Sitemap: https://docs.labflow.aoneahsan.com/sitemap.xml
-- RSS feed: https://docs.labflow.aoneahsan.com/blog/rss.xml
+- Documentation: https://labflow-docs.aoneahsan.com
+- Sitemap: https://labflow-docs.aoneahsan.com/sitemap.xml
+- RSS feed: https://labflow-docs.aoneahsan.com/blog/rss.xml

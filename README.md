@@ -1,6 +1,6 @@
 # LabFlow Documentation
 
-The public documentation site for **LabFlow** — a multi-tenant Laboratory Information Management System (LIMS). Built with [Docusaurus](https://docusaurus.io/). Live at **https://docs.labflow.aoneahsan.com**.
+The public documentation site for **LabFlow** — a multi-tenant Laboratory Information Management System (LIMS). Built with [Docusaurus](https://docusaurus.io/). Live at **https://labflow-docs.aoneahsan.com**.
 
 ## Source of truth vs. public copy
 

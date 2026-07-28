@@ -94,7 +94,7 @@ The 1990s and 2000s LIMS pattern was a self-hosted, single-tenant Windows applic
 
 The trade-offs are real. A multi-tenant LIMS shares infrastructure across customers, which means the security model has to enforce tenant isolation at every read and write — a single bug can leak patient data across customers. The mature multi-tenant LIMS run their tenancy enforcement at the database layer (e.g. Firestore security rules with mandatory `tenantId` clauses) rather than only in application code, so even a bug in the application code cannot leak data across customers.
 
-LabFlow is a multi-tenant cloud LIMS built on Firestore with the tenant invariant enforced in security rules. The architecture is documented at [LabFlow's data model page](https://docs.labflow.aoneahsan.com/docs/architecture/data-model) and the security model at [Firestore Security Rules](https://docs.labflow.aoneahsan.com/docs/architecture/security-rules).
+LabFlow is a multi-tenant cloud LIMS built on Firestore with the tenant invariant enforced in security rules. The architecture is documented at [LabFlow's data model page](https://labflow-docs.aoneahsan.com/docs/architecture/data-model) and the security model at [Firestore Security Rules](https://labflow-docs.aoneahsan.com/docs/architecture/security-rules).
 
 ---
 
@@ -151,10 +151,10 @@ Buying for today rather than for the lab's growth trajectory. A LIMS that's perf
 
 ## Where to read more
 
-- [LabFlow's full module catalogue](https://docs.labflow.aoneahsan.com/docs/modules) — every operational module a modern LIMS carries, documented in detail.
-- [Quality Control deep-dive](https://docs.labflow.aoneahsan.com/docs/modules/quality-control) — Westgard rules, Levey-Jennings charts, the multi-rule sets that drive QC in practice.
-- [Results Management](https://docs.labflow.aoneahsan.com/docs/modules/results-management) — the four-state validation workflow (Draft → Reviewed → Approved → Released) and the critical-acknowledgement gating that CAP and CLIA expect.
-- [EMR Integration](https://docs.labflow.aoneahsan.com/docs/modules/emr-integration) — HL7 v2 and FHIR R4 integration in detail.
+- [LabFlow's full module catalogue](https://labflow-docs.aoneahsan.com/docs/modules) — every operational module a modern LIMS carries, documented in detail.
+- [Quality Control deep-dive](https://labflow-docs.aoneahsan.com/docs/modules/quality-control) — Westgard rules, Levey-Jennings charts, the multi-rule sets that drive QC in practice.
+- [Results Management](https://labflow-docs.aoneahsan.com/docs/modules/results-management) — the four-state validation workflow (Draft → Reviewed → Approved → Released) and the critical-acknowledgement gating that CAP and CLIA expect.
+- [EMR Integration](https://labflow-docs.aoneahsan.com/docs/modules/emr-integration) — HL7 v2 and FHIR R4 integration in detail.
 
 LabFlow is one example of a modern multi-tenant cloud LIMS; the documentation is freely readable and useful as a reference for what a LIMS should cover. Other vendors will document their offerings differently; the buyer's checklist above is vendor-neutral.
 

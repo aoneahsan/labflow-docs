@@ -4,11 +4,19 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js — don't use client-side code (browser APIs, JSX) here.
 
-const SITE_URL = 'https://docs.labflow.aoneahsan.com';
+// 🔴 Derived from the PARENT project's real deployed domain, per the global
+// docs-site law: labflow.aoneahsan.com is a SUBDOMAIN, so the docs host appends
+// `-docs` to its first label — labflow-docs.aoneahsan.com. NOT docs.labflow…,
+// which is the apex form wrongly applied to a subdomain, and which never had a
+// DNS record (probed 2026-07-28: it returns 000, while labflow-docs returns 404
+// — the record already resolves to GitHub Pages and is waiting for a publish).
+const SITE_URL = 'https://labflow-docs.aoneahsan.com';
 const APP_URL = 'https://labflow.aoneahsan.com';
-// The LabFlow source (app + this docs site) lives in ONE private repository.
-// There is no public docs repo, so "edit this page" / public GitHub-repo links
-// are intentionally omitted; the GitHub link points to the author's profile.
+// The APP source is a private repository; THIS DOCS SITE is its own PUBLIC repo
+// (aoneahsan/labflow-docs), which is what makes GitHub Pages possible and what
+// lets "edit this page" work. 🔴 Because it is public, no secret may ever enter
+// it — placeholders only, real values in Actions secrets.
+const DOCS_REPO = 'https://github.com/aoneahsan/labflow-docs';
 const AUTHOR_NAME = 'Ahsan Mahmood';
 const AUTHOR_PORTFOLIO = 'https://aoneahsan.com';
 const AUTHOR_LINKEDIN = 'https://linkedin.com/in/aoneahsan';
@@ -110,7 +118,9 @@ const config: Config = {
   baseUrl: '/',
 
   organizationName: 'aoneahsan',
-  projectName: 'lab-system',
+  // 🔴 The PAGES repo, not the app repo. `lab-system` is private and is not what
+  // publishes this site; getting this wrong breaks the deploy target.
+  projectName: 'labflow-docs',
 
   // Warn rather than throw — early-stage content has cross-links that may not
   // exist yet. Tighten to 'throw' once all cross-links are verified.
@@ -195,9 +205,22 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // No editUrl: the source repo is private (no public "edit this page").
+          editUrl: `${DOCS_REPO}/edit/main/`,
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          // 🔴 `docs/` is BOTH the published content directory AND the fixed home
+          // of the internal manual-tasks file, so without this exclude
+          // MANUAL-TASKS.md ships as a live public page. That has already
+          // happened on two sibling docs sites.
+          // `exclude` REPLACES the plugin defaults, so they are restated here —
+          // dropping them would start publishing _partials and test files.
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',
+            '**/_*/**',
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
+            'MANUAL-TASKS.md',
+          ],
         },
         blog: {
           showReadingTime: true,

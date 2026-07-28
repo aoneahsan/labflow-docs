@@ -29,8 +29,8 @@ The repo's scope is narrow on purpose. It contains the Docusaurus source, the de
 | Default branch | `main` |
 | Branch protection on `main` | Required PR review (1 approver), required status checks (typecheck + build + broken-link check), no direct push, no force push |
 | License | Apache License 2.0 (permits forks, requires attribution) |
-| GitHub Actions workflow | `.github/workflows/deploy.yml` builds on every push + PR, deploys to Firebase Hosting on merge to `main` |
-| Secrets in repo settings | `FIREBASE_SERVICE_ACCOUNT_LABFLOW_PROD`, `INDEXNOW_API_KEY` |
+| GitHub Actions workflow | `.github/workflows/deploy-pages.yml` builds on every push + PR and publishes to **GitHub Pages** on merge to `main` |
+| Secrets in repo settings | **None.** Publishing uses a short-lived OIDC token GitHub issues to the workflow run |
 | Author | Ahsan Mahmood — credits surfaced on the [Author page](/docs/author) and in the per-page `Article` JSON-LD |
 
 ---
@@ -43,7 +43,7 @@ The repo is created in the `aoneahsan` GitHub organisation account, not in a per
 gh repo create aoneahsan/labflow-docs \
   --public \
   --description "Official documentation for LabFlow — multi-tenant Laboratory Information Management System." \
-  --homepage "https://docs.labflow.aoneahsan.com" \
+  --homepage "https://labflow-docs.aoneahsan.com" \
   --clone
 
 cd labflow-docs
@@ -84,92 +84,40 @@ These rules apply only to `main`. Feature branches and PR branches are unrestric
 
 ## The GitHub Actions deploy workflow
 
-The workflow file at `.github/workflows/deploy.yml`:
+The workflow lives at `.github/workflows/deploy-pages.yml` and is the **only** thing that publishes this site. It is also the single sanctioned exception to the house rule that GitHub Actions stay inert in every other repository.
 
-```yaml
-name: Deploy docs site
+Its shape, in the order it runs:
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+| Step | What it does |
+|---|---|
+| `actions/checkout@v4` with `fetch-depth: 0` | Full history — `showLastUpdateTime` / `showLastUpdateAuthor` read git, so a shallow clone makes every page claim it was updated today |
+| `actions/setup-node@v4`, Node 24, `cache: yarn` | |
+| `yarn install --immutable` | Fails if `yarn.lock` is out of date rather than silently resolving something new |
+| `yarn build` | The build **is** the link checker — `onBrokenLinks` fails it |
+| Ops-file guard | Fails if anything matching `*MANUAL-TASKS*` reached `build/`. The failure mode it catches is silent and public, so it is asserted rather than trusted |
+| CNAME guard | Fails if `build/CNAME` is missing, which would silently drop the custom domain |
+| `actions/upload-pages-artifact@v3` | Uploads `build/` |
+| `actions/deploy-pages@v4` | Publishes, in a separate job gated on the build |
 
-permissions:
-  contents: read
-  pull-requests: write   # to post preview-channel URL as a PR comment
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn typecheck
-      - run: yarn build      # onBrokenLinks: 'throw' is set in config
-
-      # PR builds: deploy to a preview channel
-      - if: github.event_name == 'pull_request'
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LABFLOW_PROD }}
-          projectId: labflow-prod
-          target: docs
-          channelId: pr-${{ github.event.pull_request.number }}
-          expires: 7d
-
-      # Main branch: deploy to live
-      - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LABFLOW_PROD }}
-          projectId: labflow-prod
-          target: docs
-          channelId: live
-
-      # Main branch only: ping IndexNow with the sitemap
-      - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          curl -sS -X POST "https://api.indexnow.org/IndexNow" \
-            -H "Content-Type: application/json" \
-            -d "{
-              \"host\": \"docs.labflow.aoneahsan.com\",
-              \"key\": \"${{ secrets.INDEXNOW_API_KEY }}\",
-              \"keyLocation\": \"https://docs.labflow.aoneahsan.com/${{ secrets.INDEXNOW_API_KEY }}.txt\",
-              \"urlList\": $(node scripts/changed-urls.js)
-            }"
-```
-
-The `scripts/changed-urls.js` step computes the list of URLs whose `lastmod` changed since the last deploy and emits a JSON array. The script reads the sitemap.xml from the current build and the previous deploy (via Firebase's deploy history API) and diffs them.
+The permissions block is `contents: read`, `pages: write`, `id-token: write`, and `concurrency` is `group: pages` with `cancel-in-progress: false` — a half-published site is worse than a slightly stale one.
 
 ---
 
 ## Secrets management
 
-Two secrets in the GitHub Actions environment:
+🔴 **There are none, and that is the point.** Publishing uses a short-lived OIDC token that GitHub mints for the workflow run itself (`id-token: write`), so there is no deploy credential to store, leak, or rotate.
 
-| Secret | Purpose | Rotation |
-|---|---|---|
-| `FIREBASE_SERVICE_ACCOUNT_LABFLOW_PROD` | The JSON key for the Firebase service account that deploys to Hosting | Per the platform-shared-key rotation cadence in [Admin Panel](/docs/modules/admin-panel#platform-scope-integrations); overlap-window pattern |
-| `INDEXNOW_API_KEY` | The IndexNow API key (a UUID-like string); also served as a public file at `https://docs.labflow.aoneahsan.com/<key>.txt` for ownership verification | Per IndexNow's recommended rotation cadence (~yearly); generates a new key + serves the new key file + retires the old |
+**This repository is public.** No secret may ever enter it — only `.env.example` with placeholder values. Anything genuinely secret lives in the owner's secret store, and any build-time value a future step needs goes in repository **Actions secrets**, read by the workflow and never committed.
 
-Both secrets are set in repository Settings → Secrets and variables → Actions → New repository secret. They are never logged by the workflow (the action's logger automatically redacts secret values).
+A docs build must never *require* a secret to succeed: an absent key means the feature that needed it is skipped, not that the site fails to publish.
 
-The IndexNow key has a small quirk: rotating it requires uploading the new key file to the docs site **before** updating the GitHub secret, otherwise the IndexNow API rejects the request because the key file doesn't match. The runbook for rotation:
+Sweep before every commit — this must return nothing:
 
-1. Generate a new UUID.
-2. Add the new key file to `docs-site/static/<new-key>.txt` containing the new UUID as the body.
-3. Deploy the docs site (the key file becomes reachable at the new URL).
-4. Update the GitHub secret to the new value.
-5. After the next deploy, remove the old key file from the static directory.
+```bash
+git ls-files | grep -iE '(^|/)\.env$|\.env\.(local|production)|secret|credential|serviceaccount|\.pem$|\.jks$|\.keystore$|\.p8$|\.npmrc'
+```
 
-The overlap is small — typically one deploy cycle — but the order matters.
+**IndexNow is not wired into this workflow.** Submitting changed URLs is a manual step, documented in [Search-Engine Submission](/docs/deployment/search-engines). If it is ever automated, the key file must reach the published site *before* the key is used, or IndexNow rejects the request because the served key does not match the one presented.
 
 ---
 
@@ -215,7 +163,7 @@ The README's badges:
 ![License](https://img.shields.io/github/license/aoneahsan/labflow-docs)
 ![Last commit](https://img.shields.io/github/last-commit/aoneahsan/labflow-docs)
 ![Open issues](https://img.shields.io/github/issues/aoneahsan/labflow-docs)
-[![Live docs](https://img.shields.io/badge/docs-live-blue)](https://docs.labflow.aoneahsan.com)
+[![Live docs](https://img.shields.io/badge/docs-live-blue)](https://labflow-docs.aoneahsan.com)
 [![LabFlow app](https://img.shields.io/badge/app-labflow.aoneahsan.com-purple)](https://labflow.aoneahsan.com)
 ```
 

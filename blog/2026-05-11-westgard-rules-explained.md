@@ -16,7 +16,7 @@ keywords:
   - laboratory quality control
 ---
 
-**Westgard rules are the statistical patterns a clinical laboratory uses to decide whether a quality-control (QC) run is in-control or out-of-control.** First published by James Westgard in *Clinical Chemistry* in 1981, the six base rules — `1-2s`, `1-3s`, `2-2s`, `R-4s`, `4-1s`, `10-x` — combine into multi-rule sets that catch both random and systematic analytical errors with a low false-rejection rate. This post is a working reference: the precise trigger condition for each rule, the clinical interpretation, why `1-2s` is a warning rather than a rejection, the canonical multi-rule set, and how to read a Levey-Jennings chart that visualises everything together. It is the same reference that the [LabFlow QC module](https://docs.labflow.aoneahsan.com/docs/modules/quality-control) ships as documentation; this post is the standalone primer for anyone who needs the rules without the surrounding product context.
+**Westgard rules are the statistical patterns a clinical laboratory uses to decide whether a quality-control (QC) run is in-control or out-of-control.** First published by James Westgard in *Clinical Chemistry* in 1981, the six base rules — `1-2s`, `1-3s`, `2-2s`, `R-4s`, `4-1s`, `10-x` — combine into multi-rule sets that catch both random and systematic analytical errors with a low false-rejection rate. This post is a working reference: the precise trigger condition for each rule, the clinical interpretation, why `1-2s` is a warning rather than a rejection, the canonical multi-rule set, and how to read a Levey-Jennings chart that visualises everything together. It is the same reference that the [LabFlow QC module](https://labflow-docs.aoneahsan.com/docs/modules/quality-control) ships as documentation; this post is the standalone primer for anyone who needs the rules without the surrounding product context.
 
 {/* truncate */}
 
@@ -38,7 +38,7 @@ A QC measurement is a single reading of a control material — a manufactured su
 | **Out-of-control** | The current QC run violates a rejection rule; patient reporting locks until corrective action |
 | **Levey-Jennings chart** | A time-series scatter plot of the QC measurements with horizontal bands at ±1 SD, ±2 SD, ±3 SD |
 
-The mean and SD come from one of two sources. The manufacturer ships an assayed value with each lot (the population mean across many labs); the lab also computes an in-house mean / SD after 20 in-house measurements. The in-house values are typically tighter than the manufacturer's broader-population assay; the lab uses the in-house values once available. This is the canonical pattern documented in [LabFlow's QC lot form](https://docs.labflow.aoneahsan.com/docs/modules/quality-control#qc-lot-form--every-field).
+The mean and SD come from one of two sources. The manufacturer ships an assayed value with each lot (the population mean across many labs); the lab also computes an in-house mean / SD after 20 in-house measurements. The in-house values are typically tighter than the manufacturer's broader-population assay; the lab uses the in-house values once available. This is the canonical pattern documented in [LabFlow's QC lot form](https://labflow-docs.aoneahsan.com/docs/modules/quality-control#qc-lot-form--every-field).
 
 ---
 
@@ -130,7 +130,7 @@ new measurement
                   in-control with 1-2s warning logged
 ```
 
-Rules that need >1 measurement (`2-2s`, `R-4s`, `4-1s`, `10-x`) consider the current run plus the most-recent N−1 in-control runs on the **same analyte + same analyzer + same level**. The "same analyzer" qualification matters in a multi-instrument lab — a 10-x trend on Cobas-A should not lock reporting on Cobas-B, because the instruments are independent. This is one of the subtleties documented in the [LabFlow QC FAQ](https://docs.labflow.aoneahsan.com/docs/modules/quality-control#frequently-asked-questions).
+Rules that need >1 measurement (`2-2s`, `R-4s`, `4-1s`, `10-x`) consider the current run plus the most-recent N−1 in-control runs on the **same analyte + same analyzer + same level**. The "same analyzer" qualification matters in a multi-instrument lab — a 10-x trend on Cobas-A should not lock reporting on Cobas-B, because the instruments are independent. This is one of the subtleties documented in the [LabFlow QC FAQ](https://labflow-docs.aoneahsan.com/docs/modules/quality-control#frequently-asked-questions).
 
 ---
 
@@ -167,7 +167,7 @@ Each QC measurement is a dot on the chart. Visual patterns to spot:
 - **Ten consecutive dots all above the mean (or all below)** — 10-x rejection.
 - **A consistent slow climb or descent** — drift; 10-x will catch it eventually but a human eye spots it sooner.
 
-A good LJ chart also marks lot transitions (vertical dashed lines) because each new lot resets the in-house mean / SD computation. The [LabFlow QC chart](https://docs.labflow.aoneahsan.com/docs/modules/quality-control#levey-jennings-chart) renders these by default; the chart is interactive and surfaces the violated rule code per point.
+A good LJ chart also marks lot transitions (vertical dashed lines) because each new lot resets the in-house mean / SD computation. The [LabFlow QC chart](https://labflow-docs.aoneahsan.com/docs/modules/quality-control#levey-jennings-chart) renders these by default; the chart is interactive and surfaces the violated rule code per point.
 
 ---
 
@@ -198,7 +198,7 @@ The six base rules are the canonical set. Extensions exist for specific scenario
 | `7-T` | 7 consecutive trending in the same direction | Detects gradual drift earlier than 10-x |
 | `6-1s` | 6 consecutive >1 SD same side | Intermediate between 4-1s and 10-x |
 
-Most modern LIMS expose these as configurable rule combinations on a per-analyte basis. The default ship is usually the canonical Westgard multi-rule; the custom rules are opt-in. The [LabFlow QC rule editor](https://docs.labflow.aoneahsan.com/docs/modules/quality-control#qc-run-entry) lets a lab pick any combination.
+Most modern LIMS expose these as configurable rule combinations on a per-analyte basis. The default ship is usually the canonical Westgard multi-rule; the custom rules are opt-in. The [LabFlow QC rule editor](https://labflow-docs.aoneahsan.com/docs/modules/quality-control#qc-run-entry) lets a lab pick any combination.
 
 ---
 
@@ -253,7 +253,7 @@ About 0.03 to 0.05 percent per run — i.e. one false rejection in every 2000-30
 
 ### Do I need to learn the rules myself, or does the LIMS handle them?
 
-The LIMS handles the rule evaluation; the lab manager needs to understand what each rejection means to choose the right corrective action. A LIMS like [LabFlow](https://docs.labflow.aoneahsan.com/docs/modules/quality-control) ships every rule out of the box and surfaces the violated-rule code on the run detail page. The clinical knowledge of "1-3s usually means random error → look at the operator or the most recent maintenance" is what the lab manager brings.
+The LIMS handles the rule evaluation; the lab manager needs to understand what each rejection means to choose the right corrective action. A LIMS like [LabFlow](https://labflow-docs.aoneahsan.com/docs/modules/quality-control) ships every rule out of the box and surfaces the violated-rule code on the run detail page. The clinical knowledge of "1-3s usually means random error → look at the operator or the most recent maintenance" is what the lab manager brings.
 
 ### Are Westgard rules used outside clinical chemistry?
 
@@ -263,7 +263,7 @@ Yes — the same rules apply to any quantitative QC, including haematology, immu
 
 ## Where to read more
 
-- [LabFlow's QC module documentation](https://docs.labflow.aoneahsan.com/docs/modules/quality-control) — the same rules implemented in a working LIMS, with the full screen catalogue and form-field reference.
+- [LabFlow's QC module documentation](https://labflow-docs.aoneahsan.com/docs/modules/quality-control) — the same rules implemented in a working LIMS, with the full screen catalogue and form-field reference.
 - The original Westgard paper: J.O. Westgard, P.L. Barry, M.R. Hunt, T. Groth, "A Multi-Rule Shewhart Chart for Quality Control in Clinical Chemistry", *Clinical Chemistry* 1981.
 - CLSI EP23 (statistical quality control for quantitative measurement procedures) and CLSI EP18 (laboratory quality control) — the accreditation-relevant documents.
 - WestgardQC.com — the family's reference site, which has detailed worked examples and additional rule combinations.

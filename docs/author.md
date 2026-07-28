@@ -123,7 +123,7 @@ Yes. Strong fit: React 19 + Capacitor + Firebase projects, multi-tenant SaaS, he
 
 ```
 Mahmood, Ahsan. LabFlow — Multi-tenant Laboratory Information Management System.
-Documentation: https://docs.labflow.aoneahsan.com
+Documentation: https://labflow-docs.aoneahsan.com
 Author: https://aoneahsan.com
 ```
 

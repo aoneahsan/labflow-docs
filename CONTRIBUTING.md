@@ -1,6 +1,6 @@
 # Contributing to LabFlow Documentation
 
-Thank you for helping improve the LabFlow docs. This repository (`labflow-docs`) holds **only the documentation site** — a Docusaurus build published at [docs.labflow.aoneahsan.com](https://docs.labflow.aoneahsan.com). The LabFlow application itself lives in a separate, private repository; this repo carries no application source, secrets, or tenant data.
+Thank you for helping improve the LabFlow docs. This repository (`labflow-docs`) holds **only the documentation site** — a Docusaurus build published at [labflow-docs.aoneahsan.com](https://labflow-docs.aoneahsan.com). The LabFlow application itself lives in a separate, private repository; this repo carries no application source, secrets, or tenant data.
 
 ## Governance — how changes land
 
