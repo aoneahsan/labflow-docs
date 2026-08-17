@@ -2,6 +2,10 @@
 
 **Last Updated:** 2026-08-05
 
+| Context Budget Last Verified | 2026-08-17 — CLAUDE.md 1,816 B / no PENDING-TASKS.md; re-check due 2026-08-27 |
+|---|---|
+
+
 This is the companion documentation site boundary. This file and its sibling are mirrors. Read **one native
 guide only**: Claude Code reads `CLAUDE.md`; other agents read `AGENTS.md`.
 
