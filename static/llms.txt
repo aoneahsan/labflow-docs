@@ -1,37 +1,52 @@
-# LabFlow
+# LabFlow documentation
 
-> Multi-tenant Laboratory Information Management System (LIMS). Web app, mobile (Capacitor), browser extension, EMR Chrome add-on, and Cloud Functions over a single Firestore-backed multi-tenant model. Built and maintained by Ahsan Mahmood (https://aoneahsan.com).
+> Documentation for LabFlow, a multi-tenant laboratory information system for clinical laboratories, fronted by a public directory where patients find laboratories. Built and maintained by Ahsan Mahmood (https://aoneahsan.com).
 
-LabFlow covers the full clinical-laboratory workflow: patient registration, LOINC-integrated test catalog, order entry, sample tracking with chain of custody, four-state result validation (Draft → Reviewed → Approved → Released), Levey-Jennings + Westgard quality control, billing and insurance claims, inventory, appointments, home collection, HL7 v2 / FHIR R4 EMR integration, role-based access (11 roles, 177 permissions), and audit logging on every mutation.
+LabFlow records the clinical laboratory's work: patients, a test catalogue with panels and reference
+ranges, orders, specimens with an append-only chain of custody, accessioning, barcode labels, result
+entry at the bench, result review, and release gated by the releasing person's role. A released result
+is amended by adding a new version, never by overwriting — the original stays readable, with who
+changed it and why.
 
-Honest framing: LabFlow is HIPAA-conscious in design but carries no FDA / CAP / CLIA / SOC 2 attestation; the deploying laboratory is responsible for regulatory work. Native mobile builds and browser extensions exist but are not yet distributed through Play Store / App Store / Chrome Web Store. Firebase Storage is not used (FilesHub handles file uploads); Firebase Crashlytics + Performance are not used (Sentry handles errors).
+The backend is hosted Postgres on Supabase. Every row belongs to a laboratory and row-level security
+refuses a read or a write that crosses that boundary, so isolation is a property of the database
+rather than of application code that has to remember. Firebase serves the static web build and holds
+no user data: there is no Firestore, no Firebase Authentication and no Cloud Functions.
+
+Honest framing, because this is the part most documentation gets wrong: **LabFlow is
+HIPAA-conscious, not "HIPAA-compliant"** — compliance is a property of an organisation and its
+processes, and no software can hold it on your behalf. There is no FDA, CAP, CLIA or SOC 2
+attestation. LabFlow is laboratory software, not a medical device, and it interprets nothing.
+
+**What is built:** the public surface, identity and laboratory setup, settings, user management, the
+form builder, and the clinical spine listed above.
+
+**What is NOT built, and is not claimed anywhere:** billing and invoicing, inventory, equipment,
+quality control runs, the compliance suite, e-signatures, the SOP library, workflow automation,
+appointments, home collection, field capture, the patient portal, the clinician application,
+reports and analytics, and HL7 v2 / FHIR interoperability. There is no public API. There is no
+browser extension and no EMR add-on. There is **no iOS application in any form**.
 
 ## Documentation
 
-- [Introduction](https://labflow-docs.aoneahsan.com/docs/intro): What LabFlow does and what it explicitly does not do.
-- [Quick Start](https://labflow-docs.aoneahsan.com/docs/getting-started/quick-start): Register a patient, place an order, validate a result, release a report — end-to-end on the live web app in under ten minutes.
-- [Self-hosted Installation](https://labflow-docs.aoneahsan.com/docs/getting-started/installation): Local development setup and Firebase Hosting production deploy.
-- [Architecture Overview](https://labflow-docs.aoneahsan.com/docs/architecture/overview): Five surfaces, multi-tenant Firestore model, four-state result lifecycle, audit log invariants, offline-first mobile.
-- [Modules Catalogue](https://labflow-docs.aoneahsan.com/docs/modules): All 20+ modules, mapped to workflow stages and Firestore collections.
-- [User Guide](https://labflow-docs.aoneahsan.com/docs/user-guide/overview): Recipe-style how-tos indexed by role.
+- [Introduction](https://labflow-docs.aoneahsan.com/docs/intro): what LabFlow is, what it runs on, and what it does not do.
+- [Quick start](https://labflow-docs.aoneahsan.com/docs/getting-started/quick-start): from an account to a released result.
+- [Create or join a laboratory](https://labflow-docs.aoneahsan.com/docs/getting-started/create-or-join-a-laboratory): the two ways in, and what each needs.
+- [Finding your way around](https://labflow-docs.aoneahsan.com/docs/getting-started/finding-your-way-around): the shape of the application.
+- [Architecture overview](https://labflow-docs.aoneahsan.com/docs/architecture/overview): the stack, and where each thing lives.
+- [Tenancy and row-level security](https://labflow-docs.aoneahsan.com/docs/architecture/tenancy-and-rls): how one laboratory is kept out of another's records.
+- [Records and trails](https://labflow-docs.aoneahsan.com/docs/architecture/records-and-trails): custody, audit, result versions, and the one-writer rule.
+- [User guide](https://labflow-docs.aoneahsan.com/docs/user-guide/overview): one page per shipped area, indexed by task.
+- [Roadmap](https://labflow-docs.aoneahsan.com/docs/roadmap): what is not built, stated plainly.
+- [Hosting and publishing](https://labflow-docs.aoneahsan.com/docs/deployment/overview): how the application and this site are served.
 
-## API
+## Author and licensing
 
-- [API Reference Overview](https://labflow-docs.aoneahsan.com/docs/api/overview): Three integration surfaces — Firestore client SDK, Cloud Functions HTTPS, HL7 v2 / FHIR R4. Auth, multi-tenant scoping, rate limits, error envelope, webhooks.
-
-## Author & licensing
-
-- [About the Author](https://labflow-docs.aoneahsan.com/docs/author): Ahsan Mahmood — full-stack engineer specialising in React + Capacitor + Firebase. Contact, portfolio, GitHub, LinkedIn, NPM.
-- The LabFlow source — the application and this documentation site — lives in a single private repository. There is no public source repository; the documentation site itself is published openly at https://labflow-docs.aoneahsan.com.
+- [About the author](https://labflow-docs.aoneahsan.com/docs/author): Ahsan Mahmood — contact, portfolio, GitHub, LinkedIn, npm.
+- The LabFlow application source is a single private repository. There is no public source repository; this documentation site is published openly.
 
 ## Contact
 
 - Email: aoneahsan@gmail.com
 - Portfolio: https://aoneahsan.com
-- LinkedIn: https://linkedin.com/in/aoneahsan
-- GitHub: https://github.com/aoneahsan
-- NPM: https://npmjs.com/~aoneahsan
-- Live app: https://labflow.aoneahsan.com
-- Documentation: https://labflow-docs.aoneahsan.com
-- Sitemap: https://labflow-docs.aoneahsan.com/sitemap.xml
-- RSS feed: https://labflow-docs.aoneahsan.com/blog/rss.xml
+- Application: https://labflow.aoneahsan.com

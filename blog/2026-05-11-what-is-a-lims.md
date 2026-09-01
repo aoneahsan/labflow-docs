@@ -33,7 +33,7 @@ A LIMS owns the operational backbone of a laboratory. Specifically:
 | Result entry, validation, and approval | ✓ |
 | Quality Control (QC) with Westgard rules and Levey-Jennings charts | ✓ |
 | Patient report generation (PDF, FHIR DiagnosticReport, HL7 ORU) | ✓ |
-| Billing, claims, payments | ✓ (in modern LIMS like LabFlow) or a separate billing system |
+| Billing, claims, payments | ✓ (in modern LIMS) or a separate billing system |
 | Reagent inventory + lot traceability | ✓ |
 | Appointment + home-collection scheduling | ✓ (in modern LIMS) |
 | Audit trail for accreditation (CAP, CLIA, ISO 15189, NABL) | ✓ |
@@ -57,7 +57,7 @@ The two terms are used interchangeably in casual conversation, but historically 
 | Integrations | EMR, hospital information system, insurance | Manufacturer ERP, regulatory filing systems |
 | Standards | HL7, FHIR, CAP, CLIA | ISO 17025, GLP, FDA 21 CFR Part 11 |
 
-As of 2026 the distinction has faded. Cloud-era LIMS like LabFlow serve both clinical and industrial use cases, and most vendors use "LIMS" as the umbrella term. This post uses LIMS throughout; if you read "LIS" in a clinical-laboratory context, treat it as a synonym.
+As of 2026 the distinction has faded. Cloud-era systems serve both clinical and industrial use cases, and most vendors use "LIMS" as the umbrella term. This post uses LIMS throughout; if you read "LIS" in a clinical-laboratory context, treat it as a synonym.
 
 ---
 
@@ -75,7 +75,7 @@ A typical flow:
 
 The two systems are joined at the hip but maintained separately. A clinician never logs into the LIMS; a lab technologist never logs into the EMR. Each system owns its own audit log, its own user list, and its own data model. The integration is a structured message-passing relationship, not a shared database.
 
-A LIMS that bundles a patient portal (so patients can see their own results without going through the EMR) is a common modern feature; LabFlow's patient surface in its mobile app is one example. The portal is a LIMS-side surface, not an EMR-side feature.
+A LIMS that bundles a patient portal (so patients can see their own results without going through the EMR) is a common modern feature. The portal is a LIMS-side surface, not an EMR-side feature. (LabFlow does not have one today — it is [planned and unbuilt](/docs/roadmap).)
 
 ---
 
@@ -86,15 +86,15 @@ The 1990s and 2000s LIMS pattern was a self-hosted, single-tenant Windows applic
 | Pattern element | Why it became the default |
 |---|---|
 | **Multi-tenant SaaS** | One software install serves many labs; lower per-lab cost; faster vendor updates |
-| **Real-time sync** | Modern Firestore / WebSocket stacks let staff and patients see updates as they happen, instead of polling |
+| **Real-time sync** | Modern realtime-database and WebSocket stacks let staff and patients see updates as they happen, instead of polling |
 | **Mobile-first home collection** | Capacitor / React Native let phlebotomists work offline in the field with a phone instead of a paper requisition |
 | **FHIR R4** | The standard EMR integrations are moving from HL7 v2 to FHIR R4 (though HL7 v2 still dominates in production) |
 | **Per-tenant configuration without code** | Modules like billing, inventory, and notifications are configurable by the lab without engaging the vendor |
 | **AI / ML for QC drift detection** | A nascent pattern; not yet uniformly available |
 
-The trade-offs are real. A multi-tenant LIMS shares infrastructure across customers, which means the security model has to enforce tenant isolation at every read and write — a single bug can leak patient data across customers. The mature multi-tenant LIMS run their tenancy enforcement at the database layer (e.g. Firestore security rules with mandatory `tenantId` clauses) rather than only in application code, so even a bug in the application code cannot leak data across customers.
+The trade-offs are real. A multi-tenant LIMS shares infrastructure across customers, which means the security model has to enforce tenant isolation at every read and write — a single bug can leak patient data across customers. The mature multi-tenant systems run their tenancy enforcement at the database layer — Postgres row-level security, or an equivalent — rather than only in application code, so even a bug in the application cannot leak data across customers.
 
-LabFlow is a multi-tenant cloud LIMS built on Firestore with the tenant invariant enforced in security rules. The architecture is documented at [LabFlow's data model page](https://labflow-docs.aoneahsan.com/docs/architecture/data-model) and the security model at [Firestore Security Rules](https://labflow-docs.aoneahsan.com/docs/architecture/security-rules).
+LabFlow is a multi-tenant cloud LIMS on hosted Postgres, with the tenant boundary enforced by deny-by-default row-level security on every table. See [tenancy and row-level security](/docs/architecture/tenancy-and-rls).
 
 ---
 
@@ -151,12 +151,12 @@ Buying for today rather than for the lab's growth trajectory. A LIMS that's perf
 
 ## Where to read more
 
-- [LabFlow's full module catalogue](https://labflow-docs.aoneahsan.com/docs/modules) — every operational module a modern LIMS carries, documented in detail.
-- [Quality Control deep-dive](https://labflow-docs.aoneahsan.com/docs/modules/quality-control) — Westgard rules, Levey-Jennings charts, the multi-rule sets that drive QC in practice.
-- [Results Management](https://labflow-docs.aoneahsan.com/docs/modules/results-management) — the four-state validation workflow (Draft → Reviewed → Approved → Released) and the critical-acknowledgement gating that CAP and CLIA expect.
-- [EMR Integration](https://labflow-docs.aoneahsan.com/docs/modules/emr-integration) — HL7 v2 and FHIR R4 integration in detail.
+- [LabFlow's user guide](/docs/user-guide/overview) — every screen the product actually ships, area by area.
+- [Result review and release](/docs/user-guide/result-review-and-release) — the release gate, critical-value escalation, and why an amendment is a new version rather than an edit.
+- [Tenancy and row-level security](/docs/architecture/tenancy-and-rls) — how two laboratories share one database.
+- [What LabFlow has not built](/docs/roadmap) — including quality control, billing and interoperability.
 
-LabFlow is one example of a modern multi-tenant cloud LIMS; the documentation is freely readable and useful as a reference for what a LIMS should cover. Other vendors will document their offerings differently; the buyer's checklist above is vendor-neutral.
+LabFlow is one example of a multi-tenant cloud LIMS, and it is partly built: its documentation states which areas exist and which do not. Other vendors will document their offerings differently; the buyer's checklist above is vendor-neutral.
 
 ---
 

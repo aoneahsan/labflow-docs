@@ -35,13 +35,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # showLastUpdateTime / showLastUpdateAuthor read git history, so a
           # shallow clone makes every page claim it was updated today.
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      # 🔴 COREPACK BEFORE setup-node, AND THAT ORDER IS THE WHOLE FIX.
+      #
+      # This workflow had never once succeeded: three runs, three failures, each
+      # dead in under fifteen seconds, so the docs site has never been published
+      # at all. `cache: yarn` makes setup-node resolve the cache directory by
+      # running `yarn cache dir` — with the runner's GLOBAL Yarn, which is
+      # 1.22.22. package.json declares `packageManager: yarn@4.17.1`, and Yarn 1
+      # refuses outright when it sees that field:
+      #
+      #   error This project's package.json defines "packageManager": "yarn@4.17.1".
+      #   However the current global version of Yarn is 1.22.22.
+      #
+      # Enabling Corepack first puts Yarn 4 on PATH before anything asks Yarn a
+      # question. Putting this step after setup-node would not work: the cache
+      # resolution happens inside that action, before any later step runs.
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: yarn
@@ -70,7 +88,7 @@ jobs:
           test -f build/CNAME || { echo "::error::build/CNAME missing"; exit 1; }
           echo "CNAME -> $(cat build/CNAME)"
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: build
 
@@ -82,4 +100,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

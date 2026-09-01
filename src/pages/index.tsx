@@ -18,8 +18,10 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <p className={styles.heroDescription}>
-          Multi-tenant Laboratory Information Management System. Web, mobile,
-          browser extension, and EMR add-on — one Firestore-backed codebase.
+          A multi-tenant laboratory information system for clinical
+          laboratories: a specimen ordered, accessioned, resulted, reviewed and
+          released — on hosted Postgres, with one laboratory's records kept out
+          of another's by the database itself.
         </p>
         <div className={styles.buttons}>
           <Link
@@ -56,7 +58,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="LabFlow Documentation — Multi-tenant LIMS"
-      description="Complete documentation for LabFlow — a multi-tenant Laboratory Information Management System covering patients, orders, samples, results, QC, billing, inventory, and EMR integration. Built by Ahsan Mahmood.">
+      description="Documentation for LabFlow, a multi-tenant laboratory information system: patients, the test catalogue, orders, specimens and chain of custody, accessioning, labels, result entry, review and release. Built by Ahsan Mahmood.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -47,7 +47,7 @@ const websiteJsonLd = {
   name: 'LabFlow Documentation',
   url: SITE_URL,
   description:
-    'Complete documentation for LabFlow — a multi-tenant Laboratory Information Management System (LIMS) covering patients, orders, samples, results, quality control, billing, inventory, and integrations.',
+    'Documentation for LabFlow — a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, covering patients, the test catalogue, orders, specimens and chain of custody, accessioning, labels, result entry, and result review and release.',
   inLanguage: 'en',
   publisher: {
     '@type': 'Organization',
@@ -70,28 +70,28 @@ const softwareApplicationJsonLd = {
   name: 'LabFlow',
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Laboratory Information Management System (LIMS)',
-  operatingSystem: 'Web, Android, iOS',
+  // 🔴 Web only. There is no native mobile build of LabFlow and no iOS
+  // application in any form — claiming a platform the product does not ship on
+  // is the exact defect this site was rewritten to remove.
+  operatingSystem: 'Web',
   url: APP_URL,
   installUrl: APP_URL,
-  softwareVersion: '1.2.1',
   image: `${SITE_URL}/img/labflow-social-card.png`,
   description:
-    'LabFlow is a multi-tenant Laboratory Information Management System (LIMS) covering patient registration, LOINC-integrated test ordering, sample tracking with chain of custody, four-state result validation, Levey-Jennings + Westgard quality control, billing and insurance, inventory, appointments, home collection, and HL7 v2 / FHIR R4 EMR integration across web, mobile, and browser-extension surfaces.',
+    'LabFlow is a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, fronted by a public marketplace. It runs on hosted Supabase Postgres with row-level security, and covers patients, a LOINC-coded test catalogue, panels and reference ranges, orders, specimens with chain of custody, accessioning, labels, result entry, result review and release, and an operational dashboard.',
+  // 🔴 Only capabilities that are BUILT. Billing, quality control, inventory,
+  // scheduling, portals, analytics and interoperability are planned and unbuilt;
+  // they belong on the roadmap page and nowhere else.
   featureList: [
-    'Multi-tenant data isolation',
-    'LOINC-integrated test catalog and ordering',
-    'Sample tracking with chain of custody',
-    'Draft → Reviewed → Approved → Released result validation',
-    'Levey-Jennings + Westgard quality control',
-    'Billing, insurance claims, and inventory',
-    'HL7 v2 / FHIR R4 EMR integration',
-    'Role-based access (11 roles, 177 permissions) with audit logging',
+    'Multi-tenant data isolation enforced by row-level security',
+    'LOINC-coded test catalogue, panels and resolved reference ranges',
+    'Specimen chain of custody with an append-only trail',
+    'Accessioning with database-minted accession numbers and a check digit',
+    'Label templates and a print queue',
+    'Result entry with an idempotent write path that works offline',
+    'Result review and release with critical-value escalation',
+    'Versioned results — an amendment is a new version, never an edit',
   ],
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-  },
   author: {
     '@type': 'Person',
     name: AUTHOR_NAME,
@@ -102,7 +102,7 @@ const softwareApplicationJsonLd = {
 const config: Config = {
   title: 'LabFlow Documentation',
   tagline:
-    'Multi-tenant LIMS — patients, orders, samples, results, QC, billing, inventory, EMR integration',
+    'Multi-tenant LIMS for clinical laboratories — patients, catalogue, orders, specimens, results. What is built, and what is not.',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -122,9 +122,10 @@ const config: Config = {
   // publishes this site; getting this wrong breaks the deploy target.
   projectName: 'labflow-docs',
 
-  // Warn rather than throw — early-stage content has cross-links that may not
-  // exist yet. Tighten to 'throw' once all cross-links are verified.
-  onBrokenLinks: 'warn',
+  // 🔴 THROW. The build IS the link checker: a page whose target was deleted is
+  // a build failure here rather than a 404 a reader finds. Never downgrade this
+  // to 'warn' to make a build pass — fix the link.
+  onBrokenLinks: 'throw',
 
   i18n: {
     defaultLocale: 'en',
@@ -134,7 +135,7 @@ const config: Config = {
   markdown: {
     // Migrated from the deprecated top-level `onBrokenMarkdownLinks`.
     hooks: {
-      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownLinks: 'throw',
     },
   },
 
@@ -144,7 +145,7 @@ const config: Config = {
       attributes: {
         name: 'description',
         content:
-          'LabFlow Documentation — multi-tenant Laboratory Information Management System (LIMS). Modules, API, deployment, mobile, EMR integration. Built by Ahsan Mahmood.',
+          'LabFlow Documentation — a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, on hosted Supabase Postgres with row-level security. Getting started, the user guide for every shipped screen, the architecture, and an honest roadmap of what is not built. By Ahsan Mahmood.',
       },
     },
     {
@@ -160,7 +161,7 @@ const config: Config = {
       attributes: {
         name: 'keywords',
         content:
-          'LIMS, laboratory information management system, lab software, HL7, FHIR, LOINC, multi-tenant lab, clinical lab software, sample tracking, result validation, quality control, Levey-Jennings, Westgard rules, lab billing, EMR integration, LabFlow',
+          'LIMS, laboratory information management system, clinical lab software, multi-tenant LIMS, LOINC, test catalogue, reference ranges, specimen chain of custody, accessioning, accession number, specimen labels, result entry, result review, result release, critical value escalation, row-level security, Supabase Postgres, LabFlow',
       },
     },
     {
@@ -271,7 +272,9 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
-    metadata: [{name: 'theme-color', content: '#0d9488'}],
+    // The product's recorded brand accent (OKLCH hue 288, "Assay Violet"). The
+    // teal that stood here belonged to the retired application.
+    metadata: [{name: 'theme-color', content: '#6e2bf6'}],
     navbar: {
       title: 'LabFlow',
       logo: {
@@ -286,17 +289,16 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'apiSidebar',
+          to: '/docs/user-guide/overview',
+          label: 'User Guide',
           position: 'left',
-          label: 'API Reference',
         },
         {
           to: '/docs/architecture/overview',
           label: 'Architecture',
           position: 'left',
         },
-        {to: '/docs/modules', label: 'Modules', position: 'left'},
+        {to: '/docs/roadmap', label: 'Roadmap', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/docs/author', label: 'Author', position: 'right'},
         {href: APP_URL, label: 'Open App', position: 'right'},
@@ -317,9 +319,9 @@ const config: Config = {
           items: [
             {label: 'Introduction', to: '/docs/intro'},
             {label: 'Getting Started', to: '/docs/getting-started/quick-start'},
+            {label: 'User Guide', to: '/docs/user-guide/overview'},
             {label: 'Architecture', to: '/docs/architecture/overview'},
-            {label: 'Modules', to: '/docs/modules'},
-            {label: 'API Reference', to: '/docs/api/overview'},
+            {label: 'Roadmap', to: '/docs/roadmap'},
           ],
         },
         {

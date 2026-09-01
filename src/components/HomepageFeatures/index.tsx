@@ -11,44 +11,51 @@ type FeatureItem = {
   ctaTo: string;
 };
 
+/**
+ * 🔴 REWRITTEN 2026-09-01 — these three cards were the front page of the docs site and
+ * every one of them described the RETIRED application: Firestore reads scoped by security
+ * rules, "five surfaces" including iOS, a WXT browser extension, an EMR Chrome add-on and
+ * Cloud Functions. None of that is this product. The middle card also linked to
+ * `/docs/modules`, a section that no longer exists — which is what failed the build.
+ */
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Multi-tenant by design',
+    title: 'One laboratory cannot see another',
     description: (
       <>
-        Every Firestore read and write is scoped to a single tenant — enforced
-        in security rules, not just application code. Two laboratories share
-        the same deployment without ever seeing each other&apos;s patients,
-        orders, or results.
+        Every row belongs to a laboratory, and the database refuses a read or a
+        write that crosses that line — row-level security in Postgres, not a
+        filter the application remembers to apply. Two laboratories share one
+        deployment and never meet.
       </>
     ),
-    ctaLabel: 'Architecture →',
-    ctaTo: '/docs/architecture/overview',
+    ctaLabel: 'Tenancy and RLS →',
+    ctaTo: '/docs/architecture/tenancy-and-rls',
   },
   {
-    title: 'Five surfaces, one codebase',
+    title: 'A specimen, end to end',
     description: (
       <>
-        Web app (live), native Android &amp; iOS via Capacitor, a WXT browser
-        extension, an EMR Chrome add-on, and Cloud Functions. All share one
-        React + TypeScript codebase backed by Firestore.
+        Ordered, collected, accessioned, labelled, benched, entered, reviewed
+        and released — with an append-only chain of custody, and an amendment
+        that keeps the original readable rather than overwriting it.
       </>
     ),
-    ctaLabel: 'Modules catalogue →',
-    ctaTo: '/docs/modules',
+    ctaLabel: 'User guide →',
+    ctaTo: '/docs/user-guide/overview',
   },
   {
     title: 'Honest about what it is',
     description: (
       <>
-        HIPAA-conscious in design, but no FDA / CAP / CLIA / SOC 2 attestation
-        out of the box. Native distribution through Play / App / Chrome stores
-        is pending. The docs say what LabFlow doesn&apos;t do as clearly as
-        what it does.
+        HIPAA-conscious, never &ldquo;HIPAA-compliant&rdquo; — no software can
+        be. Waves 0 to 3 are built; billing, quality control, scheduling,
+        portals and interoperability are not, and the roadmap says so rather
+        than implying otherwise.
       </>
     ),
-    ctaLabel: 'Honest framing →',
-    ctaTo: '/docs/intro',
+    ctaLabel: 'What is not built →',
+    ctaTo: '/docs/roadmap',
   },
 ];
 
