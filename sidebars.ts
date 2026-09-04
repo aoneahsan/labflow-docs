@@ -44,6 +44,11 @@ const sidebars: SidebarsConfig = {
         'user-guide/settings',
         'user-guide/forms',
         'user-guide/tools',
+        'user-guide/billing',
+        'user-guide/inventory-and-equipment',
+        'user-guide/quality-control',
+        'user-guide/compliance-and-audit',
+        'user-guide/documents-and-workflow',
       ],
     },
     {
