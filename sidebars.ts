@@ -49,6 +49,9 @@ const sidebars: SidebarsConfig = {
         'user-guide/quality-control',
         'user-guide/compliance-and-audit',
         'user-guide/documents-and-workflow',
+        'user-guide/appointments-and-calendar',
+        'user-guide/home-collection',
+        'user-guide/field-captures',
       ],
     },
     {
