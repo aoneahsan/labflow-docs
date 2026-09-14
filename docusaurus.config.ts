@@ -141,6 +141,15 @@ const config: Config = {
 
   headTags: [
     {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        type: 'application/rss+xml',
+        title: 'LabFlow documentation updates',
+        href: `${SITE_URL}/feed.xml`,
+      },
+    },
+    {
       tagName: 'meta',
       attributes: {
         name: 'description',
@@ -178,10 +187,6 @@ const config: Config = {
     {
       tagName: 'meta',
       attributes: {name: 'twitter:card', content: 'summary_large_image'},
-    },
-    {
-      tagName: 'link',
-      attributes: {rel: 'canonical', href: SITE_URL},
     },
     {
       tagName: 'script',
