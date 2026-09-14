@@ -2,21 +2,11 @@
 
 The public documentation site for **LabFlow** — a multi-tenant Laboratory Information Management System (LIMS). Built with [Docusaurus](https://docusaurus.io/). Live at **https://labflow-docs.aoneahsan.com**.
 
-## Source of truth vs. public copy
+## Source and deployment
 
-- **This directory (`docs-site/`) is the source of truth.** It lives inside the **private** LabFlow application repository.
-- The public repository **`labflow-docs`** is a **copy** of this directory, published so the docs are crawlable and contributor-friendly. It does not contain any application source, secrets, or tenant data.
+This repository, **`labflow-docs`**, is the source of truth for the documentation site. It is separate from the private LabFlow application repository and contains no application source, secrets, or tenant data.
 
-**Sync (private → public):** copy this directory's contents into the public repo and push. From the repo root, roughly:
-
-```bash
-rsync -a --delete \
-  --exclude 'node_modules' --exclude 'build' --exclude '.docusaurus' \
-  docs-site/ ../labflow-docs/
-# then, in ../labflow-docs: git add -A && git commit && git push
-```
-
-The public repo's own GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the Docusaurus site and deploys it to GitHub Pages on every push to `main`.
+The GitHub Actions workflow at [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml) builds the site and deploys it to GitHub Pages on every push to `main`. The custom domain is recorded in [`static/CNAME`](./static/CNAME).
 
 ## Local development
 
@@ -29,7 +19,7 @@ yarn serve      # serve the real build (verify search here)
 
 ## Search
 
-In-site search is **Pagefind** — a fully-local, build-time full-text index (no third-party service, no crawler, no account). It is generated in a `postBuild` hook, so `yarn build` alone produces a working search. Because the index only exists after a build, search does not appear under `yarn start`; verify it with `yarn build && yarn serve`. Details: `docs/deployment/algolia-docsearch` (Local Search).
+In-site search is **Pagefind** — a fully-local, build-time full-text index (no third-party service, no crawler, no account). It is generated in a `postBuild` hook, so `yarn build` alone produces a working search. Because the index only exists after a build, search does not appear under `yarn start`; verify it with `yarn build && yarn serve`. See [Hosting and publishing](./docs/deployment/overview.md#search).
 
 ## Contributing
 
