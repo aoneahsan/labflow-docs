@@ -1,34 +1,31 @@
 ---
 sidebar_position: 99
 slug: /author
-title: About the author — Ahsan Mahmood
-description: LabFlow is built and maintained by Ahsan Mahmood — full-stack engineer working in React, TypeScript and Postgres, with a focus on multi-tenant healthcare software. Contact, portfolio, GitHub and LinkedIn.
+sidebar_label: About LabFlow
+title: About LabFlow
+description: Who makes LabFlow and how to reach the LabFlow team — contact, corrections to this documentation, supporting the project, how to cite LabFlow, and the open-source work it is built on.
 keywords:
-  - Ahsan Mahmood
-  - LabFlow developer
-  - aoneahsan
-  - Zaions
-  - React TypeScript Postgres developer
-  - LIMS developer
+  - LabFlow
+  - LabFlow team
+  - contact LabFlow
+  - cite LabFlow
+  - LIMS
 image: /img/labflow-social-card.png
 ---
 
-# About the author — Ahsan Mahmood
+# About LabFlow
 
-LabFlow is designed, built and maintained by **Ahsan Mahmood**, a full-stack engineer working in React, TypeScript and Postgres, with a focus on multi-tenant healthcare software.
+LabFlow is a multi-tenant Laboratory Information Management System for clinical laboratories, designed, built and maintained by **the LabFlow team**.
 
-## Contact
+## Contact the LabFlow team
 
 | Channel | |
 |---|---|
 | **Email** | [aoneahsan@gmail.com](mailto:aoneahsan@gmail.com) |
-| **Portfolio** | [aoneahsan.com](https://aoneahsan.com) |
-| **LinkedIn** | [linkedin.com/in/aoneahsan](https://linkedin.com/in/aoneahsan) |
-| **GitHub** | [github.com/aoneahsan](https://github.com/aoneahsan) |
-| **npm** | [npmjs.com/~aoneahsan](https://npmjs.com/~aoneahsan) |
-| **Phone / WhatsApp** | [+92 304 6619706](tel:+923046619706) — also on [WhatsApp](https://wa.me/923046619706) |
-| **Brand** | [Zaions](https://zaions.com) |
-| **Support development** | [aoneahsan.com/payment?project-id=labflow](https://aoneahsan.com/payment?project-id=labflow&project-identifier=com.aoneahsan.labflow) |
+| **Documentation corrections** | [github.com/aoneahsan/labflow-docs](https://github.com/aoneahsan/labflow-docs) — issues and suggested edits |
+| **Support the project** | [Support LabFlow](https://aoneahsan.com/payment?project-id=labflow&project-identifier=com.aoneahsan.labflow) |
+
+If you want LabFlow at your laboratory, email is the fastest channel.
 
 ## What LabFlow is built with
 
@@ -40,20 +37,17 @@ The design principles that shape it are on the [architecture pages](./architectu
 
 The **LabFlow application repository is private**. This **documentation repository is public**, so the docs can be indexed, read and corrected without exposing the application's source.
 
-If you want LabFlow at your laboratory, or want to commission work on it, email is the fastest channel.
-
 ## Supporting the project
 
-1. **Contribute financially** — [aoneahsan.com/payment?project-id=labflow](https://aoneahsan.com/payment?project-id=labflow&project-identifier=com.aoneahsan.labflow).
-2. **Send corrections.** If a page here describes something that does not match the product, that is a defect in the documentation and it is worth an email. Accuracy is the point of this site.
-3. **Hire the author.** See [aoneahsan.com](https://aoneahsan.com).
+1. **Contribute financially** — [Support LabFlow](https://aoneahsan.com/payment?project-id=labflow&project-identifier=com.aoneahsan.labflow).
+2. **Send corrections.** If a page here describes something that does not match the product, that is a defect in the documentation and worth an email or an issue. Accuracy is the point of this site.
 
 ## Citing LabFlow
 
 ```text
-Mahmood, Ahsan. LabFlow — Multi-tenant Laboratory Information Management System.
+LabFlow team. LabFlow — Multi-tenant Laboratory Information Management System.
 Documentation: https://labflow-docs.aoneahsan.com
-Author: https://aoneahsan.com
+Application: https://labflow.aoneahsan.com
 ```
 
 ## Acknowledgements

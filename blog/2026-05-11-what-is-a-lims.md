@@ -1,7 +1,7 @@
 ---
 slug: what-is-a-lims
 title: What is a LIMS? A 2026 primer
-authors: [aoneahsan]
+authors: [labflow-team]
 tags: [lims, primer, healthcare]
 description: A clear, definitional primer on Laboratory Information Management Systems (LIMS) — what they do, what they don't, how they differ from LIS and EMR, and what the modern multi-tenant cloud-LIMS landscape looks like in 2026.
 keywords:
@@ -154,10 +154,10 @@ Buying for today rather than for the lab's growth trajectory. A LIMS that's perf
 - [LabFlow's user guide](/docs/user-guide/overview) — every screen the product actually ships, area by area.
 - [Result review and release](/docs/user-guide/result-review-and-release) — the release gate, critical-value escalation, and why an amendment is a new version rather than an edit.
 - [Tenancy and row-level security](/docs/architecture/tenancy-and-rls) — how two laboratories share one database.
-- [What LabFlow has not built](/docs/roadmap) — including quality control, billing and interoperability.
+- [What LabFlow has not built](/docs/roadmap) — including a live analyser or EMR interface.
 
 LabFlow is one example of a multi-tenant cloud LIMS, and it is partly built: its documentation states which areas exist and which do not. Other vendors will document their offerings differently; the buyer's checklist above is vendor-neutral.
 
 ---
 
-**About the author**: Ahsan Mahmood is the engineer behind LabFlow. Contact at `aoneahsan@gmail.com` or via [aoneahsan.com](https://aoneahsan.com).
+**About LabFlow**: written by the LabFlow team. Contact the team at `aoneahsan@gmail.com` — see [About LabFlow](/docs/author).

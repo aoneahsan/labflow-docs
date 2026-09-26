@@ -17,11 +17,11 @@ const APP_URL = 'https://labflow.aoneahsan.com';
 // lets "edit this page" work. 🔴 Because it is public, no secret may ever enter
 // it — placeholders only, real values in Actions secrets.
 const DOCS_REPO = 'https://github.com/aoneahsan/labflow-docs';
-const AUTHOR_NAME = 'Ahsan Mahmood';
-const AUTHOR_PORTFOLIO = 'https://aoneahsan.com';
-const AUTHOR_LINKEDIN = 'https://linkedin.com/in/aoneahsan';
-const AUTHOR_GITHUB = 'https://github.com/aoneahsan';
-const AUTHOR_EMAIL = 'aoneahsan@gmail.com';
+// 🔴 The product speaks as the LabFlow team, never as one person (owner rule,
+// storytelling-content.md, 2026-09-25): no founder byline, no personal
+// profile links, no Person in the structured data.
+const TEAM_NAME = 'The LabFlow team';
+const CONTACT_EMAIL = 'aoneahsan@gmail.com';
 const SUPPORT_URL =
   'https://aoneahsan.com/payment?project-id=labflow&project-identifier=com.aoneahsan.labflow';
 
@@ -31,14 +31,7 @@ const organisationJsonLd = {
   name: 'LabFlow',
   url: APP_URL,
   logo: `${SITE_URL}/img/logo.svg`,
-  sameAs: [AUTHOR_GITHUB, AUTHOR_LINKEDIN, 'https://npmjs.com/~aoneahsan'],
-  founder: {
-    '@type': 'Person',
-    name: AUTHOR_NAME,
-    url: AUTHOR_PORTFOLIO,
-    email: AUTHOR_EMAIL,
-    sameAs: [AUTHOR_LINKEDIN, AUTHOR_GITHUB, 'https://npmjs.com/~aoneahsan'],
-  },
+  email: CONTACT_EMAIL,
 };
 
 const websiteJsonLd = {
@@ -97,9 +90,9 @@ const softwareApplicationJsonLd = {
     'HL7 v2 and FHIR R4 export and import as files',
   ],
   author: {
-    '@type': 'Person',
-    name: AUTHOR_NAME,
-    url: AUTHOR_PORTFOLIO,
+    '@type': 'Organization',
+    name: 'LabFlow',
+    url: APP_URL,
   },
 };
 
@@ -163,7 +156,7 @@ const config: Config = {
     },
     {
       tagName: 'meta',
-      attributes: {name: 'author', content: AUTHOR_NAME},
+      attributes: {name: 'author', content: TEAM_NAME},
     },
     {
       tagName: 'meta',
@@ -217,7 +210,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: `${DOCS_REPO}/edit/main/`,
           showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          showLastUpdateAuthor: false,
           // 🔴 `docs/` is BOTH the published content directory AND the fixed home
           // of the internal manual-tasks file, so without this exclude
           // MANUAL-TASKS.md ships as a live public page. That has already
@@ -240,7 +233,7 @@ const config: Config = {
             title: 'LabFlow Blog',
             description:
               'Updates, release notes, and engineering deep-dives from LabFlow.',
-            copyright: `© ${new Date().getFullYear()} LabFlow. Built by ${AUTHOR_NAME}.`,
+            copyright: `© ${new Date().getFullYear()} LabFlow.`,
             language: 'en',
           },
           onInlineTags: 'warn',
@@ -309,9 +302,9 @@ const config: Config = {
         },
         {to: '/docs/roadmap', label: 'Status', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
-        {to: '/docs/author', label: 'Author', position: 'right'},
+        {to: '/docs/author', label: 'About', position: 'right'},
         {href: APP_URL, label: 'Open App', position: 'right'},
-        {href: AUTHOR_GITHUB, label: 'GitHub', position: 'right'},
+        {href: DOCS_REPO, label: 'GitHub', position: 'right'},
       ],
     },
     footer: {
@@ -337,25 +330,22 @@ const config: Config = {
           title: 'Project',
           items: [
             {label: 'Open the App', href: APP_URL},
-            {label: 'Author on GitHub', href: AUTHOR_GITHUB},
+            {label: 'Documentation source', href: DOCS_REPO},
             {label: 'Blog', to: '/blog'},
             {label: 'RSS Feed', href: `${SITE_URL}/blog/rss.xml`},
             {label: 'Sitemap', href: `${SITE_URL}/sitemap.xml`},
           ],
         },
         {
-          title: 'Author — Ahsan Mahmood',
+          title: 'Contact',
           items: [
-            {label: 'About the Author', to: '/docs/author'},
-            {label: 'Portfolio', href: AUTHOR_PORTFOLIO},
-            {label: 'LinkedIn', href: AUTHOR_LINKEDIN},
-            {label: 'GitHub', href: AUTHOR_GITHUB},
-            {label: 'Email', href: `mailto:${AUTHOR_EMAIL}`},
+            {label: 'About LabFlow', to: '/docs/author'},
+            {label: 'Email the LabFlow team', href: `mailto:${CONTACT_EMAIL}`},
             {label: 'Support the Project', href: SUPPORT_URL},
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} LabFlow. Documentation built with Docusaurus by ${AUTHOR_NAME} (aoneahsan@gmail.com).`,
+      copyright: `© ${new Date().getFullYear()} LabFlow.`,
     },
     prism: {
       theme: prismThemes.github,

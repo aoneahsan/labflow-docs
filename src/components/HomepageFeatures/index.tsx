@@ -49,9 +49,9 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         HIPAA-conscious, never &ldquo;HIPAA-compliant&rdquo; — no software can
-        be. Waves 0 to 3 are built; billing, quality control, scheduling,
-        portals and interoperability are not, and the roadmap says so rather
-        than implying otherwise.
+        be. No live analyser or EMR interface — HL7 v2 and FHIR move as files —
+        and the Android app is built but not yet released. The status page
+        says so rather than implying otherwise.
       </>
     ),
     ctaLabel: 'What is not built →',
@@ -84,13 +84,9 @@ export default function HomepageFeatures(): ReactNode {
         </div>
         <div className={clsx('text--center', styles.builtBy)}>
           <p>
-            LabFlow is designed, built, and maintained by{' '}
-            <Link to="/docs/author">
-              <strong>Ahsan Mahmood</strong>
-            </Link>{' '}
-            — full-stack engineer specialising in React, Capacitor, and
-            Firebase. See the <Link to="/docs/author">Author page</Link> for
-            contact, portfolio, and how to support the project.
+            LabFlow is designed, built and maintained by the LabFlow team. See{' '}
+            <Link to="/docs/author">About LabFlow</Link> for contact and how to
+            support the project.
           </p>
         </div>
       </div>

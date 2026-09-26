@@ -1,6 +1,6 @@
 # LabFlow documentation
 
-> Documentation for LabFlow, a multi-tenant laboratory information system for clinical laboratories, fronted by a public directory where patients find laboratories. Built and maintained by Ahsan Mahmood (https://aoneahsan.com).
+> Documentation for LabFlow, a multi-tenant laboratory information system for clinical laboratories, fronted by a public directory where patients find laboratories, with patient and clinician portals. Built and maintained by the LabFlow team.
 
 LabFlow records the clinical laboratory's work: patients, a test catalogue with panels and reference
 ranges, orders, specimens with an append-only chain of custody, accessioning, barcode labels, result
@@ -18,14 +18,17 @@ HIPAA-conscious, not "HIPAA-compliant"** — compliance is a property of an orga
 processes, and no software can hold it on your behalf. There is no FDA, CAP, CLIA or SOC 2
 attestation. LabFlow is laboratory software, not a medical device, and it interprets nothing.
 
-**What is built:** the public surface, identity and laboratory setup, settings, user management, the
-form builder, and the clinical spine listed above.
+**What is built:** the public surface and directory, identity and laboratory setup, settings, user
+management, forms, the clinical spine listed above, billing (invoices, payments, claims), stock and
+equipment, quality control with Westgard rules, compliance and the audit trail, documents and workflow,
+appointments and home collection, reports and analytics, research, population health and telemedicine
+registers, the patient portal, the clinician portal, laboratory listing and My lab, a referral
+programme, and platform administration (plans and limits, maintenance mode, the review queue).
 
-**What is NOT built, and is not claimed anywhere:** billing and invoicing, inventory, equipment,
-quality control runs, the compliance suite, e-signatures, the SOP library, workflow automation,
-appointments, home collection, field capture, the patient portal, the clinician application,
-reports and analytics, and HL7 v2 / FHIR interoperability. There is no public API. There is no
-browser extension and no EMR add-on. There is **no iOS application in any form**.
+**What is NOT built, and is not claimed anywhere:** a live interface to any analyser, EMR or hospital
+system — HL7 v2 and FHIR R4 are exported and imported as files only. There is no public API, no
+browser extension and no EMR add-on. There is **no iOS application in any form**. The Android app is
+built but not released on Google Play. Email delivery is being moved onto one branded layout.
 
 ## Documentation
 
@@ -37,16 +40,20 @@ browser extension and no EMR add-on. There is **no iOS application in any form**
 - [Tenancy and row-level security](https://labflow-docs.aoneahsan.com/docs/architecture/tenancy-and-rls): how one laboratory is kept out of another's records.
 - [Records and trails](https://labflow-docs.aoneahsan.com/docs/architecture/records-and-trails): custody, audit, result versions, and the one-writer rule.
 - [User guide](https://labflow-docs.aoneahsan.com/docs/user-guide/overview): one page per shipped area, indexed by task.
-- [Roadmap](https://labflow-docs.aoneahsan.com/docs/roadmap): what is not built, stated plainly.
+- [Patient portal](https://labflow-docs.aoneahsan.com/docs/user-guide/patient-portal): results in plain words, reports, invoices, sharing.
+- [Clinician portal](https://labflow-docs.aoneahsan.com/docs/user-guide/clinician-portal): ordering and acknowledging critical results.
+- [Interoperability](https://labflow-docs.aoneahsan.com/docs/user-guide/interoperability): HL7 v2 and FHIR R4 as files; no live interface.
+- [Platform administration](https://labflow-docs.aoneahsan.com/docs/user-guide/platform-administration): plans and limits, maintenance, the review queue.
+- [Android app](https://labflow-docs.aoneahsan.com/docs/getting-started/android-app): built, not yet released.
+- [Status and limits](https://labflow-docs.aoneahsan.com/docs/roadmap): what is not built, stated plainly.
 - [Hosting and publishing](https://labflow-docs.aoneahsan.com/docs/deployment/overview): how the application and this site are served.
 
-## Author and licensing
+## About and licensing
 
-- [About the author](https://labflow-docs.aoneahsan.com/docs/author): Ahsan Mahmood — contact, portfolio, GitHub, LinkedIn, npm.
+- [About LabFlow](https://labflow-docs.aoneahsan.com/docs/author): the LabFlow team — contact, corrections, citation.
 - The LabFlow application source is a single private repository. There is no public source repository; this documentation site is published openly.
 
 ## Contact
 
-- Email: aoneahsan@gmail.com
-- Portfolio: https://aoneahsan.com
+- Email the LabFlow team: aoneahsan@gmail.com
 - Application: https://labflow.aoneahsan.com

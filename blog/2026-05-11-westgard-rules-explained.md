@@ -1,7 +1,7 @@
 ---
 slug: westgard-rules-explained
 title: Westgard rules for clinical QC, explained
-authors: [aoneahsan]
+authors: [labflow-team]
 tags: [quality-control, lims, healthcare]
 description: A working reference to the six base Westgard rules (1-2s, 1-3s, 2-2s, R-4s, 4-1s, 10-x) — what each rule detects, how to combine them into multi-rule sets, why 1-2s is a warning and not a rejection, and how to read a Levey-Jennings chart.
 keywords:
@@ -18,8 +18,8 @@ keywords:
 
 **Westgard rules are the statistical patterns a clinical laboratory uses to decide whether a quality-control (QC) run is in-control or out-of-control.** First published by James Westgard in *Clinical Chemistry* in 1981, the six base rules — `1-2s`, `1-3s`, `2-2s`, `R-4s`, `4-1s`, `10-x` — combine into multi-rule sets that catch both random and systematic analytical errors with a low false-rejection rate. This post is a working reference: the precise trigger condition for each rule, the clinical interpretation, why `1-2s` is a warning rather than a rejection, the canonical multi-rule set, and how to read a Levey-Jennings chart that visualises everything together. This post is a standalone primer for anyone who needs the rules, independent of any product.
 
-:::note LabFlow does not implement quality control today
-Quality control is planned and unbuilt — see [the roadmap](/docs/roadmap). Nothing below describes a LabFlow feature.
+:::note This is a primer
+This post explains the Westgard rules in general. How LabFlow applies them — a violation blocks release of the run's patient results — is on [quality control](/docs/user-guide/quality-control).
 :::
 
 {/* truncate */}
@@ -267,11 +267,11 @@ Yes — the same rules apply to any quantitative QC, including haematology, immu
 
 ## Where to read more
 
-- [What LabFlow has not built](/docs/roadmap) — including quality control.
+- [LabFlow's quality control](/docs/user-guide/quality-control), and [what LabFlow has not built](/docs/roadmap).
 - The original Westgard paper: J.O. Westgard, P.L. Barry, M.R. Hunt, T. Groth, "A Multi-Rule Shewhart Chart for Quality Control in Clinical Chemistry", *Clinical Chemistry* 1981.
 - CLSI EP23 (statistical quality control for quantitative measurement procedures) and CLSI EP18 (laboratory quality control) — the accreditation-relevant documents.
 - WestgardQC.com — the family's reference site, which has detailed worked examples and additional rule combinations.
 
 ---
 
-**About the author**: Ahsan Mahmood is the engineer behind LabFlow. Contact at `aoneahsan@gmail.com` or via [aoneahsan.com](https://aoneahsan.com).
+**About LabFlow**: written by the LabFlow team. Contact the team at `aoneahsan@gmail.com` — see [About LabFlow](/docs/author).

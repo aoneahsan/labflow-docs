@@ -42,12 +42,10 @@ function HomepageHeader() {
         </div>
         <p className={styles.heroAuthor}>
           Built and maintained by{' '}
-          <Link to="/docs/author">Ahsan Mahmood</Link> ·{' '}
+          <Link to="/docs/author">the LabFlow team</Link> ·{' '}
           <Link href="https://github.com/aoneahsan/labflow-docs">
             GitHub
-          </Link>{' '}
-          ·{' '}
-          <Link href="https://aoneahsan.com">aoneahsan.com</Link>
+          </Link>
         </p>
       </div>
     </header>
@@ -58,7 +56,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="LabFlow Documentation — Multi-tenant LIMS"
-      description="Documentation for LabFlow, a multi-tenant laboratory information system: patients, the test catalogue, orders, specimens and chain of custody, accessioning, labels, result entry, review and release. Built by Ahsan Mahmood.">
+      description="Documentation for LabFlow, a multi-tenant laboratory information system: patients, the test catalogue, orders, specimens and chain of custody, results, billing, quality control, the patient and clinician portals, and platform administration.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

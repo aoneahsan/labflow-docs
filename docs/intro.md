@@ -76,6 +76,6 @@ Independent clinical laboratories and reference laboratories that want patients,
 - **[User guide](./user-guide/overview)** — one page per shipped area of the product, including the patient and clinician portals and platform administration.
 - **[Architecture](./architecture/overview)** — the database, tenancy and row-level security, and the record-integrity rules.
 - **[Status and limits](./roadmap)** — what is not built, and what is built but not yet released.
-- **[Author](./author)** — contact details.
+- **[About LabFlow](./author)** — how to contact the LabFlow team.
 
 **Next:** [Quick start →](./getting-started/quick-start)

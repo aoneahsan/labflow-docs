@@ -1,6 +1,6 @@
 # LabFlow Documentation — robots policy
 # Site: https://labflow-docs.aoneahsan.com
-# Maintained by Ahsan Mahmood (aoneahsan@gmail.com)
+# Maintained by the LabFlow team (aoneahsan@gmail.com)
 #
 # Strategy: explicitly allow all major search-engine and AI-search crawlers.
 # Block scraper bots that don't bring traffic.
