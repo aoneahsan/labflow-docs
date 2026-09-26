@@ -43,6 +43,8 @@ Settings are **one model and one form**, parameterised per section, rather than 
 LabFlow's own sign-in is Google only, so a mistyped password is refused by Google before this product sees anything — there is no failed sign-in here for it to report. Several controls in this area say plainly that they are not finished: **recovery codes are not issued yet**, **security keys are not registrable yet**, and a **per-device list is not available**. A session is not a device, and the page says so rather than implying otherwise.
 :::
 
-## Sections whose subject is not built
+## Plan & billing and Integrations
 
-Some sections in the rail describe areas that later waves deliver — **Plan and billing**, **Integrations** and **Administration** among them. The settings surface is built; what those settings will govern is on the [roadmap](../roadmap).
+**Plan & billing** shows the plan this workspace is on, what it is limited to, and when that changes. Plans are not sold inside the application: a change of plan is arranged with the LabFlow team and applied by an administrator. **Going over a limit never deletes anything** — records past the ceiling become read-only, and the page says which. Plan enforcement is switched off by default ([Platform administration](./platform-administration#plans-and-limits)).
+
+**Integrations** lists the partner systems this workspace exchanges files with and the analysers results are entered from. *There is no live feed*, and nothing in it says "Connected" ([Interoperability](./interoperability)).

@@ -69,4 +69,4 @@ Every version above the first **requires a reason**, enforced by the database ra
 
 `pending` · `in_progress` · `entered` · `released` · `rejected` · `cancelled`
 
-Two further values, `preliminary` and `validated`, exist in the vocabulary and are **never written today** — see the [roadmap](../roadmap).
+Two further values, `preliminary` and `validated`, exist in the vocabulary and are **never written today** — see [Status and limits](../roadmap#two-result-statuses-that-exist-but-are-never-written).

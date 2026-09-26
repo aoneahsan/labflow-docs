@@ -57,6 +57,6 @@ An excursion recorded late is recorded, **not overwritten**. LabFlow records tha
 
 **`/samples/collections`** — *the circuits that bring specimens in*. A run is `scheduled`, `running` or `complete`; each stop is `pending`, `en route` or `done`.
 
-This is the collection **board** as the approved design draws it. Route planning, an optimiser and offline field capture are wave 6 and are [not built](../roadmap).
+This is the collection **board**. Route planning and the optimiser are on [home collection](./home-collection); reconciling what was captured in the field is on [field captures](./field-captures).
 
 **Next:** [Accessioning and the bench →](./accessioning)

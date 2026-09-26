@@ -21,7 +21,7 @@ image: /img/labflow-social-card.png
 
 Opening the builder for the first time creates one form — the **requisition** — from the approved design's own five specimen questions. Opening it again finds that form and creates nothing.
 
-A laboratory has **one requisition to start with**. Minting further forms belongs to a later wave.
+A laboratory has **one requisition to start with**.
 
 ## Versions are immutable
 
@@ -50,6 +50,8 @@ An empty form is a legitimate **draft**. It just cannot be published.
 
 The browser **reads** forms and never writes them. Both write paths are server-side functions bounded to laboratory owners and managers.
 
-## What is not here yet
+## The list and the submissions
 
-The form **list**, the submissions table, and everything that receives an answer are wave 5 and are [not built](../roadmap). Until then the builder is reached by its address, and its "Forms" breadcrumb is plain text rather than a link to a page that does not exist.
+**`/forms`** lists every form with its version, how many questions it asks, whether any answer identifies a person, how many submissions it has received, and whether it is live or a draft. A draft prints no version. **Build a form** opens the builder.
+
+**`/forms/:formId/submissions`** shows the responses to one version. *A submission belongs to the version that was on screen when it was answered*, so editing a live form never rewrites an answer already given.

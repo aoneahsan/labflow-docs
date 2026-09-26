@@ -47,7 +47,7 @@ const websiteJsonLd = {
   name: 'LabFlow Documentation',
   url: SITE_URL,
   description:
-    'Documentation for LabFlow — a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, covering patients, the test catalogue, orders, specimens and chain of custody, accessioning, labels, result entry, and result review and release.',
+    'Documentation for LabFlow — a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, covering the clinical spine from patient to released result, laboratory operations, the patient and clinician portals, analytics, HL7 v2 and FHIR as files, and platform administration.',
   inLanguage: 'en',
   publisher: {
     '@type': 'Organization',
@@ -70,18 +70,17 @@ const softwareApplicationJsonLd = {
   name: 'LabFlow',
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Laboratory Information Management System (LIMS)',
-  // 🔴 Web only. There is no native mobile build of LabFlow and no iOS
-  // application in any form — claiming a platform the product does not ship on
-  // is the exact defect this site was rewritten to remove.
+  // 🔴 Web only, because that is what a person can use today. The Android app is
+  // built but not released on Google Play; add 'Android' here only once it is.
+  // There is no iOS application in any form.
   operatingSystem: 'Web',
   url: APP_URL,
   installUrl: APP_URL,
   image: `${SITE_URL}/img/labflow-social-card.png`,
   description:
-    'LabFlow is a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, fronted by a public marketplace. It runs on hosted Supabase Postgres with row-level security, and covers patients, a LOINC-coded test catalogue, panels and reference ranges, orders, specimens with chain of custody, accessioning, labels, result entry, result review and release, and an operational dashboard.',
-  // 🔴 Only capabilities that are BUILT. Billing, quality control, inventory,
-  // scheduling, portals, analytics and interoperability are planned and unbuilt;
-  // they belong on the roadmap page and nowhere else.
+    'LabFlow is a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, fronted by a public marketplace, with patient and clinician portals. It runs on hosted Supabase Postgres with row-level security, and covers patients, a LOINC-coded test catalogue, orders, specimens with chain of custody, accessioning, result entry, review and release, billing, quality control, compliance, analytics and platform administration.',
+  // 🔴 Only capabilities that are BUILT and reachable today. Unreleased or
+  // unbuilt items belong on the Status and limits page (docs/roadmap.md).
   featureList: [
     'Multi-tenant data isolation enforced by row-level security',
     'LOINC-coded test catalogue, panels and resolved reference ranges',
@@ -91,6 +90,11 @@ const softwareApplicationJsonLd = {
     'Result entry with an idempotent write path that works offline',
     'Result review and release with critical-value escalation',
     'Versioned results — an amendment is a new version, never an edit',
+    'Invoices, payment allocation and insurance claims',
+    'Quality control with Westgard rules',
+    'Patient portal with sharing and a one-result link',
+    'Clinician portal for ordering and acknowledging critical results',
+    'HL7 v2 and FHIR R4 export and import as files',
   ],
   author: {
     '@type': 'Person',
@@ -102,7 +106,7 @@ const softwareApplicationJsonLd = {
 const config: Config = {
   title: 'LabFlow Documentation',
   tagline:
-    'Multi-tenant LIMS for clinical laboratories — patients, catalogue, orders, specimens, results. What is built, and what is not.',
+    'Multi-tenant LIMS for clinical laboratories — from order to released result, with patient and clinician portals. What is built, and what is not.',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -154,7 +158,7 @@ const config: Config = {
       attributes: {
         name: 'description',
         content:
-          'LabFlow Documentation — a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, on hosted Supabase Postgres with row-level security. Getting started, the user guide for every shipped screen, the architecture, and an honest roadmap of what is not built. By Ahsan Mahmood.',
+          'LabFlow Documentation — a multi-tenant Laboratory Information Management System (LIMS) for clinical laboratories, on hosted Supabase Postgres with row-level security. Getting started, the user guide for every shipped area, the architecture, and an honest page on what is not built.',
       },
     },
     {
@@ -303,7 +307,7 @@ const config: Config = {
           label: 'Architecture',
           position: 'left',
         },
-        {to: '/docs/roadmap', label: 'Roadmap', position: 'left'},
+        {to: '/docs/roadmap', label: 'Status', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/docs/author', label: 'Author', position: 'right'},
         {href: APP_URL, label: 'Open App', position: 'right'},
@@ -326,7 +330,7 @@ const config: Config = {
             {label: 'Getting Started', to: '/docs/getting-started/quick-start'},
             {label: 'User Guide', to: '/docs/user-guide/overview'},
             {label: 'Architecture', to: '/docs/architecture/overview'},
-            {label: 'Roadmap', to: '/docs/roadmap'},
+            {label: 'Status and limits', to: '/docs/roadmap'},
           ],
         },
         {

@@ -41,6 +41,12 @@ The ordered test matters more than it looks. *A test with no result yet is a rea
 
 Priority records **what the clinician asked for, never what the laboratory achieved.** How long it actually took is a separate question, answered on the [dashboard](./dashboard).
 
+## Importing an HL7 order
+
+**Import an HL7 order** on `/orders` reads one HL7 v2 order message (`ORM^O01`), pasted or chosen as a file, **in the browser**. It creates a **draft** order and nothing else: a person then chooses **Place this order** or **Discard draft** in the drawer. There is no live feed; see [Interoperability](./interoperability#hl7-v2-and-fhir-r4-as-files).
+
+Orders reach the laboratory from clinicians' order forms, the front desk, accepted requests and imported HL7 order files, and a person confirms each one.
+
 ## Filters
 
 The order list filters by status, priority and free text, and every filter is held in the address — so a filtered view is shareable and survives a refresh.

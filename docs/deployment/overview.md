@@ -23,6 +23,7 @@ LabFlow is a **hosted product**. There is no self-hosted distribution, no instal
 | **The application** | Built to static files and served by **Firebase Hosting** at [labflow.aoneahsan.com](https://labflow.aoneahsan.com) |
 | **The data** | One hosted **Supabase Postgres** project |
 | **Server-side work** | Supabase Edge Functions |
+| **The Android app** | The same web build in a native shell; built, not yet released — see [the Android app](../getting-started/android-app) |
 
 Firebase's role begins and ends at serving files. There is no Firebase data tier, no Firebase Authentication and no Cloud Functions — see [architecture](../architecture/overview).
 

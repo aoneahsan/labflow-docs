@@ -14,7 +14,7 @@ image: /img/labflow-social-card.png
 
 # Create an account
 
-LabFlow is a hosted product. There is nothing to install and nothing to download — open **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)** and sign in.
+LabFlow is a hosted product. There is nothing to install and nothing to download — open **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)** and sign in. An [Android app](./android-app) is built and not yet released.
 
 ## There is no password
 
@@ -58,5 +58,11 @@ There is no second screen for it. An invitation is accepted by **signing in and 
 Nothing is wrong with your account. It signed in correctly and your other memberships are unaffected; somebody at that laboratory removed you from its user list, which shuts that one door and touches nothing else. Only that laboratory can restore it.
 
 Access is **withdrawn, never deleted** — every result you entered still names a record that exists. Restoring returns both your role and your release scope.
+
+## When a laboratory is suspended, or LabFlow is under maintenance
+
+A laboratory the LabFlow team has suspended is still listed at sign-in but cannot be entered: *"LabFlow has suspended this laboratory; nothing in it is deleted, and its owner is the person to contact."*
+
+While maintenance mode is on, everybody except platform administrators sees the maintenance screen at `/maintenance`, with the reason and, when given, when LabFlow is expected back.
 
 **Next:** [Create or join a laboratory →](./create-or-join-a-laboratory)

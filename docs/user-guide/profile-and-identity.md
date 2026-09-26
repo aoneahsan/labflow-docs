@@ -44,4 +44,4 @@ LabFlow does not read the document, does not extract a name or a date, and does 
 
 An uploaded document is stored as a **private object**, and its storage identifier is **not readable by the browser at all** — not yours, not anyone's. The page promises "no view here, for you or for anybody else", and the permission model is what makes that true rather than a policy nobody can check.
 
-The reviewer's side of this — opening a document server-side, recording that it was opened, and deleting it thirty days after a decision — belongs to platform administration and is [not built](../roadmap).
+A reviewer on the LabFlow team opens the document server-side, and the opening is recorded — see [the review queue](./platform-administration#the-review-queue).

@@ -2,7 +2,7 @@
 sidebar_position: 1
 slug: /intro
 title: Introduction to LabFlow
-description: LabFlow is a multi-tenant Laboratory Information Management System for clinical laboratories, fronted by a public marketplace. It runs on Supabase Postgres with row-level security, and this page states exactly which parts are built today.
+description: LabFlow is a multi-tenant Laboratory Information Management System for clinical laboratories, fronted by a public marketplace, with patient and clinician portals. It runs on Supabase Postgres with row-level security; this page states what it is and what it is not.
 keywords:
   - LabFlow
   - LIMS
@@ -19,41 +19,34 @@ image: /img/labflow-social-card.png
 
 **LabFlow is a multi-tenant Laboratory Information Management System for clinical laboratories, fronted by a public marketplace where patients find labs and laboratories apply to join.** Both halves are the product. Where they meet, the lab-facing LIMS is the system of record and the marketplace reads from it.
 
-It is live at **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)**.
+It is live at **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)**, and it is built by the LabFlow team.
 
-:::info This documentation describes what is built, not what is planned
-LabFlow is being built in twelve waves. **Four are complete.** This site documents only those. Everything else is listed, unbuilt, on the [roadmap](./roadmap).
+:::info This documentation describes what is built
+Every page here describes behaviour the application ships today. What is **not** built, and what is built but not yet released, is on [Status and limits](./roadmap).
 :::
 
 ## The two halves
 
-**The public marketplace** is open to anyone: the marketing and legal pages, a blog, comparison pages, a `/sitemap` and `/feed` derived from the route registry, and a laboratory directory where each listing shows what that laboratory declared about itself.
+**The public marketplace** is open to anyone: the marketing and legal pages, a blog, comparison pages, a `/sitemap` and `/feed` derived from the route registry, and a laboratory directory where each listing shows what that laboratory declared about itself and a person on the LabFlow team reviewed.
 
-**The laboratory system** is what a signed-in laboratory works in: patients, a coded test catalogue, panels and reference ranges, orders, specimens and their chain of custody, accessioning, labels, result entry, result review and release, and an operational dashboard. Around that sit identity, settings, user management and a form builder.
+**The laboratory system** is what a signed-in laboratory works in: patients, a coded test catalogue, panels and reference ranges, orders, specimens and their chain of custody, accessioning, labels, result entry, result review and release, and an operational dashboard. Around that spine sit billing, stock and equipment, quality control, compliance and audit, documents and workflow, appointments and home collection, reports and analytics, and the research, population and telemedicine registers.
 
-## What is built today
+## Who uses it
 
-Waves 0 to 3, in order:
-
-| Wave | What it delivered |
+| Who | Where |
 |---|---|
-| **0 — Foundation** | The design system, React Aria primitives, routing and the app shell, the tenancy and role substrate, the PHI-scrubbing logger, the branded error routes |
-| **1 — Public surface** | Marketing pages, the full legal set, blog and comparison pages, `/sitemap` and `/feed`, the public laboratory directory |
-| **2 — Identity** | Register and sign in, onboarding, the laboratory setup wizard, one parameterised settings model, profile and identity verification, user management, the form builder |
-| **3 — LIMS spine** | Patients · test catalogue · panels and reference ranges · orders · specimens and chain of custody · accessioning · labels and barcodes · result entry · result review and release · the dashboard |
+| **Laboratory staff** — owner, manager, pathologist, senior technician, technician, quality officer, phlebotomist, receptionist, billing clerk | The laboratory system, with a navigation rail built for each role |
+| **Patients** | The [patient portal](./user-guide/patient-portal) |
+| **Clinicians** | The [clinician portal](./user-guide/clinician-portal) |
+| **The LabFlow team** | [Platform administration](./user-guide/platform-administration) |
 
-The [user guide](./user-guide/overview) has one page per shipped area.
+## Where to use it
 
-## What is not built
+LabFlow is a web application at [labflow.aoneahsan.com](https://labflow.aoneahsan.com), responsive from phone to desktop. An [Android app](./getting-started/android-app) of the same application is built and not yet released. There is **no iOS app**, no browser extension and no EMR add-on.
 
-Billing and invoicing, inventory, equipment, quality control, the compliance suite, the audit-trail interface, e-signatures, an SOP library, workflow automation, appointments, home collection, field capture, the patient portal, the clinician sub-app, reports and analytics, research, telemedicine, population health, EMR/HL7/FHIR integration, and platform administration are **all unbuilt**. They are sequenced on the [roadmap](./roadmap).
+**There is no public or REST API.** LabFlow has no keyed API, no OpenAPI document and no webhook surface. It talks to its own database and a small set of server functions.
 
-Four more things are worth naming plainly, because a laboratory system is usually assumed to have them:
-
-- **There is no public or REST API.** LabFlow has no keyed API, no OpenAPI document and no webhook surface. The application talks to its own database and to a small set of server functions; nothing third-party-facing is exposed.
-- **There is no mobile application.** LabFlow is a responsive web application. The rebuilt product carries no native shell.
-- **There is no iOS application**, in any form.
-- **There is no browser extension and no EMR add-on.**
+**There is no live interface to an analyser, EMR or hospital system.** HL7 v2 and FHIR R4 are [exported and imported as files](./user-guide/interoperability).
 
 ## The stack, in one paragraph
 
@@ -75,14 +68,14 @@ LabFlow carries no FDA clearance, no CAP or CLIA accreditation and no SOC 2 atte
 
 ## Who it is for
 
-Independent clinical laboratories and reference laboratories that want patients, orders, specimens and results in one system with a real chain of custody and a real release gate. If you need revenue cycle, quality-control runs or EMR interfacing **today**, read the [roadmap](./roadmap) before going further — none of them is built.
+Independent clinical laboratories and reference laboratories that want patients, orders, specimens and results in one system with a real chain of custody and a real release gate. If you need a live analyser or EMR interface, read [Status and limits](./roadmap) first — LabFlow does not have one.
 
 ## How this documentation is organised
 
 - **[Getting started](./getting-started/quick-start)** — create an account, create or join a laboratory, find your way around.
-- **[User guide](./user-guide/overview)** — one page per shipped area of the product.
+- **[User guide](./user-guide/overview)** — one page per shipped area of the product, including the patient and clinician portals and platform administration.
 - **[Architecture](./architecture/overview)** — the database, tenancy and row-level security, and the record-integrity rules.
-- **[Roadmap](./roadmap)** — what is not built, and the order it is planned in.
-- **[Author](./author)** — who builds LabFlow, and how to reach him.
+- **[Status and limits](./roadmap)** — what is not built, and what is built but not yet released.
+- **[Author](./author)** — contact details.
 
 **Next:** [Quick start →](./getting-started/quick-start)

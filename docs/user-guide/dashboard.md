@@ -39,7 +39,7 @@ Not one number on this page is calculated in the browser. Each is a bounded, ten
 
 This rule has a specific origin: the application LabFlow replaces produced that figure with a random function behind a swallowed permission error, and the result was indistinguishable from a real one.
 
-For the same reason there is **no revenue tile** — there is no billing data behind this deployment, and a currency total is the number a dashboard is most often asked to invent — and **nothing here forecasts**. Where arithmetic is used it is described as arithmetic.
+For the same reason there is **no revenue tile** — a currency total is the number a dashboard is most often asked to invent, and what is owed lives on [billing](./billing), derived every time it is asked — and **nothing here forecasts**. Where arithmetic is used it is described as arithmetic.
 
 ## Unacknowledged criticals
 

@@ -71,3 +71,7 @@ over submitted ones. They are not interchangeable and they do not share a denomi
 
 Both report **nothing at all** when their denominator is zero — never `0%`, which a reader would
 take for a perfect month rather than an empty one.
+
+## One invoice, and the patient's side
+
+**`/billing/invoices/:invoiceId`** opens one invoice with its lines and payments. **LabFlow takes no card payment.** In the [patient portal](./patient-portal#invoices-without-a-checkout) a patient can tell the laboratory they intend to pay; the invoice stays unpaid until the laboratory records the payment here.

@@ -2,7 +2,7 @@
 sidebar_position: 3
 slug: /getting-started/finding-your-way-around
 title: Finding your way around
-description: The LabFlow application shell — the navigation rail and what it shows today, the mobile drawer, the theme control and its ten axes, and how the shipped LIMS screens are reached.
+description: The LabFlow application shell — the navigation rail built for each role, the mobile drawer, the theme control and its ten axes, and how screens are reached by address.
 keywords:
   - LabFlow navigation
   - LabFlow app shell
@@ -17,16 +17,11 @@ Signed in, LabFlow is one shell: a navigation rail on the left, a top bar, and t
 
 ## The navigation rail
 
-The rail is grouped, and **it shows only entries this person can actually open**. A group whose every entry is hidden is not drawn at all, rather than left as an empty heading — offering a door that answers "forbidden" is worse than a shorter rail.
+The rail is **built for your role**. A technician sees the bench, quality and reference groups; a receptionist sees the front desk; a laboratory manager sees overview, operations, the laboratory and interoperability; a quality officer sees quality, compliance and procedure; a billing clerk sees billing and stock; a laboratory owner sees My laboratory, Requests and Account. Patients and clinicians get their own shells — the [patient portal](../user-guide/patient-portal) and the [clinician portal](../user-guide/clinician-portal) — and platform administrators get [the platform](../user-guide/platform-administration).
 
-Today it carries:
+**It shows only entries this person can actually open.** A group whose every entry is hidden is not drawn at all, rather than left as an empty heading. An entry belonging to a module a platform administrator has switched off is hidden too, and its address is refused.
 
-| Group | Entries |
-|---|---|
-| **Overview** | Dashboard |
-| **The laboratory** | People (laboratory owners and managers only) · Settings |
-
-The rail fills in as later waves land. **The LIMS screens delivered in wave 3 are not yet on it** — they are reached from the dashboard, from links on the records themselves, and by their addresses. The [user guide](../user-guide/overview) names each address.
+Every screen also has an address, and the [user guide](../user-guide/overview) names each one, so a page not on your rail can still be linked to directly — access is still checked when it opens.
 
 Below 1024px the rail is replaced by a burger that opens a drawer carrying the same entries. It is the same application at every width, not a reduced one.
 

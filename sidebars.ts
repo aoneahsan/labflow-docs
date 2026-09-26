@@ -3,10 +3,11 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 /**
  * LabFlow documentation site IA.
  *
- * 🔴 THIS SITE DOCUMENTS SHIPPED BEHAVIOUR ONLY. Waves 0–3 of 12 are built, and
- * every page below describes one of them. Unbuilt areas appear in exactly one
- * place — `roadmap` — and never as a feature page. Adding a category for an
- * unbuilt module is the failure this comment exists to prevent.
+ * 🔴 THIS SITE DOCUMENTS SHIPPED BEHAVIOUR ONLY. Every page below describes a
+ * route the application serves today. Unbuilt or unreleased areas appear in
+ * exactly one place — `roadmap` (Status and limits) — and never as a feature
+ * page. Adding a page for an unbuilt module is the failure this comment exists
+ * to prevent.
  *
  * There is no API sidebar: LabFlow exposes no public or REST API.
  */
@@ -21,6 +22,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/quick-start',
         'getting-started/create-or-join-a-laboratory',
         'getting-started/finding-your-way-around',
+        'getting-started/android-app',
       ],
     },
     {
@@ -52,6 +54,22 @@ const sidebars: SidebarsConfig = {
         'user-guide/appointments-and-calendar',
         'user-guide/home-collection',
         'user-guide/field-captures',
+        'user-guide/listing-and-my-lab',
+        'user-guide/analytics',
+        'user-guide/research-population-telemedicine',
+        'user-guide/interoperability',
+        'user-guide/email-notifications',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Portals & Platform',
+      collapsed: false,
+      items: [
+        'user-guide/patient-portal',
+        'user-guide/clinician-portal',
+        'user-guide/referral-programme',
+        'user-guide/platform-administration',
       ],
     },
     {
