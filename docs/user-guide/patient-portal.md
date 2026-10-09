@@ -55,6 +55,8 @@ An invoice page shows what it covers and who it is from. **Nothing is purchasabl
 
 **A laboratory can never see this list**, so a laboratory cannot tell that you also use another laboratory.
 
+**Giving access back.** A clinician you stopped stays on the page, marked with the day you stopped them, with **Give access back**. It takes effect at once, and the confirmation offers **Undo**. If the clinician no longer works with the laboratory that ran your tests, the page says so instead of offering the button. A one-result link cannot be given back; create a new one.
+
 **One-result link.** To show a single result to somebody who is not on the list, create a link for that one result. It opens at `/portal/shared/:token`, needs no sign-in, shows that result and nothing else, and **stops working on its own after seven days**. You can stop it sooner. A link is not a login: anybody holding it can open that one result, so send it the way you would send anything private.
 
 ## Your details

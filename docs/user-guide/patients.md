@@ -33,6 +33,10 @@ MRN issuance is a **per-laboratory choice**, held on the laboratory's own settin
 
 Changing an MRN **re-labels every future specimen and does not re-label the printed ones**. Labels already on tubes stay as they were printed.
 
+## The national health number
+
+The number the hospital's own system uses for the patient is entered on the record's edit page. It is optional, at most 32 characters, and **one patient per number within a laboratory** — a number already on another record is refused, without saying whose record it is. Every change (added, changed, cleared) is written to the record's history; the history says that it changed, not what it was.
+
 ## The fields that do clinical work
 
 Most of the record is demographic. Four fields are read by the rest of the system:

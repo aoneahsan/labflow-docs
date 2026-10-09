@@ -79,6 +79,7 @@ const sidebars: SidebarsConfig = {
       link: {type: 'doc', id: 'architecture/overview'},
       items: ['architecture/tenancy-and-rls', 'architecture/records-and-trails'],
     },
+    'changelog',
     'roadmap',
     {
       type: 'category',

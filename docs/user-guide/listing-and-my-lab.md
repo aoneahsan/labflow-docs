@@ -57,6 +57,8 @@ The owner's area, on the owner's navigation under **My laboratory** and **Reques
 
 The three lists are read by the public directory, so an entry left wrong in them is wrong where a clinician sees it.
 
+**Listing views** counts visits to your public listing over the last 30 days: once per visitor per day, never a member of your own laboratory and never an automated visitor. Nothing about a visitor is kept — only the day and the count.
+
 `/my-lab/analytics` shows nothing until there is enough work to measure: *"Fewer than 30 results is noise."* The peer comparison shows no heading when there are fewer than five comparable laboratories.
 
 ## Requests

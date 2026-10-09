@@ -14,8 +14,8 @@ image: /img/labflow-social-card.png
 
 LabFlow sends **transactional email only** — a message because something happened that concerns you. There are no marketing sequences.
 
-:::note Delivery is being finished
-The set of emails and their wording are approved. Moving every email onto one branded layout, with a plain-text part, is in progress. Everything an email mentions is also in the application, so treat an email as a notice and the application as the record.
+:::note An email is a notice; the application is the record
+Every email uses one branded layout with a plain-text part. Everything an email mentions is also in the application, so treat an email as a notice and the application as the record.
 :::
 
 ## No clinical content in an email

@@ -3,7 +3,7 @@ sidebar_position: 90
 slug: /roadmap
 sidebar_label: Status and limits
 title: Status and limits — what is not built
-description: Where LabFlow stands — every planned product area is built and the web application is live; the Android release and email delivery are being finished. This page lists what is not built, and the claims LabFlow does not make.
+description: Where LabFlow stands — every planned product area is built and the web application is live; the Android release and card payments are being finished. This page lists what is not built, and the claims LabFlow does not make.
 keywords:
   - LabFlow status
   - LabFlow roadmap
@@ -21,7 +21,7 @@ image: /img/labflow-social-card.png
 | Area | Where it stands |
 |---|---|
 | **The Android app** | Built, not on Google Play, and not yet verified on a device. See [The Android app](./getting-started/android-app) |
-| **Email delivery** | The emails and their wording are approved; moving every email onto one branded layout is in progress. See [Email notifications](./user-guide/email-notifications) |
+| **Card payments** | Built and switched off. A laboratory's owner pays for Single laboratory or Multi-site by card on the website once the payment provider's account is ready; until then plans are arranged with the LabFlow team |
 
 ## Things frequently assumed to exist
 

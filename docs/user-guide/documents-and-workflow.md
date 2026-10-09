@@ -17,8 +17,10 @@ image: /img/labflow-social-card.png
 
 ## The library is one register read three ways
 
-**`/files`** — everything the laboratory holds that is not a result: controlled documents and
-scanned requisitions, in a keyboard-navigable tree.
+**`/files`** — everything the laboratory holds that is not a result: controlled documents,
+scanned requisitions and issued reports, in a keyboard-navigable tree. **Issued reports** lists, by
+month, every report somebody with release rights froze; a member sees the reports they could open
+themselves.
 
 The same controlled-document register is also read by `/compliance/documents`, which asks whether a
 document is in review date, and by `/knowledgebase`, which asks what it says. **Same rows, different
