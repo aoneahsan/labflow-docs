@@ -52,7 +52,9 @@ Every change made here is written with a reason and recorded in the audit trail,
 4. **Override one laboratory's limits.**
 5. **Deactivate a plan** — never delete it.
 
-The history table shows where every grant came from. The screen never takes a payment and publishes no price: paid tiers are quoted, not listed. Payment is arranged with the LabFlow team outside the application and recorded here.
+The history table shows where every grant came from. A plan paid by card shows as coming from a payment, and an administrator's grant in force outranks it.
+
+**Card payments** sets whether a laboratory can pay by card, through which provider, and which provider product buys which plan. Every change here is audited and needs a reason. Sandbox subscriptions grant nothing once the environment is Production. Revenue is held by the payment provider and is not copied here.
 
 **Plan enforcement has its own switch, and it is off by default.** Going over a limit never deletes anything; the laboratory's own Plan & billing settings page says which records would become read-only.
 
