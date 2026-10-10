@@ -29,7 +29,7 @@ Below 1024px the rail is replaced by a burger that opens a drawer carrying the s
 
 The top bar holds the laboratory search, the theme control and your account menu, which is where you sign out.
 
-**The search box** finds patients by name or medical record number, specimens by accession number and orders by order number, in your own laboratory only. Type three characters; the list under the box shows up to five of each kind, and only the kinds your role's rail can open. Arrow keys move through it and Enter opens the highlighted record. What you type is never put in the address bar. The Patients page searches the whole register.
+**The search box** finds patients by name or medical record number, specimens by accession number and orders by order number, in your own laboratory only. Type three characters; the list under the box shows up to five of each kind. Arrow keys move through it and Enter opens the highlighted record. What you type is never put in the address bar. The Patients page searches the whole register.
 
 ## The theme control
 
