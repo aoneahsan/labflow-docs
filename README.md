@@ -8,6 +8,8 @@ This repository, **`labflow-docs`**, is the source of truth for the documentatio
 
 The GitHub Actions workflow at [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml) builds the site and deploys it to GitHub Pages on every push to `main`. The custom domain is recorded in [`static/CNAME`](./static/CNAME).
 
+**Maintenance checkpoint (2026-10-14):** The pinned Yarn install, typecheck and production build pass locally. The rebuilt docs were checked in a controlled browser at desktop and mobile widths before this documentation update. The next routine run of the fleet maintenance prompt for LabFlow is eligible on 2026-11-13; see the workspace fleet tracker for evidence and remaining package work.
+
 ## Local development
 
 ```bash

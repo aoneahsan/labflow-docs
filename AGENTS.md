@@ -1,8 +1,8 @@
 # LabFlow documentation instructions
 
-**Last Updated:** 2026-09-14
+**Last Updated:** 2026-10-14 — local build and context verified; next same-prompt eligibility 2026-11-13
 
-| Context Budget Last Verified | 2026-09-14 — AGENTS.md and CLAUDE.md are mirrored; no PENDING-TASKS.md; re-check due 2026-09-24 |
+| Context Budget Last Verified | 2026-10-14 — guides mirrored; no PENDING-TASKS.md; routine re-check due 2026-11-13 |
 |---|---|
 
 
