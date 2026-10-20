@@ -1,6 +1,6 @@
 # LabFlow documentation instructions
 
-**Last Updated:** 2026-10-14 — local build and context verified; next same-prompt eligibility 2026-11-13
+**Last Updated:** 2026-10-20 — local build and context verified; next same-prompt eligibility 2026-11-13
 
 | Context Budget Last Verified | 2026-10-14 — guides mirrored; no PENDING-TASKS.md; routine re-check due 2026-11-13 |
 |---|---|
@@ -31,3 +31,9 @@ This docs repository is public: never commit `.env`, credentials, private planni
 secrets. Use the project package manager and existing scripts. For Vite-backed config keep
 `logLevel: 'info'`, compressed-size reporting enabled, and production source maps disabled. Run the
 documented typecheck/build/link gates; do not deploy unless the owner explicitly requests it.
+
+## Stop-work Git gate
+
+<!-- RULE:stop-work-git-gate v2026-10-20 -->
+
+Before stopping, commit every legitimate change and work-progress checkpoint in this repository and each independent nested repository, fetch and merge the designated upstream, push the documented working branch, then verify an empty worktree and `0 0` ahead/behind. Never stash, discard, reset, rebase, or force-push. If synchronization is blocked, report the exact repository, branch, blocker, and next action instead of calling the work complete. The full workflow remains authoritative in `~/.claude/rules/git-workflow.md`.
