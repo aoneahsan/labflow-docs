@@ -2,7 +2,7 @@
   "name": "docs-site",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "yarn@4.17.1",
+  "packageManager": "yarn@4.18.1",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -20,10 +20,10 @@
     "@docusaurus/preset-classic": "3.10.2",
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.1.1",
-    "docusaurus-plugin-pagefind": "^0.2.1",
+    "docusaurus-plugin-pagefind": "^0.2.2",
     "prism-react-renderer": "^2.4.1",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "strata-storage": "3.1.0"
   },
   "devDependencies": {

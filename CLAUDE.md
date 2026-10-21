@@ -1,6 +1,6 @@
 # LabFlow documentation instructions
 
-**Last Updated:** 2026-10-20 — local build and context verified; next same-prompt eligibility 2026-11-13
+**Last Updated:** 2026-10-21 — Pass 2 packages, build and controlled browser verified; next same-prompt eligibility 2026-11-13
 
 | Context Budget Last Verified | 2026-10-14 — guides mirrored; no PENDING-TASKS.md; routine re-check due 2026-11-13 |
 |---|---|

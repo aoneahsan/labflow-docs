@@ -2999,24 +2999,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/react@npm:^4.0.0":
-  version: 4.1.1
-  resolution: "@iconify/react@npm:4.1.1"
-  dependencies:
-    "@iconify/types": "npm:^2.0.0"
-  peerDependencies:
-    react: ">=16"
-  checksum: 10c0/636fd1d953abd7562d7c4d9c60b5a5c6b202c5b59b0cfb7dab58c4cf5f66334f66d6736f5fe9cdc0e1b6b0c3a7d713f284a296c7fb154dbd20efd339fe0e5f6c
-  languageName: node
-  linkType: hard
-
-"@iconify/types@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@iconify/types@npm:2.0.0"
-  checksum: 10c0/65a3be43500c7ccacf360e136d00e1717f050b7b91da644e94370256ac66f582d59212bdb30d00788aab4fc078262e91c95b805d1808d654b72f6d2072a7e4b2
-  languageName: node
-  linkType: hard
-
 "@isaacs/fs-minipass@npm:^4.0.0":
   version: 4.0.1
   resolution: "@isaacs/fs-minipass@npm:4.0.1"
@@ -6118,30 +6100,29 @@ __metadata:
     "@types/react": "npm:^19.3.0"
     "@types/react-dom": "npm:^19.3.0"
     clsx: "npm:^2.1.1"
-    docusaurus-plugin-pagefind: "npm:^0.2.1"
+    docusaurus-plugin-pagefind: "npm:^0.2.2"
     pagefind: "npm:^1.5.2"
     prism-react-renderer: "npm:^2.4.1"
-    react: "npm:^19.2.8"
-    react-dom: "npm:^19.2.8"
+    react: "npm:^19.3.1"
+    react-dom: "npm:^19.3.1"
     strata-storage: "npm:3.1.0"
     typescript: "npm:~6.0.3"
   languageName: unknown
   linkType: soft
 
-"docusaurus-plugin-pagefind@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "docusaurus-plugin-pagefind@npm:0.2.1"
+"docusaurus-plugin-pagefind@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "docusaurus-plugin-pagefind@npm:0.2.2"
   dependencies:
     "@docsearch/css": "npm:^3.0.0"
     "@docsearch/react": "npm:^3.0.0"
-    "@iconify/react": "npm:^4.0.0"
     fast-glob: "npm:^3.3.0"
   peerDependencies:
     "@docusaurus/core": ">=3.0.0"
     pagefind: ">=1.1.0"
     react: ">=18.0.0"
     react-dom: ">=18.0.0"
-  checksum: 10c0/1cccb506cc6c5f7e2eb3d98de91c23d72107053ce19ff2a6e3d260d5fe9a9b031966d83475f2cccb0baaf3597d120c2886c99ea8a9c1f48b6999a861284e2511
+  checksum: 10c0/62a6bc755fd3126a12f92e13eaef85a3470e31141456642818b8be8029b509dcc961857356de88b4dd92610d98162ed86a26fa14dc5b0cb5b9daf10d855d1dd6
   languageName: node
   linkType: hard
 
@@ -10807,14 +10788,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.2.8":
-  version: 19.2.8
-  resolution: "react-dom@npm:19.2.8"
+"react-dom@npm:^19.3.1":
+  version: 19.3.1
+  resolution: "react-dom@npm:19.3.1"
   dependencies:
-    scheduler: "npm:^0.27.0"
+    scheduler: "npm:^0.28.0"
   peerDependencies:
-    react: ^19.2.8
-  checksum: 10c0/41ba2247b76f687fcfe5bbc99f514d6b851d8c8041c2f5ded36ed05bd7fdc5208cacbac9de51e3e6633e77f96f44cec9f0d4a5a55184dba4e00738f224439134
+    react: ^19.3.1
+  checksum: 10c0/382700916313b2ebc46acee80642f300bb8601eac6a9e7fefade5b8b30e66b05bf3aaa56a3c964589fcd578d27b486e847470c2697d879264e766661ff49fac7
   languageName: node
   linkType: hard
 
@@ -10928,10 +10909,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19.2.8":
-  version: 19.2.8
-  resolution: "react@npm:19.2.8"
-  checksum: 10c0/5f86bdb56426652fd6d989d30a6f2e603c057272c47c9ca3a3fbe190a3a39ee9ccce937d63cfc039717abed1b8891d6a499134bc35311acc07eafdacd86537cd
+"react@npm:^19.3.1":
+  version: 19.3.1
+  resolution: "react@npm:19.3.1"
+  checksum: 10c0/f0ed036d1223562c09c8347858ca712733ea6e27a30db709ee9c3f3f176d3e9e767afce735d59956addf3d030102e256bba82dea635fc1bdb0e01107e98fef10
   languageName: node
   linkType: hard
 
@@ -11381,10 +11362,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.27.0":
-  version: 0.27.0
-  resolution: "scheduler@npm:0.27.0"
-  checksum: 10c0/4f03048cb05a3c8fddc45813052251eca00688f413a3cee236d984a161da28db28ba71bd11e7a3dd02f7af84ab28d39fb311431d3b3772fed557945beb00c452
+"scheduler@npm:^0.28.0":
+  version: 0.28.0
+  resolution: "scheduler@npm:0.28.0"
+  checksum: 10c0/783c8e5ce89d41273a02ed6dc0e3d24bd60e05c9e8f7e3adfc6c82e7c69935500d90e343f1ee26d592fc7504e8a2532573c6368def3e93bfe812391fa53efaf4
   languageName: node
   linkType: hard
 
