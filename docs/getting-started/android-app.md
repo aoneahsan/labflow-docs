@@ -12,8 +12,8 @@ image: /img/labflow-social-card.png
 
 # The Android app
 
-:::warning Not released yet
-The Android app is **built but not published**. It is not on Google Play, and it has **not yet been verified on a physical device**. Until both happen, use LabFlow in a browser at [labflow.aoneahsan.com](https://labflow.aoneahsan.com). This page describes what the app does once it is released.
+:::info On Google Play
+The Android app is on [Google Play](https://play.google.com/store/apps/details?id=com.aoneahsan.labflow). The next version, 2.8.0, is built and waits for its release. LabFlow in a browser at [labflow.aoneahsan.com](https://labflow.aoneahsan.com) is the same application.
 :::
 
 The Android app is **the same application as the website**, packaged in a native shell (Capacitor). The screens, roles and data are identical; there is no reduced mobile edition. The package name is `com.aoneahsan.labflow`.

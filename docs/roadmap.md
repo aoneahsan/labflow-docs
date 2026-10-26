@@ -3,7 +3,7 @@ sidebar_position: 90
 slug: /roadmap
 sidebar_label: Status and limits
 title: Status and limits — what is not built
-description: Where LabFlow stands — every planned product area is built and the web application is live; the Android release and card payments are being finished. This page lists what is not built, and the claims LabFlow does not make.
+description: Where LabFlow stands — every planned product area is built, the web application is live, the Android app is on Google Play and card payments are on. This page lists what is not built, and the claims LabFlow does not make.
 keywords:
   - LabFlow status
   - LabFlow roadmap
@@ -20,8 +20,8 @@ image: /img/labflow-social-card.png
 
 | Area | Where it stands |
 |---|---|
-| **The Android app** | Built, not on Google Play, and not yet verified on a device. See [The Android app](./getting-started/android-app.md) |
-| **Card payments** | Built and switched off. A laboratory's owner pays for Single laboratory or Multi-site by card on the website once the payment provider's account is ready; until then plans are arranged with the LabFlow team |
+| **The Android app** | On [Google Play](https://play.google.com/store/apps/details?id=com.aoneahsan.labflow). The next version, 2.8.0, is built and waits for its release. See [The Android app](./getting-started/android-app.md) |
+| **Card payments** | On. A laboratory's owner pays for Single laboratory or Multi-site by card on the website, under Settings → Plan & billing; see [settings](./user-guide/settings.md) |
 
 ## Things frequently assumed to exist
 

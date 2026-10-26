@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import sitePages, {withLastmod} from './plugins/site-pages';
 
 // This runs in Node.js — don't use client-side code (browser APIs, JSX) here.
 
@@ -230,6 +231,7 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
+          showLastUpdateTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -247,11 +249,14 @@ const config: Config = {
           postsPerPage: 10,
         },
         sitemap: {
-          changefreq: 'weekly',
-          priority: 0.5,
+          // Every URL carries a truthful lastmod and nothing else: search engines ignore changefreq and priority.
+          changefreq: null,
+          priority: null,
           lastmod: 'date',
           ignorePatterns: ['/tags/**'],
           filename: 'sitemap.xml',
+          createSitemapItems: async ({defaultCreateSitemapItems, ...params}) =>
+            withLastmod(await defaultCreateSitemapItems(params), '/blog'),
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -268,6 +273,8 @@ const config: Config = {
     // needed) and over the Canary theme (which peers React 17/18; this site is
     // React 19).
     ['docusaurus-plugin-pagefind', {}],
+    // `/sitemap` and `/feed` for people, `/feed.xml` for feed readers (kit TASK-032).
+    sitePages({blogPath: '/blog'}),
   ],
 
   themeConfig: {
@@ -336,7 +343,8 @@ const config: Config = {
             {label: 'Documentation source', href: DOCS_REPO},
             {label: 'Blog', to: '/blog'},
             {label: 'RSS Feed', href: `${SITE_URL}/blog/rss.xml`},
-            {label: 'Sitemap', href: `${SITE_URL}/sitemap.xml`},
+            {label: 'Sitemap', to: '/sitemap'},
+            {label: 'Feed', to: '/feed'},
           ],
         },
         {

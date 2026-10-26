@@ -42,7 +42,7 @@ Every page here describes behaviour the application ships today. What is **not**
 
 ## Where to use it
 
-LabFlow is a web application at [labflow.aoneahsan.com](https://labflow.aoneahsan.com), responsive from phone to desktop. An [Android app](./getting-started/android-app.md) of the same application is built and not yet released. There is **no iOS app**, no browser extension and no EMR add-on.
+LabFlow is a web application at [labflow.aoneahsan.com](https://labflow.aoneahsan.com), responsive from phone to desktop. An [Android app](./getting-started/android-app.md) of the same application is on [Google Play](https://play.google.com/store/apps/details?id=com.aoneahsan.labflow). There is **no iOS app**, no browser extension and no EMR add-on.
 
 **There is no public or REST API.** LabFlow has no keyed API, no OpenAPI document and no webhook surface. It talks to its own database and a small set of server functions.
 
