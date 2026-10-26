@@ -2,7 +2,7 @@
 sidebar_position: 3
 slug: /getting-started/finding-your-way-around
 title: Finding your way around
-description: The LabFlow application shell — the navigation rail built for each role, the mobile drawer, the theme control and its ten axes, and how screens are reached by address.
+description: The LabFlow application shell — the navigation rail built for each role, the mobile drawer, the theme control and its nine axes, the page tours, and how screens are reached by address.
 keywords:
   - LabFlow navigation
   - LabFlow app shell
@@ -33,9 +33,13 @@ The top bar holds the laboratory search, the theme control and your account menu
 
 ## The theme control
 
-One control, one panel, **ten axes**: light and dark, colour treatment, corner radius, density, text scale, typeface, surface style, motion, cursor and sound. Every axis is applied before the first paint, so there is no flash of the wrong theme, and the choice is remembered on your device.
+One control, one panel, **nine axes**: light and dark, colour treatment, corner radius, density, text scale, typeface, surface style, motion and sound. The pointer is always your browser's own. Every axis is applied before the first paint, so there is no flash of the wrong theme, and the choice is remembered on your device.
 
 It is available signed in and signed out.
+
+## Page tours
+
+Directly before the theme control sits **Take a tour of this page** — the same button in the same place on every page that has a tour. See [Page tours and How LabFlow works](./tours-and-walkthrough).
 
 ## Breadcrumbs and record links
 

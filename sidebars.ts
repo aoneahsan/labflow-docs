@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/quick-start',
         'getting-started/create-or-join-a-laboratory',
         'getting-started/finding-your-way-around',
+        'getting-started/tours-and-walkthrough',
         'getting-started/android-app',
       ],
     },
