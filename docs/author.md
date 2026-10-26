@@ -31,7 +31,7 @@ If you want LabFlow at your laboratory, email is the fastest channel.
 
 React 19 and TypeScript on the front, one hosted Supabase Postgres project behind it, and row-level security as the actual access boundary rather than a layer of application checks over an open database. The schema is declared in TypeScript and the migrations are generated from it.
 
-The design principles that shape it are on the [architecture pages](./architecture/overview): one writer per value, append-only trails, versioned results, and no number on a screen that the database did not compute.
+The design principles that shape it are on the [architecture pages](./architecture/overview.md): one writer per value, append-only trails, versioned results, and no number on a screen that the database did not compute.
 
 ## Licensing
 

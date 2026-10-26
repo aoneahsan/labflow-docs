@@ -74,4 +74,4 @@ take for a perfect month rather than an empty one.
 
 ## One invoice, and the patient's side
 
-**`/billing/invoices/:invoiceId`** opens one invoice with its lines and payments. **A patient invoice is never paid by card in LabFlow** (only a laboratory's own plan is). In the [patient portal](./patient-portal#invoices-without-a-checkout) a patient can tell the laboratory they intend to pay; the invoice stays unpaid until the laboratory records the payment here.
+**`/billing/invoices/:invoiceId`** opens one invoice with its lines and payments. **A patient invoice is never paid by card in LabFlow** (only a laboratory's own plan is). In the [patient portal](./patient-portal.md#invoices-without-a-checkout) a patient can tell the laboratory they intend to pay; the invoice stays unpaid until the laboratory records the payment here.

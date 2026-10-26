@@ -62,7 +62,7 @@ The history table shows where every grant came from. A plan paid by card shows a
 
 - **Modules** — Interoperability, Research and biobanking, Telemedicine, Population health. A module switched off is unavailable to everybody, including laboratories whose plan includes it, and its navigation entries disappear. This is for a broken or withdrawn module, not for commercial gating.
 - **Maintenance mode** — saved with a reason and an optional *expected back* time. Everybody who is not a platform administrator sees the **`/maintenance`** screen, and the server refuses their requests until it is turned off. Administrators keep working.
-- **Referral programme** — see [Referral programme](./referral-programme#what-an-administrator-controls).
+- **Referral programme** — see [Referral programme](./referral-programme.md#what-an-administrator-controls).
 
 ## The review queue
 
@@ -74,4 +74,4 @@ Opening a submitted document (an identity document or an application's accredita
 
 Three tabs — Activity, Laboratory billing and Telemetry — filtered by a period of at most a year and by laboratory. **Laboratory billing** is what laboratories invoiced their own patients and insurers; it is labelled as not LabFlow's revenue. **Platform revenue is "not computed"**, because no plan carries a published price.
 
-**Related:** [Listing a laboratory](./listing-and-my-lab) · [Compliance and audit](./compliance-and-audit)
+**Related:** [Listing a laboratory](./listing-and-my-lab.md) · [Compliance and audit](./compliance-and-audit.md)

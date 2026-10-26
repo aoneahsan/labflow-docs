@@ -22,7 +22,7 @@ image: /img/labflow-social-card.png
 It is live at **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)**, and it is built by the LabFlow team.
 
 :::info This documentation describes what is built
-Every page here describes behaviour the application ships today. What is **not** built, and what is built but not yet released, is on [Status and limits](./roadmap).
+Every page here describes behaviour the application ships today. What is **not** built, and what is built but not yet released, is on [Status and limits](./roadmap.md).
 :::
 
 ## The two halves
@@ -36,29 +36,29 @@ Every page here describes behaviour the application ships today. What is **not**
 | Who | Where |
 |---|---|
 | **Laboratory staff** — owner, manager, pathologist, senior technician, technician, quality officer, phlebotomist, receptionist, billing clerk | The laboratory system, with a navigation rail built for each role |
-| **Patients** | The [patient portal](./user-guide/patient-portal) |
-| **Clinicians** | The [clinician portal](./user-guide/clinician-portal) |
-| **The LabFlow team** | [Platform administration](./user-guide/platform-administration) |
+| **Patients** | The [patient portal](./user-guide/patient-portal.md) |
+| **Clinicians** | The [clinician portal](./user-guide/clinician-portal.md) |
+| **The LabFlow team** | [Platform administration](./user-guide/platform-administration.md) |
 
 ## Where to use it
 
-LabFlow is a web application at [labflow.aoneahsan.com](https://labflow.aoneahsan.com), responsive from phone to desktop. An [Android app](./getting-started/android-app) of the same application is built and not yet released. There is **no iOS app**, no browser extension and no EMR add-on.
+LabFlow is a web application at [labflow.aoneahsan.com](https://labflow.aoneahsan.com), responsive from phone to desktop. An [Android app](./getting-started/android-app.md) of the same application is built and not yet released. There is **no iOS app**, no browser extension and no EMR add-on.
 
 **There is no public or REST API.** LabFlow has no keyed API, no OpenAPI document and no webhook surface. It talks to its own database and a small set of server functions.
 
-**There is no live interface to an analyser, EMR or hospital system.** HL7 v2 and FHIR R4 are [exported and imported as files](./user-guide/interoperability).
+**There is no live interface to an analyser, EMR or hospital system.** HL7 v2 and FHIR R4 are [exported and imported as files](./user-guide/interoperability.md).
 
 ## The stack, in one paragraph
 
 LabFlow is a React 19 + TypeScript single-page application built with Vite, routed by TanStack Router, with server state in TanStack Query, forms in `react-hook-form` + Zod, accessible primitives from React Aria Components, styling in Tailwind CSS v4, charts in D3, and every user-visible string routed through i18next. Its backend is **Supabase — one hosted Postgres project, serving development and production both** — where security is **row-level security, deny-by-default on every table**. Server-side work that needs more than a query runs in Supabase Edge Functions. File uploads go to FilesHub as private objects, never to the database. Errors go to Sentry, with the query string stripped. **Firebase Hosting serves the built static files, and that is all Firebase does** — there is no Firebase data tier, no Firestore, and no Firebase Authentication.
 
-See [Architecture](./architecture/overview) for how those pieces fit.
+See [Architecture](./architecture/overview.md) for how those pieces fit.
 
 ## Signing in
 
 **Authentication is Google sign-in through Supabase, and LabFlow holds no password of its own.** Your laboratory lists a Google account against your user record, and that account is your key — which also means the laboratory can withdraw it without waiting for anybody here. Whatever two-step verification your organisation already requires of a Google account applies before LabFlow is reached.
 
-After the account comes the laboratory: an account can hold memberships in several, and the one you pick decides your role and everything you can see. [Getting started](./getting-started/quick-start) walks through it.
+After the account comes the laboratory: an account can hold memberships in several, and the one you pick decides your role and everything you can see. [Getting started](./getting-started/quick-start.md) walks through it.
 
 ## On compliance, said honestly
 
@@ -68,14 +68,14 @@ LabFlow carries no FDA clearance, no CAP or CLIA accreditation and no SOC 2 atte
 
 ## Who it is for
 
-Independent clinical laboratories and reference laboratories that want patients, orders, specimens and results in one system with a real chain of custody and a real release gate. If you need a live analyser or EMR interface, read [Status and limits](./roadmap) first — LabFlow does not have one.
+Independent clinical laboratories and reference laboratories that want patients, orders, specimens and results in one system with a real chain of custody and a real release gate. If you need a live analyser or EMR interface, read [Status and limits](./roadmap.md) first — LabFlow does not have one.
 
 ## How this documentation is organised
 
-- **[Getting started](./getting-started/quick-start)** — create an account, create or join a laboratory, find your way around.
-- **[User guide](./user-guide/overview)** — one page per shipped area of the product, including the patient and clinician portals and platform administration.
-- **[Architecture](./architecture/overview)** — the database, tenancy and row-level security, and the record-integrity rules.
-- **[Status and limits](./roadmap)** — what is not built, and what is built but not yet released.
-- **[About LabFlow](./author)** — how to contact the LabFlow team.
+- **[Getting started](./getting-started/quick-start.md)** — create an account, create or join a laboratory, find your way around.
+- **[User guide](./user-guide/overview.md)** — one page per shipped area of the product, including the patient and clinician portals and platform administration.
+- **[Architecture](./architecture/overview.md)** — the database, tenancy and row-level security, and the record-integrity rules.
+- **[Status and limits](./roadmap.md)** — what is not built, and what is built but not yet released.
+- **[About LabFlow](./author.md)** — how to contact the LabFlow team.
 
-**Next:** [Quick start →](./getting-started/quick-start)
+**Next:** [Quick start →](./getting-started/quick-start.md)

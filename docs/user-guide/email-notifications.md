@@ -26,7 +26,7 @@ Every email uses one branded layout with a plain-text part. Everything an email 
 - A staff member's *"A critical result is verified"* follows the same rule: no patient, test or value.
 - *"An order is placed for your patient"* does not name the patient.
 
-Two emails an older version of the product sent are gone for the same reason: **no two-factor code is sent by email** (two-factor is an authenticator app), and **LabFlow never mails a report link** to an address somebody typed — a patient shares a result with the [one-result link](./patient-portal#sharing-and-stopping-it) instead.
+Two emails an older version of the product sent are gone for the same reason: **no two-factor code is sent by email** (two-factor is an authenticator app), and **LabFlow never mails a report link** to an address somebody typed — a patient shares a result with the [one-result link](./patient-portal.md#sharing-and-stopping-it) instead.
 
 ## What is emailed
 
@@ -43,6 +43,6 @@ There is **no welcome email**: every account begins with an invitation or an app
 
 ## Feedback requests
 
-A feedback email goes to the patient's portal account address. The link opens `/feedback/:token`, which signs nobody in and shows no result. See [Feedback after a visit](./patient-portal#feedback-after-a-visit).
+A feedback email goes to the patient's portal account address. The link opens `/feedback/:token`, which signs nobody in and shows no result. See [Feedback after a visit](./patient-portal.md#feedback-after-a-visit).
 
-**Related:** [Patient portal](./patient-portal) · [Settings](./settings)
+**Related:** [Patient portal](./patient-portal.md) · [Settings](./settings.md)

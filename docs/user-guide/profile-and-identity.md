@@ -20,7 +20,7 @@ image: /img/labflow-social-card.png
 
 Your email address lives on the account itself and is changed through the account, not here.
 
-Anything that belongs to a laboratory — your role, your release scope, your job title — is per-laboratory and lives on the membership. See [users and access](./users-and-access).
+Anything that belongs to a laboratory — your role, your release scope, your job title — is per-laboratory and lives on the membership. See [users and access](./users-and-access.md).
 
 ## Identity verification
 
@@ -44,4 +44,4 @@ LabFlow does not read the document, does not extract a name or a date, and does 
 
 An uploaded document is stored as a **private object**, and its storage identifier is **not readable by the browser at all** — not yours, not anyone's. The page promises "no view here, for you or for anybody else", and the permission model is what makes that true rather than a policy nobody can check.
 
-A reviewer on the LabFlow team opens the document server-side, and the opening is recorded — see [the review queue](./platform-administration#the-review-queue).
+A reviewer on the LabFlow team opens the document server-side, and the opening is recorded — see [the review queue](./platform-administration.md#the-review-queue).

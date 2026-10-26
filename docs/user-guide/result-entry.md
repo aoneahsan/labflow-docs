@@ -28,7 +28,7 @@ An accession is assigned **at receipt and does not move** when a tube is aliquot
 
 The point of the screen is that the context arrives with the field. The reference interval is **already resolved for this patient** — by age, sex and method — so the flag is part of the result rather than something the reader has to work out from a printed range.
 
-See [panels and reference ranges](./panels-and-reference-ranges) for how the interval is chosen.
+See [panels and reference ranges](./panels-and-reference-ranges.md) for how the interval is chosen.
 
 ## One write path, online or offline
 
@@ -44,6 +44,6 @@ Search by **accession** rather than by test name. One specimen carries several t
 
 ## "Amended" is not a status
 
-You will not find it in the filter. An amendment is a **new version** of the result pointing at the one it supersedes — see [result review and release](./result-review-and-release).
+You will not find it in the filter. An amendment is a **new version** of the result pointing at the one it supersedes — see [result review and release](./result-review-and-release.md).
 
-**Next:** [Result review and release →](./result-review-and-release)
+**Next:** [Result review and release →](./result-review-and-release.md)

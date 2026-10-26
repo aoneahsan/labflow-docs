@@ -22,7 +22,7 @@ LabFlow has **no live connection** to any analyser, EMR or hospital system. It s
 
 Both directions run in the browser; nothing is sent to a server for conversion.
 
-**Export.** A released report downloads as an **HL7 v2 `ORU^R01` message** or a **FHIR R4 `DiagnosticReport` bundle**, from the report's **Download** group in the [patient portal](./patient-portal#reports-and-their-versions). What happens to the file afterwards is up to the person who downloaded it.
+**Export.** A released report downloads as an **HL7 v2 `ORU^R01` message** or a **FHIR R4 `DiagnosticReport` bundle**, from the report's **Download** group in the [patient portal](./patient-portal.md#reports-and-their-versions). What happens to the file afterwards is up to the person who downloaded it.
 
 **Import.** On **`/orders`**, **Import an HL7 order** reads one HL7 v2 order message (`ORM^O01`), pasted or chosen as a `.hl7` or `.txt` file up to 64 KB. It creates a **draft** order: *"Nothing is created until you confirm it."* In the order drawer a person then chooses **Place this order** or **Discard draft**. A file that is not an `ORM^O01` message is refused and nothing is read from it.
 
@@ -48,4 +48,4 @@ Systems are added and edited in a **Register a system** dialog. A laboratory can
 
 `/settings/integrations` lists the registered partner systems and the analysers results are entered from. Nothing in it says "Connected".
 
-**Related:** [Orders](./orders) · [Stock and equipment](./inventory-and-equipment)
+**Related:** [Orders](./orders.md) · [Stock and equipment](./inventory-and-equipment.md)

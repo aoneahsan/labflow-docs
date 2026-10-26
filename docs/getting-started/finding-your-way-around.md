@@ -17,11 +17,11 @@ Signed in, LabFlow is one shell: a navigation rail on the left, a top bar, and t
 
 ## The navigation rail
 
-The rail is **built for your role**. A technician sees the bench, quality and reference groups; a receptionist sees the front desk; a laboratory manager sees overview, operations, the laboratory and interoperability; a quality officer sees quality, compliance and procedure; a billing clerk sees billing and stock; a laboratory owner sees My laboratory, Requests and Account. Patients and clinicians get their own shells — the [patient portal](../user-guide/patient-portal) and the [clinician portal](../user-guide/clinician-portal) — and platform administrators get [the platform](../user-guide/platform-administration).
+The rail is **built for your role**. A technician sees the bench, quality and reference groups; a receptionist sees the front desk; a laboratory manager sees overview, operations, the laboratory and interoperability; a quality officer sees quality, compliance and procedure; a billing clerk sees billing and stock; a laboratory owner sees My laboratory, Requests and Account. Patients and clinicians get their own shells — the [patient portal](../user-guide/patient-portal.md) and the [clinician portal](../user-guide/clinician-portal.md) — and platform administrators get [the platform](../user-guide/platform-administration.md).
 
 **It shows only entries this person can actually open.** A group whose every entry is hidden is not drawn at all, rather than left as an empty heading. An entry belonging to a module a platform administrator has switched off is hidden too, and its address is refused.
 
-Every screen also has an address, and the [user guide](../user-guide/overview) names each one, so a page not on your rail can still be linked to directly — access is still checked when it opens.
+Every screen also has an address, and the [user guide](../user-guide/overview.md) names each one, so a page not on your rail can still be linked to directly — access is still checked when it opens.
 
 Below 1024px the rail is replaced by a burger that opens a drawer carrying the same entries. It is the same application at every width, not a reduced one.
 
@@ -39,7 +39,7 @@ It is available signed in and signed out.
 
 ## Page tours
 
-Directly before the theme control sits **Take a tour of this page** — the same button in the same place on every page that has a tour. See [Page tours and How LabFlow works](./tours-and-walkthrough).
+Directly before the theme control sits **Take a tour of this page** — the same button in the same place on every page that has a tour. See [Page tours and How LabFlow works](./tours-and-walkthrough.md).
 
 ## Breadcrumbs and record links
 
@@ -49,4 +49,4 @@ Records link to each other rather than making you navigate. A result names its p
 
 **No name, email or employee number ever appears in a LabFlow address.** A person is addressed by a printable reference (`u-1001`), not by anything identifying.
 
-Patient search is the deliberate exception: the search box writes what you typed into `?q=`, so a search can be shared, bookmarked and reopened. That is a decision made with its cost understood — see [architecture](../architecture/overview) for what follows from it.
+Patient search is the deliberate exception: the search box writes what you typed into `?q=`, so a search can be shared, bookmarked and reopened. That is a decision made with its cost understood — see [architecture](../architecture/overview.md) for what follows from it.

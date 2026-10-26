@@ -32,7 +32,7 @@ The clinician portal lives under **`/clinician`**. *"This is a reading surface, 
 
 ## Getting a laboratory to accept your orders
 
-An order needs a laboratory that has accepted your practice. You ask with a request at **`/requests/new`** — one laboratory per request — and follow it at **`/my-requests`**. The laboratory answers from its side (see [Listing a laboratory and My lab](./listing-and-my-lab#requests)).
+An order needs a laboratory that has accepted your practice. You ask with a request at **`/requests/new`** — one laboratory per request — and follow it at **`/my-requests`**. The laboratory answers from its side (see [Listing a laboratory and My lab](./listing-and-my-lab.md#requests)).
 
 On `/clinician/profile`, *"not asked" is not "refused"*: a laboratory you never asked has made no decision about you. Your registration number is checked by a laboratory before your first order is accepted, and a callback telephone number is required, because it is the number a laboratory rings when a critical value comes back.
 
@@ -50,4 +50,4 @@ If the page fails to load, it says so and does not show an empty queue: the labo
 
 Only records they are clinically involved in: orders placed by them or their practice. Anything else answers *"This record is not yours to read."* Amended results show both values — the one you had and the one that replaced it.
 
-**Related:** [Result review and release](./result-review-and-release) · [Patient portal](./patient-portal)
+**Related:** [Result review and release](./result-review-and-release.md) · [Patient portal](./patient-portal.md)

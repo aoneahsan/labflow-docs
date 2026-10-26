@@ -113,6 +113,9 @@ const config: Config = {
 
   url: SITE_URL,
   baseUrl: '/',
+  // GitHub Pages serves every page as <path>/index.html and 301s the bare form, so every URL the site emits
+  // (sitemap, canonical, links) carries the slash and answers 200 directly (2026-10-26).
+  trailingSlash: true,
 
   organizationName: 'aoneahsan',
   // 🔴 The PAGES repo, not the app repo. `lab-system` is private and is not what

@@ -39,11 +39,11 @@ The ordered test matters more than it looks. *A test with no result yet is a rea
 
 `stat` · `urgent` · `routine`. Priority is **part of the order, not a note on it**, so a routine draw and a stat draw are different objects to a worklist rather than different phrasing to a human.
 
-Priority records **what the clinician asked for, never what the laboratory achieved.** How long it actually took is a separate question, answered on the [dashboard](./dashboard).
+Priority records **what the clinician asked for, never what the laboratory achieved.** How long it actually took is a separate question, answered on the [dashboard](./dashboard.md).
 
 ## Importing an HL7 order
 
-**Import an HL7 order** on `/orders` reads one HL7 v2 order message (`ORM^O01`), pasted or chosen as a file, **in the browser**. It creates a **draft** order and nothing else: a person then chooses **Place this order** or **Discard draft** in the drawer. There is no live feed; see [Interoperability](./interoperability#hl7-v2-and-fhir-r4-as-files).
+**Import an HL7 order** on `/orders` reads one HL7 v2 order message (`ORM^O01`), pasted or chosen as a file, **in the browser**. It creates a **draft** order and nothing else: a person then chooses **Place this order** or **Discard draft** in the drawer. There is no live feed; see [Interoperability](./interoperability.md#hl7-v2-and-fhir-r4-as-files).
 
 Orders reach the laboratory from clinicians' order forms, the front desk, accepted requests and imported HL7 order files, and a person confirms each one.
 

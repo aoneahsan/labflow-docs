@@ -39,4 +39,4 @@ The app asks for network access and nothing sensitive: no camera, location, cont
 
 Links to `labflow.aoneahsan.com` open in the app on a build from Google Play once the Play signing fingerprint is published; until then they open in the browser. The `labflow://` scheme works either way.
 
-**Related:** [Quick start](./quick-start) · [Finding your way around](./finding-your-way-around)
+**Related:** [Quick start](./quick-start.md) · [Finding your way around](./finding-your-way-around.md)

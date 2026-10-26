@@ -13,7 +13,7 @@ image: /img/labflow-social-card.png
 
 # Research, population health and telemedicine
 
-These three areas are deliberately small, and each is a module a platform administrator can switch off for everybody (see [Platform administration](./platform-administration#platform-settings-and-maintenance)). Each has one page with tabs.
+These three areas are deliberately small, and each is a module a platform administrator can switch off for everybody (see [Platform administration](./platform-administration.md#platform-settings-and-maintenance)). Each has one page with tabs.
 
 ## Research
 
@@ -44,4 +44,4 @@ These three areas are deliberately small, and each is a module a platform admini
 - **Medications** — self-reported by the patient and labelled that way, with an optional note of which tests a medication may interfere with.
 - **Symptom checker** — the page states why it refuses to be one and points to a consultation instead.
 
-**Related:** [Reports and analytics](./analytics) · [Compliance and audit](./compliance-and-audit)
+**Related:** [Reports and analytics](./analytics.md) · [Compliance and audit](./compliance-and-audit.md)

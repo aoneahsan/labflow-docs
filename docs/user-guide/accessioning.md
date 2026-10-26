@@ -41,4 +41,4 @@ The run starts empty and the log is **newest first**, because a technician looks
 
 A specimen that was rejected cannot be scanned back onto a bench as though nothing had happened. The refusal lives in the database, not only in the screen that asks.
 
-**Next:** [Labels and barcodes →](./labels)
+**Next:** [Labels and barcodes →](./labels.md)

@@ -14,7 +14,7 @@ image: /img/labflow-social-card.png
 
 # Create an account
 
-LabFlow is a hosted product. There is nothing to install and nothing to download — open **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)** and sign in. An [Android app](./android-app) is built and not yet released.
+LabFlow is a hosted product. There is nothing to install and nothing to download — open **[labflow.aoneahsan.com](https://labflow.aoneahsan.com)** and sign in. An [Android app](./android-app.md) is built and not yet released.
 
 ## There is no password
 
@@ -41,7 +41,7 @@ That sign-in is recorded as an event, with your role **stamped on the row** rath
 
 `/register` is the same Google step for somebody who has not used LabFlow before. It collects a little context first — your name, your town, your job title — and hands it forward, so the setup wizard arrives pre-filled rather than blank.
 
-After registering you land on `/onboarding`. See [create or join a laboratory](./create-or-join-a-laboratory).
+After registering you land on `/onboarding`. See [create or join a laboratory](./create-or-join-a-laboratory.md).
 
 ## When the account works but LabFlow says you have no access
 
@@ -65,4 +65,4 @@ A laboratory the LabFlow team has suspended is still listed at sign-in but canno
 
 While maintenance mode is on, everybody except platform administrators sees the maintenance screen at `/maintenance`, with the reason and, when given, when LabFlow is expected back.
 
-**Next:** [Create or join a laboratory →](./create-or-join-a-laboratory)
+**Next:** [Create or join a laboratory →](./create-or-join-a-laboratory.md)

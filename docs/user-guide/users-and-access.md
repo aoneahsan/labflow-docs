@@ -72,6 +72,6 @@ Every change is appended to a trail nothing can edit: `invited` · `accepted` ·
 
 It is written by a database trigger, so **every** writer is recorded — not only the ones that went through this page. No client role can insert, update or delete a row in it.
 
-Identity events are not copied here; they are read from the [identity verification](./profile-and-identity) record, which owns that fact.
+Identity events are not copied here; they are read from the [identity verification](./profile-and-identity.md) record, which owns that fact.
 
 The **Activity** tab also lists the results the person entered, checked, released or amended, with the specimen's accession number and never the value — open the result to read it.

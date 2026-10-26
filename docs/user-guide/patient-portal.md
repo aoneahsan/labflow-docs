@@ -43,7 +43,7 @@ A report is a fixed snapshot of released results that the laboratory puts togeth
 
 - A corrected report is a **new version**. The earlier one is kept exactly as it was, and the page tells you which version you are reading and whether a newer one exists.
 - **Questions and notes** under a report are append-only. Nothing written there is edited or deleted.
-- **Download** gives the report as an **HL7 v2 message** or a **FHIR R4 bundle** — *"files for another system to read. There is no live feed, so nothing is sent anywhere unless you send the file yourself."* See [HL7 v2 and FHIR as files](./interoperability#hl7-v2-and-fhir-r4-as-files).
+- **Download** gives the report as an **HL7 v2 message** or a **FHIR R4 bundle** — *"files for another system to read. There is no live feed, so nothing is sent anywhere unless you send the file yourself."* See [HL7 v2 and FHIR as files](./interoperability.md#hl7-v2-and-fhir-r4-as-files).
 
 ## Invoices, without a checkout
 
@@ -67,4 +67,4 @@ An invoice page shows what it covers and who it is from. **Nothing is purchasabl
 
 A laboratory may ask for feedback through a link to `/feedback/:token`. That page signs nobody in and shows no result. Comments are read by the laboratory's quality team and are not scored by software. *"Nobody replies to this box, and nothing here reaches a clinician."*
 
-**Related:** [Email notifications](./email-notifications) · [Clinician portal](./clinician-portal)
+**Related:** [Email notifications](./email-notifications.md) · [Clinician portal](./clinician-portal.md)

@@ -29,7 +29,7 @@ The delta check — this result against this patient's previous one — **lives 
 
 Releasing is a property of the role. Four roles carry it: **senior technician, pathologist, laboratory manager and quality officer.**
 
-On top of the role sits the **release scope** — the disciplines a particular membership may release, granted at [`/users`](./users-and-access) beside the role. An empty scope means *enters only*.
+On top of the role sits the **release scope** — the disciplines a particular membership may release, granted at [`/users`](./users-and-access.md) beside the role. An empty scope means *enters only*.
 
 Both are enforced **in the database**, not only in the screen. A person without the role, or releasing outside their disciplines, is refused by the database even if the request never went through the page.
 
@@ -69,4 +69,4 @@ Every version above the first **requires a reason**, enforced by the database ra
 
 `pending` · `in_progress` · `entered` · `released` · `rejected` · `cancelled`
 
-Two further values, `preliminary` and `validated`, exist in the vocabulary and are **never written today** — see [Status and limits](../roadmap#two-result-statuses-that-exist-but-are-never-written).
+Two further values, `preliminary` and `validated`, exist in the vocabulary and are **never written today** — see [Status and limits](../roadmap.md#two-result-statuses-that-exist-but-are-never-written).

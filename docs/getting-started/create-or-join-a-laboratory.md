@@ -51,16 +51,16 @@ The wizard derives a time zone from the town you entered, falling back to the de
 
 Invitations are sent as part of creating the laboratory. **An invitation whose email fails to send is removed**, so no half-invitation is left behind; the page tells you which addresses went. A failed invitation does not undo the laboratory.
 
-Colleagues accept by signing in with the invited address and choosing the laboratory. More can be added later — see [users and access](../user-guide/users-and-access).
+Colleagues accept by signing in with the invited address and choosing the laboratory. More can be added later — see [users and access](../user-guide/users-and-access.md).
 
 ## The accreditation certificate
 
-If you attach one, it is uploaded as a **private object**. Its storage identifier is not readable by the browser at all — the same rule that protects [identity documents](../user-guide/profile-and-identity).
+If you attach one, it is uploaded as a **private object**. Its storage identifier is not readable by the browser at all — the same rule that protects [identity documents](../user-guide/profile-and-identity.md).
 
 ## What the wizard does not do
 
 It creates the laboratory, its people and its draft listing. It does **not** load a test catalogue, reference ranges or critical-value thresholds — those are yours to configure, and the wizard says so at the end rather than pretending otherwise. LabFlow ships no pre-loaded national test menu and no default clinical reference intervals; shipping either would mean shipping somebody else's clinical decisions as your default.
 
-Start with [the test catalogue](../user-guide/test-catalogue).
+Start with [the test catalogue](../user-guide/test-catalogue.md).
 
-**Next:** [Finding your way around →](./finding-your-way-around)
+**Next:** [Finding your way around →](./finding-your-way-around.md)

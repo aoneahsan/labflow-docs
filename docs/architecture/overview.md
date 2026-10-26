@@ -70,5 +70,5 @@ Sentry, Amplitude, Clarity, Google Analytics and push are each **gated on their 
 
 ## Read next
 
-- [Tenancy and row-level security](./tenancy-and-rls) — how two laboratories share one database.
-- [Records and trails](./records-and-trails) — one writer per value, append-only history, and versioned results.
+- [Tenancy and row-level security](./tenancy-and-rls.md) — how two laboratories share one database.
+- [Records and trails](./records-and-trails.md) — one writer per value, append-only history, and versioned results.

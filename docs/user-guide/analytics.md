@@ -16,7 +16,7 @@ image: /img/labflow-social-card.png
 
 Every figure on these pages is computed from **released** results and recorded events. None of them writes anything, so a page failing to load cannot affect a patient record. None of them uses machine learning: where a rule is evaluated, it is arithmetic on data the laboratory recorded.
 
-For the patient-facing report — the frozen, versioned document a patient reads — see [the patient portal](./patient-portal#reports-and-their-versions).
+For the patient-facing report — the frozen, versioned document a patient reads — see [the patient portal](./patient-portal.md#reports-and-their-versions).
 
 ## Saved reports
 
@@ -47,10 +47,10 @@ Where the product's data cannot run a rule, it says so rather than faking a resu
 
 ## Quality tools
 
-Turnaround, six sigma, stock cover and satisfaction are one screen with four tabs under `/quality/*`, documented with [quality control](./quality-control#the-four-quality-tools).
+Turnaround, six sigma, stock cover and satisfaction are one screen with four tabs under `/quality/*`, documented with [quality control](./quality-control.md#the-four-quality-tools).
 
 ## Other analytical areas
 
-Research registers, population counts and telemedicine bookings have their own page: [Research, population health and telemedicine](./research-population-telemedicine).
+Research registers, population counts and telemedicine bookings have their own page: [Research, population health and telemedicine](./research-population-telemedicine.md).
 
-**Related:** [Dashboard](./dashboard) · [Laboratory analytics in My lab](./listing-and-my-lab#my-lab)
+**Related:** [Dashboard](./dashboard.md) · [Laboratory analytics in My lab](./listing-and-my-lab.md#my-lab)

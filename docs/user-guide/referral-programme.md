@@ -40,7 +40,7 @@ Your link still works and a new account is still attached to it, but **nothing i
 
 ## What an administrator controls
 
-Under **Referral programme** in the platform settings (see [Platform administration](./platform-administration#platform-settings-and-maintenance)), every number is an administrator field, read by the server when a referral is confirmed:
+Under **Referral programme** in the platform settings (see [Platform administration](./platform-administration.md#platform-settings-and-maintenance)), every number is an administrator field, read by the server when a referral is confirmed:
 
 | Field | Notes |
 |---|---|

@@ -16,7 +16,7 @@ image: /img/labflow-social-card.png
 
 A laboratory appears in the public directory at `/laboratories` only after a person on the LabFlow team has reviewed its application. **Listing a laboratory is not self-service**, because a listing is a claim a clinician relies on.
 
-This page is for laboratory owners. Creating a laboratory workspace itself is covered in [Create or join a laboratory](../getting-started/create-or-join-a-laboratory).
+This page is for laboratory owners. Creating a laboratory workspace itself is covered in [Create or join a laboratory](../getting-started/create-or-join-a-laboratory.md).
 
 ## Applying
 
@@ -39,7 +39,7 @@ An application can be left half-finished; the draft is kept until you send it. *
 - **Not approved** — the reviewer's reason is shown, and **Answer and resend** reopens the same application with your answers in it, so a refusal is answered rather than restarted.
 - **Withdrawn** — you closed it, and can send a new one when ready.
 
-The reviewer's side is described in [Platform administration](./platform-administration#the-review-queue).
+The reviewer's side is described in [Platform administration](./platform-administration.md#the-review-queue).
 
 ## My lab
 
@@ -65,7 +65,7 @@ The three lists are read by the public directory, so an entry left wrong in them
 
 A request asks a laboratory *"whether it can take this work"* — it is not a booking and not a quote. It goes to one laboratory; sending the same work to three is three requests.
 
-- **Inbound** (`/my-lab/requests`) — clinicians waiting to hear from you. Accepting a clinician's request is what lets that clinician [order from you](./clinician-portal#getting-a-laboratory-to-accept-your-orders).
+- **Inbound** (`/my-lab/requests`) — clinicians waiting to hear from you. Accepting a clinician's request is what lets that clinician [order from you](./clinician-portal.md#getting-a-laboratory-to-accept-your-orders).
 - **Sent** (`/requests/new`, then `/my-requests`) — requests you have sent to other laboratories. There is nothing to accept on your side; the page shows whether they have answered and how long you have waited.
 
-**Related:** [Users and access](./users-and-access) · [Referral programme](./referral-programme)
+**Related:** [Users and access](./users-and-access.md) · [Referral programme](./referral-programme.md)
