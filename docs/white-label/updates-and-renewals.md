@@ -7,12 +7,12 @@ keywords:
   - licence key renewal
 image: /img/labflow-social-card.png
 last_update:
-  date: 2026-11-13
+  date: 2026-11-14
 ---
 
 # Updates and renewals
 
-Every licence and every buyout includes product updates for a set number of months from the day it is paid. The number is shown at checkout and on the [updates page](https://labflow.aoneahsan.com/white-label/updates/), read from our licensing service.
+Every licence and every buyout includes product updates for a set number of months from the day it is paid. The number is shown on the pricing page and on the [updates page](https://labflow.aoneahsan.com/white-label/updates/), read from our licensing service.
 
 ## What an update is
 

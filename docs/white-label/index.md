@@ -9,14 +9,14 @@ keywords:
   - LabFlow source buyout
 image: /img/labflow-social-card.png
 last_update:
-  date: 2026-11-13
+  date: 2026-11-14
 ---
 
 # White-label and licensing
 
 LabFlow can run under your name. The LabFlow team deploys and hosts it for you, connects your domain and applies your name, logo and colours. That is a **white-label licence**, and it does not include the source code.
 
-The code changes hands only once, with a **source buyout**: the buyer receives every repository that builds LabFlow's web and Android apps, and LabFlow is then not sold to anyone else.
+The code changes hands only once, with a **source buyout**: the buyer receives every repository that builds LabFlow's web and Android apps, and LabFlow is then not sold to anyone else. The buyout also carries a royalty: 7% of the gross revenue LabFlow earns, paid to us quarterly for as long as it earns.
 
 Prices are not repeated in these docs. They are read from our licensing service and shown on the [white-label pricing page](https://labflow.aoneahsan.com/white-label/pricing/), which quotes the total for the exact platforms you choose.
 
@@ -28,6 +28,7 @@ Prices are not repeated in these docs. They are read from our licensing service 
 | Source code | Not included | Handed over |
 | Who else can buy it | Anyone, until a buyout | Nobody, once the sale is paid |
 | Who hosts it | The LabFlow team | You, wherever you choose |
+| After the sale | Renewals, if you want more updates | A 7% royalty on LabFlow's gross revenue, paid quarterly |
 
 A licence is not the **Platform** plan on the [pricing page](https://labflow.aoneahsan.com/pricing/). That plan runs laboratories inside LabFlow, under LabFlow's name. A licence is a separate deployment under yours.
 
@@ -37,6 +38,6 @@ A licence is not the **Platform** plan on the [pricing page](https://labflow.aon
 - [Setting up a licensed deployment](./setup.md): from payment to the address answering.
 - [Updates and renewals](./updates-and-renewals.md): the included months, and renewing with a licence key.
 - [Verifying a licence](./verify-a-licence.md): by key, by domain, and the file every deployment serves.
-- [Questions](./faq.md): ownership, hosting, iOS and clinical approvals.
+- [Questions](./faq.md): ownership, hosting, paying, the buyout royalty, iOS and clinical approvals.
 
 The binding text is clause 13 of the [Terms of Service](https://labflow.aoneahsan.com/terms/#c-terms-13). The [licence terms page](https://labflow.aoneahsan.com/white-label/license-terms/) says the same in plain words.

@@ -1,12 +1,12 @@
 ---
 title: Questions about licensing
-description: Answers on owning LabFlow, running it on your own servers, the phone app, iOS, clinical approvals and how a licence is checked.
+description: Answers on owning LabFlow, running it on your own servers, the buyout royalty, paying by bank transfer, the phone app, iOS, clinical approvals and how a licence is checked.
 keywords:
   - LabFlow licensing FAQ
   - white-label LIMS questions
 image: /img/labflow-social-card.png
 last_update:
-  date: 2026-11-13
+  date: 2026-11-14
 ---
 
 # Questions about licensing
@@ -18,6 +18,14 @@ No. A licence is a hosted, branded deployment. The code stays with the LabFlow t
 ## Can I run it on my own servers?
 
 Not with a licence: we host it. After a [buyout](https://labflow.aoneahsan.com/white-label/buyout/) the code is yours to run wherever you choose, and hosting it becomes your work rather than ours.
+
+## Is there anything to pay after a buyout?
+
+Yes, a royalty. The buyer pays us 7% of the gross revenue LabFlow earns, excluding sales tax or VAT collected, each quarter with a revenue statement. It runs for as long as LabFlow earns revenue, and it is still owed after LabFlow is resold. [Clause 13 of the Terms](https://labflow.aoneahsan.com/terms/#c-terms-13) is the binding text.
+
+## How is a licence paid for?
+
+By bank transfer to our Wise account. The payment page shows the account details and asks for the transfer reference. Once we confirm the transfer, the licence email arrives with the key and the certificate.
 
 ## Is there an iOS app?
 
