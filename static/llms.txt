@@ -30,6 +30,13 @@ system — HL7 v2 and FHIR R4 are exported and imported as files only. There is 
 browser extension and no EMR add-on. There is **no iOS application in any form**. The Android app is
 built but not released on Google Play. Email delivery is being moved onto one branded layout.
 
+
+## Get LabFlow
+
+- [All apps](https://labflow-docs.aoneahsan.com/apps): every released surface of LabFlow.
+- [LabFlow web app](https://labflow.aoneahsan.com)
+- [Google Play](https://play.google.com/store/apps/details?id=com.aoneahsan.labflow)
+
 ## Documentation
 
 - [Introduction](https://labflow-docs.aoneahsan.com/docs/intro): what LabFlow is, what it runs on, and what it does not do.

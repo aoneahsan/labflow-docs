@@ -2,6 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import sitePages, {withLastmod} from './plugins/site-pages';
+import {OTHER_PLATFORMS, platformHref} from './src/data/platforms';
 
 // This runs in Node.js — don't use client-side code (browser APIs, JSX) here.
 
@@ -12,7 +13,7 @@ import sitePages, {withLastmod} from './plugins/site-pages';
 // DNS record (probed 2026-07-28: it returns 000, while labflow-docs returns 404
 // — the record already resolves to GitHub Pages and is waiting for a publish).
 const SITE_URL = 'https://labflow-docs.aoneahsan.com';
-const APP_URL = 'https://labflow.aoneahsan.com';
+const APP_URL = platformHref('web');
 // The APP source is a private repository; THIS DOCS SITE is its own PUBLIC repo
 // (aoneahsan/labflow-docs), which is what makes GitHub Pages possible and what
 // lets "edit this page" work. 🔴 Because it is public, no secret may ever enter
@@ -316,7 +317,15 @@ const config: Config = {
         {to: '/docs/roadmap', label: 'Status', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/docs/author', label: 'About', position: 'right'},
-        {href: APP_URL, label: 'Open App', position: 'right'},
+        {
+          type: 'dropdown',
+          label: 'Get LabFlow',
+          position: 'right',
+          items: [
+            ...OTHER_PLATFORMS.map((platform) => ({label: platform.name, href: platform.href})),
+            {label: 'All apps', to: '/apps'},
+          ],
+        },
         {href: DOCS_REPO, label: 'GitHub', position: 'right'},
       ],
     },
@@ -330,6 +339,13 @@ const config: Config = {
       },
       links: [
         {
+          title: 'Get LabFlow',
+          items: [
+            ...OTHER_PLATFORMS.map((platform) => ({label: platform.name, href: platform.href})),
+            {label: 'All apps', to: '/apps'},
+          ],
+        },
+        {
           title: 'Documentation',
           items: [
             {label: 'Introduction', to: '/docs/intro'},
@@ -342,7 +358,6 @@ const config: Config = {
         {
           title: 'Project',
           items: [
-            {label: 'Open the App', href: APP_URL},
             {label: 'Documentation source', href: DOCS_REPO},
             {label: 'Blog', to: '/blog'},
             {label: 'RSS Feed', href: `${SITE_URL}/blog/rss.xml`},
