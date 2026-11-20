@@ -118,6 +118,21 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Developers',
+      collapsed: true,
+      link: {type: 'doc', id: 'developers/index'},
+      items: [
+        'developers/authentication',
+        'developers/api',
+        'developers/mcp',
+        'developers/webhooks',
+        'developers/calendar-feed',
+        'developers/two-factor',
+        'developers/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Architecture',
       collapsed: true,
       link: {type: 'doc', id: 'architecture/overview'},
