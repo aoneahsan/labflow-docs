@@ -314,8 +314,9 @@ const config: Config = {
           label: 'Architecture',
           position: 'left',
         },
-        {to: '/docs/roadmap', label: 'Status', position: 'left'},
-        {to: '/blog', label: 'Blog', position: 'left'},
+        // Status and Blog are in the footer too; they step out between the phone menu and 1200 px so the bar fits.
+        {to: '/docs/roadmap', label: 'Status', position: 'left', className: 'nav-step-out'},
+        {to: '/blog', label: 'Blog', position: 'left', className: 'nav-step-out'},
         {to: '/docs/author', label: 'About', position: 'right'},
         {
           type: 'dropdown',

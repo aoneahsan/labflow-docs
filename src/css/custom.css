@@ -139,3 +139,6 @@
     animation: none !important;
   }
 }
+
+/* Footer-duplicated nav links step out between the phone menu and 1200 px, so the bar never overlaps (2026-11-20). */
+@media (min-width: 997px) and (max-width: 1199px) { .navbar > .navbar__inner .nav-step-out { display: none; } }

@@ -49,9 +49,8 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         HIPAA-conscious, never &ldquo;HIPAA-compliant&rdquo; — no software can
-        be. No live analyser or EMR interface — HL7 v2 and FHIR move as files —
-        and the Android app is built but not yet released. The status page
-        says so rather than implying otherwise.
+        be. No live analyser or EMR interface — HL7 v2 and FHIR move as files.
+        The status page says so rather than implying otherwise.
       </>
     ),
     ctaLabel: 'What is not built →',

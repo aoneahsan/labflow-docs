@@ -44,3 +44,9 @@
 .also { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4rem 1rem; margin: 1.25rem 0 0; position: relative; }
 .also a { color: inherit; text-decoration: underline; min-height: 2.75rem; display: inline-flex; align-items: center; }
 .also span { opacity: .85; }
+
+/* Phones: the description repeats the tagline; it steps out so the buttons and the also-on row stay above the fold. */
+@media screen and (max-width: 600px) {
+  .heroDescription { display: none; }
+  .buttons :global(.button--lg) { padding: .55rem 1.1rem; font-size: 1rem; }
+}
